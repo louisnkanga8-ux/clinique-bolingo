@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--
+  Étape 2 : présenter le médecin généraliste et le choix de son profil, sans recommandation
+  automatique. Fichier autonome de la phase sans JavaScript ni backend ; les comportements métier
+  restent à implémenter.
+-->
+<html lang="fr">
+  <!--
+    Métadonnées du document : encodage des accents, largeur adaptée au mobile, description et
+    titre de l'onglet.
+  -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Préparez votre consultation à la clinique Bolingo : service médical, médecin, date et informations du patient.">
+    <title>Choisir un médecin · Bolingo</title>
+    <link rel="icon" href="../assets/icons/logo.svg" type="image/svg+xml">
+    <!--
+      Ordre de la cascade : fondations globales, composants communs, pages publiques, puis règles
+      propres au parcours. Le suffixe ?v=20261028-images renouvelle le cache ; ../ remonte du
+      dossier rendez-vous vers la racine du site.
+    -->
+    <link rel="stylesheet" href="../css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/pages.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/reservation.css?v=20261028-images">
+  </head>
+  <body>
+    <!--
+      Premier lien pour le clavier : rejoindre directement le contenu principal sans parcourir
+      tout l'en-tête.
+    -->
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!--
+      En-tête partagé : identité et navigation publique. Aucun bouton de réservation ici, car le
+      visiteur est déjà dans ce parcours.
+    -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!--
+          Lien du logo vers l'accueil. L'icône a un alt vide car le nom de la clinique est déjà
+          fourni par le lien.
+        -->
+        <a class="brand" href="../index.html" aria-label="Bolingo, accueil">
+          <img src="../assets/icons/logo.svg" alt="" width="44" height="44">
+          <span class="brand-copy">
+            <strong>Bolingo</strong>
+            <small>Clinique Médicale</small>
+          </span>
+        </a>
+        <!--
+          Liens vers les pages publiques : ../ sort du dossier courant. Le nom ARIA distingue
+          cette navigation de celle des étapes.
+        -->
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="../index.html">Accueil</a>
+          <a href="../medecins.html">Médecins</a>
+          <a href="../services.html">Services</a>
+          <a href="../apropos.html">À propos</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <!--
+      Contenu unique de la page et cible du lien d'évitement. Les classes raccordent ce bloc aux
+      styles du parcours.
+    -->
+    <main id="contenu" class="booking-page">
+      <!--
+        Conteneur centré : limite la largeur de lecture tout en gardant des marges adaptées aux
+        petits écrans.
+      -->
+      <div class="container booking-container">
+        <!--
+          Les cinq liens chargent des fichiers voisins, donc sans ../. aria-current="step" désigne
+          l'étape présente. La classe step-complete est un état visuel écrit dans chaque page,
+          sans suivi automatique ni sauvegarde.
+        -->
+        <nav aria-label="Étapes du rendez-vous">
+          <ol class="booking-stepper">
+            <li class="step-complete">
+              <a href="index.html">
+                <span class="step-number">1</span>
+                <span>Service</span>
+              </a>
+            </li>
+            <li>
+              <a href="medecin.html" aria-current="step">
+                <span class="step-number">2</span>
+                <span>Médecin</span>
+              </a>
+            </li>
+            <li>
+              <a href="date-heure.html">
+                <span class="step-number">3</span>
+                <span>Date et heure</span>
+              </a>
+            </li>
+            <li>
+              <a href="informations.html">
+                <span class="step-number">4</span>
+                <span>Patient</span>
+              </a>
+            </li>
+            <li>
+              <a href="verification.html">
+                <span class="step-number">5</span>
+                <span>Résumé</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+        <!--
+          Introduction de l'étape : le repère indique la progression et le h1 reste le titre
+          principal unique du document.
+        -->
+        <div class="booking-heading">
+          <p class="eyebrow">PRENDRE RENDEZ-VOUS · ÉTAPE 2 SUR 5</p>
+          <h1>Un médecin pour vous accompagner</h1>
+          <p>Un professionnel pour votre consultation de médecine générale.</p>
+        </div>
+        <!--
+          Disposition commune : la colonne principale accueille l'étape ; l'aside affiche le
+          résumé. Le CSS les empile sur petit écran.
+        -->
+        <div class="booking-layout">
+          <!--
+            Zone principale de travail : les panneaux regroupent les informations et les actions
+            de navigation suivent leur contenu.
+          -->
+          <div class="booking-main">
+            <!--
+              Fiche du médecin compatible avec le service présenté. La recommandation réelle sera
+              une future règle métier.
+            -->
+            <section class="booking-panel" aria-labelledby="doctor-title">
+              <!--
+                Petit repère de la fiche : l'icône accompagne un texte déjà explicite, donc elle
+                est décorative pour les lecteurs d'écran.
+              -->
+              <p class="recommendation-label">
+                <img src="../assets/icons/check.svg" alt="" width="24" height="24" class="">Votre médecin</p>
+              <!--
+                Le CSS aligne le portrait et les informations professionnelles avec Flexbox, sans
+                modifier leur ordre de lecture.
+              -->
+              <div class="recommended-doctor">
+                <!--
+                  Portrait carré complet : srcset propose plusieurs résolutions et sizes annonce
+                  la largeur affichée. width et height réservent la place ; alt identifie la
+                  personne ; lazy et async limitent le travail de chargement initial.
+                -->
+                <img class="portrait portrait-jean"
+                  src="../assets/images/medecins/portrait-01-bolingo.webp"
+                  srcset="../assets/images/medecins/portrait-01-bolingo-400.webp 400w, ../assets/images/medecins/portrait-01-bolingo-800.webp 800w, ../assets/images/medecins/portrait-01-bolingo.webp 1254w"
+                  sizes="150px" width="1254" height="1254"
+                  alt="Portrait du Dr Jean Mputu" loading="lazy" decoding="async">
+                <div>
+                  <h2 id="doctor-title">Dr Jean Mputu</h2>
+                  <p class="doctor-specialty">Médecine générale</p>
+                  <p class="doctor-detail">8 ans d’expérience</p>
+                  <p class="doctor-detail">Consultations de médecine générale</p>
+                </div>
+              </div>
+              <!--
+                Le label englobe le radio et son texte, ce qui agrandit la zone cliquable. checked
+                fournit l'état initial de ce choix unique.
+              -->
+              <label class="doctor-select">
+                <input type="radio" name="medecin" value="jean-mputu" checked>
+                <span>Choisir ce médecin</span>
+              </label>
+            </section>
+            <!--
+              Emplacement prévu pour une alternative de même spécialité. Aucun autre professionnel
+              incompatible n'est proposé.
+            -->
+            <section class="doctor-unavailable" aria-labelledby="alternate-title">
+              <h2 id="alternate-title">Choisir un autre médecin</h2>
+              <p>Aucun autre médecin de cette spécialité n’est proposé pour le moment.</p>
+            </section>
+            <!--
+              Retour et Continuer relient les fichiers voisins. Aucun identifiant de médecin n'est
+              envoyé à la page suivante ni à un serveur.
+            -->
+            <div class="booking-actions">
+              <a class="button button-secondary" href="index.html">Retour</a>
+              <a class="button button-primary" href="date-heure.html">Continuer <img src="../assets/icons/arrow-right.svg" alt="" width="24" height="24" class="">
+              </a>
+            </div>
+          </div>
+          <!--
+            Résumé latéral partagé et fixe : ces valeurs sont saisies dans le HTML, pas calculées
+            à partir des contrôles. Le titre référencé par aria-labelledby nomme ce bloc ; dl
+            associe chaque libellé dt à sa valeur dd.
+          -->
+          <aside class="booking-summary" aria-labelledby="scenario-title">
+            <h2 id="scenario-title">Votre rendez-vous</h2>
+            <dl>
+              <div>
+                <dt>Service</dt>
+                <dd>Médecine générale</dd>
+              </div>
+              <div>
+                <dt>Médecin</dt>
+                <dd>Dr Jean Mputu</dd>
+              </div>
+              <div>
+                <dt>Date et heure</dt>
+                <dd>Jeudi 5 novembre 2026<br>09 h 30 · heure de Kinshasa</dd>
+              </div>
+              <div>
+                <dt>Durée estimée</dt>
+                <dd>30 minutes</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <!--
+      Pied de page allégé du parcours : identité et accès aux informations pratiques, sans répéter
+      l'action de réservation.
+    -->
+    <footer class="site-footer">
+      <div class="container booking-footer-inner">
+        <p>© 2026 Bolingo Clinique Médicale</p>
+        <a href="../contact.html">Coordonnées et informations pratiques</a>
+      </div>
+    </footer>
+  </body>
+</html>

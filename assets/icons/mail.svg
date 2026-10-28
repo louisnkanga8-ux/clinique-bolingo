@@ -1,0 +1,7 @@
+<!--
+  E-mail : dessin vectoriel local, net quelle que soit la taille d’affichage.
+  viewBox définit le repère des coordonnées ; path, circle ou les autres formes dessinent l’icône.
+  fill règle le remplissage, stroke le contour. Les tailles visibles sont définies en HTML/CSS.
+  L’alternative textuelle est portée par l’élément img de la page qui utilise ce fichier.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0063ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>

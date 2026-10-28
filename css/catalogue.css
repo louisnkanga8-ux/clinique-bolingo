@@ -1,0 +1,605 @@
+/*
+  Guide de lecture : les règles de base viennent d’abord ; les media queries finales les
+  adaptent à la largeur. Une règle plus tardive de même spécificité remplace les propriétés
+  qu’elle redéfinit. Ce fichier complète les styles communs chargés avant lui ; aucun
+  comportement serveur ou JavaScript n’y est défini.
+*/
+/* Catalogues publics : médecins et services. Les visuels sont partagés. */
+/*
+  Zone centrale commune aux deux catalogues : marges verticales et dégradé discret derrière
+  le contenu.
+*/
+.catalogue-main {
+  padding-block: 42px 64px;
+  background: linear-gradient(180deg, #f4f9ff 0, #ffffff 500px);
+}
+
+/*
+  Sépare le titre des outils ou des cartes sans ajouter de grand bandeau.
+*/
+.catalogue-heading {
+  padding-top: 0;
+  margin-bottom: 25px;
+}
+
+/*
+  Hiérarchie du titre principal : clamp limite la taille entre un minimum et un maximum tout
+  en suivant la largeur de l’écran.
+*/
+.catalogue-heading h1 {
+  margin: 0 0 12px;
+  color: #081d4a;
+  font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+/*
+  Réserve un espace après les outils de recherche avant la grille des médecins.
+*/
+.catalogue-tools {
+  margin-bottom: 30px;
+}
+
+/*
+  Grille des outils : les unités fr distribuent la largeur, avec davantage d’espace pour le
+  champ de recherche.
+*/
+.catalogue-search {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 18px;
+}
+
+/*
+  min-width: 0 autorise un élément de grille à rétrécir au lieu de provoquer un débordement.
+*/
+.catalogue-field {
+  min-width: 0;
+}
+
+/*
+  Le label reste au-dessus du contrôle ; son poids et son espacement le distinguent du texte
+  saisi.
+*/
+.catalogue-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #081d4a;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/*
+  Apparence des contrôles désactivés : bordure, hauteur tactile et police héritée. box-sizing
+  inclut bordure et padding dans la largeur ; opacity et -webkit-text-fill-color maintiennent
+  leur lisibilité.
+*/
+.catalogue-field input,
+.catalogue-field select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid #c9ddf7;
+  border-radius: 10px;
+  padding: 13px 17px;
+  background-color: #ffffff;
+  color: #526583;
+  font: inherit;
+  opacity: 1;
+  -webkit-text-fill-color: #526583;
+  cursor: not-allowed;
+}
+
+/*
+  Pseudo-élément du texte d’exemple : sa couleur reste lisible, même dans le contrôle
+  désactivé.
+*/
+.catalogue-field input::placeholder {
+  color: #526583;
+  opacity: 1;
+}
+
+/*
+  Aide sous les contrôles : explique que les outils ne filtrent pas encore le contenu.
+*/
+.catalogue-tool-note {
+  margin: 10px 0 18px;
+  color: #526583;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/*
+  Flex aligne les pastilles et flex-wrap les renvoie à la ligne lorsque l’espace manque.
+*/
+.specialty-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/*
+  Pastilles avec limites de largeur et hauteur minimale pour des libellés lisibles. Le
+  curseur indique leur état statique ; ce CSS ne réalise aucun filtrage.
+*/
+.specialty-filter {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 37px;
+  border: 1px solid #c9ddf7;
+  border-radius: 24px;
+  padding: 8px 13px;
+  background: #f4f9ff;
+  color: #36537d;
+  font: inherit;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+/*
+  Variante bleue de la pastille Tous, pour matérialiser l’état de présentation initial.
+*/
+.specialty-filter-all {
+  border-color: #0063ff;
+  background: #0063ff;
+  color: #ffffff;
+}
+
+/*
+  Grille de médecins : colonnes égales avec minmax(0, 1fr) pour autoriser leur réduction.
+  align-items: start évite d’étirer toutes les fiches lorsqu’un profil est déplié.
+*/
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: 25px;
+}
+
+/*
+  Coque partagée des cartes : bordure, fond, ombre légère et coins arrondis. overflow: hidden
+  maintient les images dans les coins ; min-width: 0 évite le débordement de la grille.
+*/
+.doctor-card,
+.service-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #dce9f8;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgb(8 29 74 / 4%);
+}
+
+/*
+  Le portrait remplit la largeur de la carte avec un cadre carré. Le cadrage entier vient de
+  object-fit: contain dans components.css.
+*/
+.doctor-card .portrait {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #e9f2fc;
+}
+
+/*
+  Espacement interne entre le bord de la carte et ses informations textuelles.
+*/
+.doctor-card-body {
+  padding: 18px;
+}
+
+/*
+  Nom du médecin : taille et interligne compacts, distincts du h1 de la page.
+*/
+.doctor-card h2 {
+  margin: 0 0 10px;
+  color: #081d4a;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+/*
+  Alignement horizontal de l’icône et du texte pour la spécialité et l’évaluation.
+*/
+.doctor-specialty,
+.doctor-rating {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #526583;
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+
+/*
+  Prévoit la place des spécialités longues et aligne leur icône sur le début du texte.
+*/
+.doctor-specialty {
+  min-height: 40px;
+  margin: 0 0 13px;
+  align-items: flex-start;
+}
+
+/*
+  Petit décalage vertical pour accorder l’icône à la première ligne de texte.
+*/
+.doctor-specialty .icon {
+  margin-top: 1px;
+}
+
+/*
+  Les icônes gardent leur taille dans les lignes flex grâce à flex: 0 0 auto.
+*/
+.doctor-card .icon,
+.service-card .icon {
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+/*
+  Sépare l’évaluation de la ligne d’expérience professionnelle.
+*/
+.doctor-rating {
+  margin: 0 0 9px;
+}
+
+/*
+  Met la note numérique en évidence sans donner le même poids au nombre d’avis.
+*/
+.doctor-rating strong {
+  color: #081d4a;
+  font-weight: 600;
+}
+
+/*
+  Texte secondaire et marge avant le contrôle qui ouvre le profil.
+*/
+.doctor-experience {
+  margin: 0 0 19px;
+  color: #526583;
+  font-size: 0.83rem;
+}
+
+/*
+  summary reste le contrôle natif de details, stylisé comme une action. Flex aligne texte et
+  flèche ; list-style masque le marqueur standard sans retirer l’interaction clavier.
+*/
+.doctor-profile summary,
+.service-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  color: #0054db;
+  font-size: 0.88rem;
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+
+/*
+  Pseudo-élément spécifique à certains navigateurs : supprime le triangle natif pour
+  conserver la flèche commune.
+*/
+.doctor-profile summary::-webkit-details-marker,
+.service-details summary::-webkit-details-marker {
+  display: none;
+}
+
+/*
+  Encadrement du bouton de profil ; le comportement ouvrir/fermer appartient toujours à HTML.
+*/
+.doctor-profile summary {
+  border: 1px solid #a4c9ff;
+  border-radius: 8px;
+  padding: 8px 6px;
+  line-height: 1.3;
+}
+
+/*
+  Accent visuel au survol et lorsque le profil est ouvert ; [open] reflète l’état natif de
+  details.
+*/
+.doctor-profile summary:hover,
+.doctor-profile[open] summary {
+  background: #f4f9ff;
+  border-color: #0063ff;
+}
+
+/*
+  Contour de focus visible pendant la navigation clavier ; outline-offset le sépare de la
+  bordure.
+*/
+.doctor-profile summary:focus-visible,
+.service-details summary:focus-visible {
+  outline: 3px solid #0063ff;
+  outline-offset: 4px;
+}
+
+/*
+  La flèche tourne quand details possède l’attribut open ; aucun script n’est nécessaire.
+*/
+.doctor-profile[open] summary .icon,
+.service-details[open] summary .icon {
+  transform: rotate(90deg);
+}
+
+/*
+  Texte révélé : > cible uniquement le paragraphe directement contenu dans details.
+*/
+.doctor-profile > p,
+.service-details > p {
+  margin: 14px 0 0;
+  color: #526583;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+/*
+  Ajustement de la marge haute pour la page Services.
+*/
+.services-main {
+  padding-top: 48px;
+}
+
+/*
+  Espace sous l’introduction du catalogue de services.
+*/
+.services-heading {
+  margin-bottom: 34px;
+}
+
+/*
+  Petit surtitre bleu qui annonce la rubrique avant le h1.
+*/
+.services-heading .eyebrow {
+  margin: 0 0 14px;
+  color: #0063ff;
+}
+
+/*
+  Accent bleu limité au fragment de titre entouré par span.
+*/
+.services-heading h1 span {
+  color: #0063ff;
+}
+
+/*
+  Limite la longueur de ligne du paragraphe de présentation pour faciliter la lecture.
+*/
+.services-intro {
+  max-width: 780px;
+  margin: 0 0 14px;
+  color: #526583;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/*
+  Grille des six services : colonnes égales et cartes alignées en haut, même si un détail est
+  ouvert.
+*/
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+/*
+  Cadre des visuels encore tirés de la maquette ; le fond et son positionnement viennent de
+  components.css.
+*/
+.service-card .service-photo {
+  width: 100%;
+  aspect-ratio: 1.56;
+  background-color: #e9f2fc;
+}
+
+/*
+  Photos individuelles : même ratio de cadre que les autres cartes. object-fit: contain
+  affiche la photo entière, sans zoom ; le fond pâle remplit les éventuelles bandes
+  restantes.
+*/
+.service-card .service-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.56;
+  object-fit: contain;
+  background-color: #e9f2fc;
+}
+
+/*
+  position: relative sert de repère à la pastille en position absolue ; le padding supérieur
+  lui réserve de la place.
+*/
+.service-card-body {
+  position: relative;
+  padding: 49px 23px 20px;
+}
+
+/*
+  Pastille à cheval sur image et texte : top négatif la remonte, la bordure blanche la
+  détache du fond. Grid et place-items centrent le pictogramme dans le cercle.
+*/
+.service-icon {
+  position: absolute;
+  top: -32px;
+  left: 20px;
+  display: grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  border: 7px solid #ffffff;
+  border-radius: 50%;
+  background: #eaf3ff;
+}
+
+/*
+  Titre du service : niveau h2 et interligne lisible dans une carte.
+*/
+.service-card h2 {
+  margin: 0 0 10px;
+  color: #081d4a;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+
+/*
+  La hauteur minimale rapproche les positions des actions entre cartes de même rangée malgré
+  des descriptions de longueurs différentes.
+*/
+.service-card-body > p {
+  min-height: 70px;
+  margin: 0 0 12px;
+  color: #526583;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+/*
+  En savoir plus s’aligne à gauche et prend la largeur de son contenu sans dépasser la carte.
+*/
+.service-details summary {
+  justify-content: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 4px;
+  font-size: 0.92rem;
+}
+
+/*
+  Souligne l’action au survol pour compléter le changement de curseur.
+*/
+.service-details summary:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/*
+  Texte conservé pour les lecteurs d’écran mais masqué visuellement dans un rectangle de 1
+  pixel. Ne pas utiliser display: none, qui supprimerait aussi son annonce.
+*/
+.catalogue-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/*
+  Adaptation tablette : ces règles remplacent les propriétés nécessaires quand la fenêtre
+  fait au plus 1000 pixels. Les grilles passent de trois ou quatre colonnes à deux.
+*/
+@media (max-width: 1000px) {
+  /*
+    Tablette : les quatre colonnes de médecins deviennent deux, avec un espacement adapté.
+  */
+  .doctors-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+  /*
+    Tablette : les trois colonnes de services deviennent deux.
+  */
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+  /*
+    La spécialité reprend sa hauteur naturelle quand les cartes disposent de plus de largeur.
+  */
+  .doctor-specialty {
+    min-height: auto;
+  }
+}
+
+/*
+  Adaptation mobile : une seule colonne, plus d’espace de lecture et suppression de la rangée
+  de filtres redondante.
+*/
+@media (max-width: 600px) {
+  /*
+    Réduit les marges verticales de la page sur mobile pour rapprocher les informations.
+  */
+  .catalogue-main {
+    padding-block: 30px 42px;
+  }
+  /*
+    Sur mobile, outils et cartes utilisent une seule colonne qui peut rétrécir sans dépasser
+    la fenêtre.
+  */
+  .catalogue-search,
+  .doctors-grid,
+  .services-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /*
+    Resserre l’espace entre les champs désormais empilés.
+  */
+  .catalogue-search {
+    gap: 15px;
+  }
+  /*
+    Rapproche le titre du contenu qui le suit sur petit écran.
+  */
+  .catalogue-heading {
+    margin-bottom: 24px;
+  }
+  /*
+    Masque la rangée de pastilles, dont le rôle est déjà représenté par le sélecteur de
+    spécialité.
+  */
+  .specialty-filters {
+    /* Le sélecteur reste visible : éviter sa répétition sur mobile. */
+    display: none;
+  }
+  /*
+    Réduit les marges latérales de cette variante mobile des pastilles ; leur groupe reste
+    masqué à ce palier.
+  */
+  .specialty-filter {
+    padding-inline: 11px;
+  }
+  /*
+    Conserve un espace intérieur confortable quand une fiche occupe toute la largeur.
+  */
+  .doctor-card-body {
+    padding: 20px;
+  }
+  /*
+    Agrandit légèrement le nom du médecin dans les cartes sur une seule colonne.
+  */
+  .doctor-card h2 {
+    font-size: 1.15rem;
+  }
+  /*
+    Sur mobile, les lignes secondaires gagnent en taille pour rester confortables à lire.
+  */
+  .doctor-specialty,
+  .doctor-rating,
+  .doctor-experience {
+    font-size: 0.9rem;
+  }
+  /*
+    Retire la hauteur minimale des descriptions : des cartes empilées n’ont plus besoin
+    d’aligner leurs actions.
+  */
+  .service-card-body > p {
+    min-height: auto;
+  }
+  /*
+    Ajuste la taille du paragraphe de présentation à la largeur réduite.
+  */
+  .services-intro {
+    font-size: 1rem;
+  }
+}

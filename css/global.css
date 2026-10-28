@@ -1,0 +1,340 @@
+/* Bolingo — fondations partagées, sans dépendance ni JavaScript. */
+/*
+ * Polices locales : le navigateur charge Poppins depuis assets/fonts. Les trois blocs
+ * correspondent aux graisses normale (400), semi-grasse (600) et grasse (700). font-display: swap
+ * laisse le texte lisible pendant le chargement.
+ */
+@font-face {
+  font-family: Poppins;
+  src: url('../assets/fonts/poppins-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url('../assets/fonts/poppins-semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url('../assets/fonts/poppins-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/*
+ * Palette et valeurs communes. Une variable commence par deux tirets et se lit avec var(...).
+ * Modifier ces valeurs permet de changer l’identité visuelle sans retoucher chaque composant. Les
+ * variables --color-* sont des alias utilisés par le parcours de réservation.
+ */
+:root {
+  --blue: #0063ff;
+  --blue-dark: #004ccb;
+  --navy: #081d4a;
+  --muted: #526583;
+  --pale: #f2f8ff;
+  --border: #dce9f8;
+  --white: #fff;
+  --radius: 14px;
+  --shadow: 0 5px 20px #163c7310;
+  --color-primary: var(--blue);
+  --color-text: var(--navy);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--white);
+  --color-background: var(--pale);
+}
+
+/*
+ * Le sélecteur * vise tous les éléments. border-box inclut les bordures et espacements intérieurs
+ * dans la largeur annoncée : une carte à 100% ne déborde pas à cause de son padding.
+ */
+* {
+  box-sizing: border-box;
+}
+
+/*
+ * Déplacement doux vers les ancres (#mission, #contenu…). scroll-padding-top laisse un peu
+ * d’espace au-dessus de la cible ; la préférence de réduction des mouvements est traitée en fin
+ * de fichier.
+ */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+/*
+ * Style de base hérité par les pages : suppression de la marge du navigateur, couleurs, police et
+ * hauteur des lignes. Les polices suivantes servent de secours si Poppins ne peut pas charger.
+ */
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--navy);
+  font-family: Poppins,'Segoe UI',Arial,sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+/*
+ * Une image ne dépasse pas son conteneur. height: auto conserve ses proportions ; display: block
+ * retire le petit espace réservé aux lettres sous les images en ligne.
+ */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*
+ * Apparence des liens et de leur survol. Le soulignement au survol aide à identifier les zones
+ * cliquables ; le focus clavier est défini plus bas.
+ */
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/*
+ * Les contrôles de formulaire utilisent la même police que le texte. Sans font: inherit, certains
+ * navigateurs leur imposent une typographie différente.
+ */
+button,input,select,textarea {
+  font: inherit;
+}
+
+/*
+ * Retire uniquement la surbrillance tactile propre à WebKit. Cela ne remplace pas les états de
+ * focus clavier ni les styles de sélection.
+ */
+button,summary,a,input,select,textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+ * Le curseur signale une action possible. Les éléments réellement désactivés dans le HTML
+ * reçoivent ensuite le curseur not-allowed ; le CSS seul ne désactive rien.
+ */
+button {
+  cursor: pointer;
+}
+
+button:disabled,input:disabled,select:disabled {
+  cursor: not-allowed;
+}
+
+/*
+ * Accessibilité clavier : un contour jaune repère le lien ou le champ actuellement sélectionné.
+ * outline ne modifie pas la place occupée par l’élément.
+ */
+:focus-visible {
+  outline: 3px solid #f0a800;
+  outline-offset: 4px;
+}
+
+/*
+ * Réinitialise les marges automatiques pour maîtriser les espacements. Les règles suivantes
+ * fixent la hiérarchie visuelle des titres ; h1/h2/h3 gardent leur sens sémantique dans le HTML.
+ */
+h1,h2,h3,p,figure {
+  margin: 0;
+}
+
+h1,h2,h3 {
+  line-height: 1.25;
+  letter-spacing: -.035em;
+}
+
+/*
+ * clamp(minimum, valeur fluide, maximum) adapte la taille du titre à la fenêtre sans le rendre
+ * trop petit ni trop grand. vw représente un pourcentage de la largeur de la fenêtre.
+ */
+h1 {
+  font-size: clamp(30px,3.5vw,46px);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(25px,2.6vw,34px);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+/*
+ * Le signe + vise un paragraphe placé immédiatement après un autre paragraphe. On espace ainsi le
+ * texte courant sans ajouter une marge avant tous les premiers paragraphes.
+ */
+p+p {
+  margin-top: 12px;
+}
+
+/* Garde une indentation commune aux listes à puces et aux listes numérotées. */
+ul,ol {
+  padding-left: 1.3rem;
+}
+
+/*
+ * Autorise les groupes de champs à rétrécir dans une grille, ce qui évite des débordements sur
+ * petit écran.
+ */
+fieldset {
+  min-width: 0;
+}
+
+/* Couleurs du texte lorsque le visiteur le sélectionne avec la souris ou le clavier. */
+::selection {
+  background: #cce2ff;
+  color: var(--navy);
+}
+
+/*
+ * Conteneur centré réutilisé partout : au maximum 1180px, avec 32px d’espace de chaque côté sur
+ * ordinateur. min() choisit la plus petite largeur ; margin-inline: auto centre horizontalement.
+ */
+.container {
+  width: min(1180px,calc(100% - 64px));
+  margin-inline: auto;
+}
+
+/*
+ * Classe utilitaire pour une information secondaire, avec une couleur moins forte que celle des
+ * titres.
+ */
+.muted {
+  color: var(--muted);
+}
+
+/*
+ * Petit libellé au-dessus d’un titre. Flexbox aligne le texte et son trait décoratif ; gap règle
+ * leur écart, text-transform affiche les capitales sans modifier le texte source.
+ */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/*
+ * Pseudo-élément décoratif : le trait est dessiné en CSS, sans balise supplémentaire.
+ * currentColor reprend la couleur du libellé.
+ */
+.eyebrow::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+}
+
+/* Espacement commun sous certains titres de section. */
+.section-title {
+  margin-bottom: 10px;
+}
+
+/*
+ * Zone d’introduction des pages de catalogue : espacement en haut et limite de largeur pour que
+ * la description reste facile à lire.
+ */
+.page-heading {
+  padding-top: 44px;
+  margin-bottom: 30px;
+}
+
+.page-heading p {
+  margin-top: 12px;
+  max-width: 780px;
+  color: var(--muted);
+}
+
+/*
+ * Lien d’évitement : invisible en dehors de l’écran au repos, il apparaît au focus. Il permet à
+ * une personne utilisant le clavier de rejoindre directement <main id="contenu">.
+ */
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 16px;
+  z-index: 10;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #fff;
+  transform: translateY(-180%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/*
+ * Texte disponible pour les lecteurs d’écran, mais visuellement masqué. Ne pas utiliser display:
+ * none ici : le texte doit rester accessible aux technologies d’assistance.
+ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/*
+ * Lorsqu’un lien pointe vers un identifiant, la cible conserve un espace au-dessus pour éviter un
+ * titre collé au bord de la fenêtre.
+ */
+[id] {
+  scroll-margin-top: 28px;
+}
+
+/*
+ * Adaptation aux fenêtres de 700px ou moins : marges latérales ramenées à 18px, texte et
+ * introduction plus compacts. Ces règles remplacent uniquement les propriétés indiquées ; les
+ * autres styles restent actifs.
+ */
+@media(max-width:700px) {
+  .container {
+    width: calc(100% - 36px);
+  }
+  body {
+    font-size: 14px;
+  }
+  .page-heading {
+    padding-top: 28px;
+    margin-bottom: 24px;
+  }
+}
+
+/*
+ * Respect du réglage d’accessibilité du système : retire animations, transitions et défilement
+ * doux pour les personnes qui demandent moins de mouvements. !important garantit ici la priorité
+ * de cette préférence.
+ */
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,*::before,*::after {
+    animation: none!important;
+    transition: none!important;
+  }
+}

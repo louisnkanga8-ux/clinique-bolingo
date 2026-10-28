@@ -1,0 +1,493 @@
+/* Éléments communs aux pages publiques et au parcours. */
+/*
+ * En-tête partagé. Ces styles s’appliquent aux mêmes classes sur chaque page ; le HTML de la
+ * navigation est répété car il n’y a pas de moteur de modèles.
+ */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #edf3fb;
+}
+
+/*
+ * Flexbox place le logo, la navigation et l’action principale sur une ligne. space-between
+ * répartit l’espace libre ; gap garantit un écart minimal.
+ */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  min-height: 78px;
+}
+
+/*
+ * Bloc du logo cliquable : icône et nom alignés. flex-shrink: 0 empêche le logo de se comprimer
+ * quand la navigation demande de la place.
+ */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.brand>img {
+  width: 46px;
+  height: 46px;
+}
+
+/*
+ * Le nom et le sous-titre sont empilés verticalement. Les sélecteurs strong et small ne ciblent
+ * que le texte situé dans ce bloc.
+ */
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-copy strong {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -1.2px;
+}
+
+.brand-copy small {
+  font-size: 10px;
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+/*
+ * Liens de navigation horizontaux. white-space: nowrap évite de couper un libellé sur deux lignes
+ * ; la bordure transparente réserve la place du soulignement actif.
+ */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+
+.main-nav a {
+  padding: 26px 0 22px;
+  color: var(--navy);
+  font-size: 13px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+
+/*
+ * Même repère bleu pour le survol et pour la page courante. aria-current="page" est renseigné
+ * dans chaque HTML : le CSS ne déduit pas automatiquement l’URL active.
+ */
+.main-nav a:hover,.main-nav [aria-current=page] {
+  color: var(--blue);
+  border-color: var(--blue);
+  text-decoration: none;
+}
+
+/*
+ * Base commune aux boutons et aux liens présentés comme boutons. inline-flex centre icône et
+ * libellé ; seules les couleurs de fond et de bordure ont une courte transition.
+ */
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 11px 22px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  transition: background-color .15s,border-color .15s;
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+/*
+ * Taille homogène des petites icônes. flex-shrink: 0 garde leur forme lorsque le libellé occupe
+ * plusieurs lignes.
+ */
+.button img,.icon {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+}
+
+/*
+ * Variante principale : fond bleu et texte blanc. Le filtre des images transforme les icônes
+ * bleues en blanc sans dupliquer les fichiers SVG.
+ */
+.button-primary {
+  background: var(--blue);
+  color: #fff;
+}
+
+.button-primary:hover {
+  background: var(--blue-dark);
+}
+
+.button-primary img {
+  filter: brightness(0) invert(1);
+}
+
+/*
+ * Variante secondaire : contour bleu sur fond blanc, avec un fond pâle au survol. Elle s’utilise
+ * avec la classe de base button.
+ */
+.button-secondary {
+  border-color: #6ca3ff;
+  color: var(--blue);
+  background: #fff;
+}
+
+.button-secondary:hover {
+  background: #eef6ff;
+  border-color: var(--blue);
+}
+
+/*
+ * CTA signifie action principale : ici le lien de prise de rendez-vous du haut de page. Il est un
+ * peu plus compact que les boutons du contenu.
+ */
+.header-cta {
+  white-space: nowrap;
+  min-height: 42px;
+  padding: 10px 16px;
+  font-size: 11px;
+}
+
+/*
+ * Apparence d’un vrai bouton HTML portant disabled. Cet état est notamment utilisé pour la
+ * confirmation de réservation qui n’est pas reliée à un serveur.
+ */
+.button:disabled {
+  background: #e4ebf4;
+  border-color: #ced8e6;
+  color: #526583;
+}
+
+/*
+ * Pastille ronde réutilisée autour des icônes. Grid et place-items: center centrent l’icône sur
+ * les deux axes.
+ */
+.icon-bubble {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #e9f3ff;
+  flex-shrink: 0;
+}
+
+.icon-bubble img {
+  width: 30px;
+  height: 30px;
+}
+
+/*
+ * Lien discret accompagné d’une flèche, utilisé dans les cartes. Il partage l’alignement des
+ * boutons, sans leur fond ni leur bordure.
+ */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.text-link img {
+  width: 19px;
+  height: 19px;
+}
+
+/*
+ * Pied de page partagé : dégradé bleu, texte clair et espacements. Les règles suivantes adaptent
+ * aussi le logo et les liens à ce fond sombre.
+ */
+.site-footer {
+  background: linear-gradient(115deg,#064b9c,#063574);
+  color: #fff;
+  margin-top: 20px;
+  padding: 40px 0 18px;
+}
+
+/*
+ * Trois colonnes pour présentation, liens utiles et coordonnées. fr partage l’espace disponible
+ * selon les proportions indiquées.
+ */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1.25fr;
+  gap: 46px;
+}
+
+.site-footer .brand {
+  color: #fff;
+}
+
+.site-footer .brand>img {
+  filter: none;
+}
+
+/*
+ * Limite la largeur et la taille du paragraphe de présentation pour garder des lignes courtes
+ * dans le pied de page.
+ */
+.footer-intro p {
+  max-width: 285px;
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #d3e2f8;
+}
+
+/* Titres du pied de page : taille compacte et couleur des liens adaptée au fond foncé. */
+.site-footer h2,.site-footer h3 {
+  margin-bottom: 15px;
+  font-size: 14px;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+/*
+ * Les liens utiles sont répartis sur deux colonnes, avec un écart horizontal et vertical
+ * distinct.
+ */
+.footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 18px;
+  font-size: 12px;
+}
+
+/*
+ * Coordonnées en lignes : chaque span aligne une icône et un texte. font-style: normal annule
+ * l’italique que les navigateurs appliquent normalement à <address>.
+ */
+.footer-contact {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.footer-contact span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/*
+ * Icônes blanches et de petite taille dans les coordonnées ; le filtre n’affecte que les images
+ * de ce bloc.
+ */
+.footer-contact img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-contact small {
+  color: #d3e2f8;
+  font-size: 11px;
+}
+
+/*
+ * Dernière ligne séparée par une bordure légère : copyright à gauche, signature à droite sur
+ * ordinateur.
+ */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid #ffffff30;
+  padding-top: 18px;
+  margin-top: 30px;
+  font-size: 11px;
+  color: #c1d5f0;
+}
+
+/* Portraits individuels : image entière, sans recadrage ni agrandissement. */
+/*
+ * La photo prend toute la largeur de sa carte, dans un carré. object-fit: contain conserve tous
+ * les bords du portrait, même si une future image a d’autres proportions ; aucun zoom CSS n’est
+ * appliqué.
+ */
+.portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #edf4f9;
+}
+
+/* Cadrages des services depuis la maquette fournie. */
+/*
+ * Trois services utilisent encore un extrait de la maquette, faute de photos individuelles
+ * correspondantes. background-size agrandit la capture entière ; chaque position ci-dessous cadre
+ * l’ancienne vignette. Les nouveaux visuels utilisent service-image dans catalogue.css.
+ */
+.service-photo {
+  aspect-ratio: 295/189;
+  background-image: url('../assets/images/reference-services.webp');
+  background-size: 347.11864% 812.69841%;
+  background-repeat: no-repeat;
+  background-color: #edf4f9;
+}
+
+/*
+ * Positions des anciennes vignettes de cardiologie, d’ophtalmologie et d’orthopédie dans la
+ * capture commune. Ne pas réutiliser ces coordonnées pour une photo individuelle.
+ */
+.service-cardiologie {
+  background-position: 50.34294% 21.45509%;
+}
+
+.service-ophtalmologie {
+  background-position: 6.17284% 51.67038%;
+}
+
+.service-orthopedie {
+  background-position: 50.34294% 51.67038%;
+}
+
+/*
+ * Premier seuil responsive : réduit les écarts de navigation et la taille du logo pour garder
+ * l’en-tête sur une ligne tant que la place suffit.
+ */
+@media(max-width:1050px) {
+  .header-inner {
+    gap: 16px;
+  }
+  .main-nav {
+    gap: 18px;
+  }
+  .header-cta {
+    padding: 9px 12px;
+  }
+  .brand-copy strong {
+    font-size: 22px;
+  }
+  .brand>img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/*
+ * Tablette : flex-wrap autorise une seconde ligne, order: 3 place le menu sous le logo et le
+ * bouton. Le pied de page passe à deux colonnes ; son introduction occupe toute la largeur.
+ */
+@media(max-width:850px) {
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    padding-top: 14px;
+  }
+  .main-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 28px;
+  }
+  .main-nav a {
+    padding: 12px 0 11px;
+  }
+  .header-cta {
+    margin-left: auto;
+  }
+  .footer-grid {
+    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-intro {
+    grid-column: 1/-1;
+  }
+  .footer-intro p {
+    max-width: 460px;
+  }
+}
+
+/*
+ * Téléphone : logo et action principale plus compacts, icône du CTA masquée pour laisser la place
+ * au texte. Les colonnes du pied de page et sa dernière ligne s’empilent verticalement.
+ */
+@media(max-width:480px) {
+  .brand-copy strong {
+    font-size: 20px;
+  }
+  .brand-copy small {
+    font-size: 9px;
+  }
+  .brand>img {
+    width: 34px;
+    height: 34px;
+  }
+  .brand {
+    gap: 7px;
+  }
+  .header-cta {
+    font-size: 10px;
+    min-height: 38px;
+    padding: 9px;
+  }
+  .header-cta img {
+    display: none;
+  }
+  .main-nav {
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .main-nav a {
+    font-size: 11px;
+  }
+  .button {
+    padding-inline: 16px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .footer-intro {
+    grid-column: auto;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .site-footer {
+    padding-top: 30px;
+  }
+}
+
+/* Photos individuelles : proportions et cadrage intégral conservés. */
+/*
+ * Photos de consultation, façade et réception : largeur fluide et hauteur calculée selon le
+ * fichier. Cette classe conserve le cadrage intégral ; modifier les conteneurs plutôt que zoomer
+ * dans les images.
+ */
+.clinic-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

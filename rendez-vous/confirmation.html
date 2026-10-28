@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--
+  Aperçu de l'écran final : afficher un récapitulatif sans enregistrer ni confirmer réellement un
+  rendez-vous. Fichier autonome de la phase sans JavaScript ni backend ; les comportements métier
+  restent à implémenter.
+-->
+<html lang="fr">
+  <!--
+    Métadonnées du document : encodage des accents, largeur adaptée au mobile, description et
+    titre de l'onglet.
+  -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Préparez votre consultation à la clinique Bolingo : service médical, médecin, date et informations du patient.">
+    <title>Aperçu de confirmation · Bolingo</title>
+    <link rel="icon" href="../assets/icons/logo.svg" type="image/svg+xml">
+    <!--
+      Ordre de la cascade : fondations globales, composants communs, pages publiques, puis règles
+      propres au parcours. Le suffixe ?v=20261028-images renouvelle le cache ; ../ remonte du
+      dossier rendez-vous vers la racine du site.
+    -->
+    <link rel="stylesheet" href="../css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/pages.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/reservation.css?v=20261028-images">
+  </head>
+  <body>
+    <!--
+      Premier lien pour le clavier : rejoindre directement le contenu principal sans parcourir
+      tout l'en-tête.
+    -->
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!--
+      En-tête partagé : identité et navigation publique. Aucun bouton de réservation ici, car le
+      visiteur est déjà dans ce parcours.
+    -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!--
+          Lien du logo vers l'accueil. L'icône a un alt vide car le nom de la clinique est déjà
+          fourni par le lien.
+        -->
+        <a class="brand" href="../index.html" aria-label="Bolingo, accueil">
+          <img src="../assets/icons/logo.svg" alt="" width="44" height="44">
+          <span class="brand-copy">
+            <strong>Bolingo</strong>
+            <small>Clinique Médicale</small>
+          </span>
+        </a>
+        <!--
+          Liens vers les pages publiques : ../ sort du dossier courant. Le nom ARIA distingue
+          cette navigation de celle des étapes.
+        -->
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="../index.html">Accueil</a>
+          <a href="../medecins.html">Médecins</a>
+          <a href="../services.html">Services</a>
+          <a href="../apropos.html">À propos</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <!--
+      Contenu unique de la page et cible du lien d'évitement. Les classes raccordent ce bloc aux
+      styles du parcours.
+    -->
+    <main id="contenu" class="booking-page">
+      <!--
+        Conteneur centré : limite la largeur de lecture tout en gardant des marges adaptées aux
+        petits écrans.
+      -->
+      <div class="container booking-container">
+        <!--
+          Écran d'aperçu autonome : l'accès par lien n'implique aucune réservation. Le message
+          visible précise qu'aucun rendez-vous n'est enregistré.
+        -->
+        <div class="confirmation-preview">
+          <!--
+            En-tête centré de l'aperçu, avec un titre unique et le message qui distingue cet écran
+            d'une confirmation métier.
+          -->
+          <div class="confirmation-heading">
+            <!--
+              Icône décorative de présentation : son alt est vide, car elle ne doit pas annoncer
+              un succès supplémentaire aux lecteurs d'écran.
+            -->
+            <div class="confirmation-icon">
+              <img src="../assets/icons/check.svg" alt="" width="24" height="24" class="">
+            </div>
+            <p class="eyebrow">VOTRE RENDEZ-VOUS</p>
+            <h1>Aperçu de confirmation</h1>
+            <p>Aucun rendez-vous n’a été enregistré.</p>
+          </div>
+          <!--
+            Récapitulatif fixe de consultation. Une future version ne pourra afficher une réussite
+            qu'après contrôle des disponibilités et enregistrement.
+          -->
+          <section class="booking-panel" aria-labelledby="preview-appointment-title">
+            <div class="review-heading">
+              <h2 id="preview-appointment-title">Récapitulatif</h2>
+            </div>
+            <!--
+              Les paires dt/dd décrivent les informations. Aucune donnée n'est lue depuis un
+              serveur, une URL ou le stockage du navigateur.
+            -->
+            <dl class="review-list">
+              <div>
+                <dt>Service médical</dt>
+                <dd>Médecine générale</dd>
+              </div>
+              <div>
+                <dt>Médecin</dt>
+                <dd>Dr Jean Mputu</dd>
+              </div>
+              <div>
+                <dt>Date</dt>
+                <dd>
+                  <!--
+                    Date structurée : datetime porte le format ISO tandis que le texte visible
+                    reste adapté à la langue française.
+                  -->
+                  <time datetime="2026-11-05">Jeudi 5 novembre 2026</time>
+                </dd>
+              </div>
+              <div>
+                <dt>Heure</dt>
+                <dd>09 h 30 · heure de Kinshasa</dd>
+              </div>
+              <div>
+                <dt>Durée estimée</dt>
+                <dd>30 minutes</dd>
+              </div>
+              <div>
+                <dt>Salle</dt>
+                <dd>A-02</dd>
+              </div>
+            </dl>
+          </section>
+          <!--
+            Informations de présentation du patient, identiques au récapitulatif de vérification
+            et indépendantes des saisies éventuelles.
+          -->
+          <section class="booking-panel" aria-labelledby="preview-patient-title">
+            <h2 id="preview-patient-title">Patient</h2>
+            <dl class="review-list">
+              <div>
+                <dt>Nom complet</dt>
+                <dd>Alex Ilunga</dd>
+              </div>
+              <div>
+                <dt>Date de naissance</dt>
+                <dd>14 juin 1995</dd>
+              </div>
+              <div>
+                <dt>Téléphone</dt>
+                <dd>+243 000 000 000</dd>
+              </div>
+              <div>
+                <dt>E-mail</dt>
+                <dd>alex.ilunga@example.com</dd>
+              </div>
+              <div class="is-full">
+                <dt>Motif de consultation</dt>
+                <dd>Consultation générale.</dd>
+              </div>
+            </dl>
+          </section>
+          <!--
+            Deux sorties natives : revenir au résumé voisin ou remonter vers l'accueil avec ../.
+            Aucun document ni message de confirmation n'est envoyé.
+          -->
+          <div class="booking-actions">
+            <a class="button button-secondary" href="verification.html">Retour à la vérification</a>
+            <a class="button button-primary" href="../index.html">Retour à l’accueil</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!--
+      Pied de page allégé du parcours : identité et accès aux informations pratiques, sans répéter
+      l'action de réservation.
+    -->
+    <footer class="site-footer">
+      <div class="container booking-footer-inner">
+        <p>© 2026 Bolingo Clinique Médicale</p>
+        <a href="../contact.html">Coordonnées et informations pratiques</a>
+      </div>
+    </footer>
+  </body>
+</html>

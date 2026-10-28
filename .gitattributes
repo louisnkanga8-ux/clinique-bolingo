@@ -1,0 +1,12 @@
+# Harmoniser les fins de ligne des fichiers texte entre Windows, macOS et Linux.
+* text=auto eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.svg text eol=lf
+*.md text eol=lf
+LICENSE text eol=lf
+
+# Les images et polices sont binaires : Git ne doit pas transformer leur contenu.
+*.png binary
+*.webp binary
+*.ttf binary

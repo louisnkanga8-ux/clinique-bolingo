@@ -1,0 +1,690 @@
+/*
+  Guide de lecture : les règles de base viennent d’abord ; les media queries finales les
+  adaptent à la largeur. Une règle plus tardive de même spécificité remplace les propriétés
+  qu’elle redéfinit. Ce fichier complète les styles communs chargés avant lui ; aucun
+  comportement serveur ou JavaScript n’y est défini.
+*/
+/* Page Contact : coordonnées, message et plan d’accès. */
+/*
+  Fond du bandeau d’introduction ; overflow garde son contenu dans la zone colorée.
+*/
+.contact-hero {
+  background: var(--pale);
+  overflow: hidden;
+}
+
+/*
+  Grille texte/photo : fr répartit la place, align-items centre les contenus en hauteur et
+  gap les sépare.
+*/
+.contact-hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  align-items: center;
+  gap: 28px;
+  min-height: 230px;
+}
+
+/*
+  Positionnement du texte et marges internes ; z-index le place au-dessus des éléments
+  superposés éventuels.
+*/
+.contact-intro {
+  position: relative;
+  z-index: 1;
+  padding: 38px 0;
+}
+
+/*
+  Le titre utilise une taille fluide bornée avec clamp pour rester lisible du mobile au grand
+  écran.
+*/
+.contact-intro h1 {
+  font-size: clamp(30px, 3.25vw, 43px);
+}
+
+/*
+  Colore le fragment de titre entouré par span, sans modifier sa sémantique.
+*/
+.contact-intro h1 span {
+  color: var(--blue);
+}
+
+/*
+  Cible le paragraphe de présentation, dernier enfant direct ; sa largeur maximale limite les
+  lignes trop longues.
+*/
+.contact-intro > p:last-child {
+  max-width: 620px;
+  margin-top: 12px;
+  font-size: 17px;
+  color: var(--muted);
+}
+
+/*
+  Cadre de réception : marges et coins arrondis. La photo entière est gérée par clinic-photo
+  dans components.css.
+*/
+.contact-hero-photo {
+  margin-block: 24px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/*
+  Le SVG remplit le cadre du plan ; son viewBox dans le HTML détermine la zone visible de la
+  maquette.
+*/
+.contact-map svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+  Espacement vertical logique : padding-block règle le haut et le bas sans toucher les marges
+  latérales du container.
+*/
+.contact-content {
+  padding-block: 26px 14px;
+}
+
+/*
+  Trois cartes égales : minmax(0, 1fr) permet leur réduction sans imposer la largeur du
+  texte.
+*/
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+/*
+  Flex aligne pastille et coordonnées ; padding, bordure et ombre reprennent le langage
+  visuel des cartes.
+*/
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/*
+  Dimension de la pastille dans les cartes de contact ; les règles responsive la réduisent si
+  nécessaire.
+*/
+.contact-card .icon-bubble {
+  width: 66px;
+  height: 66px;
+}
+
+/*
+  Permet au texte de rétrécir dans flex au lieu de pousser la carte hors de l’écran.
+*/
+.contact-card > div {
+  min-width: 0;
+}
+
+/*
+  Titre court de la coordonnée : téléphone, e-mail ou adresse.
+*/
+.contact-card h2 {
+  margin-bottom: 6px;
+  font-size: 16px;
+  letter-spacing: -.02em;
+}
+
+/*
+  Coordonnée mise en évidence. overflow-wrap: anywhere autorise les coupures dans une longue
+  adresse e-mail ; font-style: normal neutralise l’italique par défaut de address.
+*/
+.contact-card-value {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+/*
+  Sélecteur d’attribut : cible les href qui commencent par tel: pour conserver le numéro en
+  bleu marine.
+*/
+.contact-card a[href^="tel:"] {
+  color: var(--navy);
+}
+
+/*
+  Informations complémentaires sous la coordonnée, avec une hiérarchie visuelle secondaire.
+*/
+.contact-card p {
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/*
+  Grille formulaire/plan : align-items: start évite d’étirer artificiellement leurs panneaux.
+*/
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  align-items: start;
+  gap: 24px;
+}
+
+/*
+  Cadre commun aux deux panneaux ; min-width: 0 limite les risques de débordement de la
+  grille.
+*/
+.contact-panel {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+/*
+  Titre de panneau, distinct du grand h1 de la page.
+*/
+.contact-panel h2 {
+  font-size: 24px;
+}
+
+/*
+  Aide sous le titre du panneau, avant les champs ou la carte.
+*/
+.panel-intro {
+  margin-top: 7px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/*
+  Sépare le formulaire de son introduction.
+*/
+.contact-form {
+  margin-top: 22px;
+}
+
+/*
+  Légende des astérisques de champs obligatoires, placée avant les contrôles.
+*/
+.required-help {
+  margin-bottom: 16px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/*
+  Grille des champs : deux colonnes égales, puis une seule sur les écrans les plus étroits.
+*/
+.contact-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 16px;
+}
+
+/*
+  Autorise la réduction d’un champ de grille sans débordement horizontal.
+*/
+.contact-field {
+  min-width: 0;
+}
+
+/*
+  Le message occupe toutes les colonnes : la ligne -1 désigne la dernière ligne de la grille.
+*/
+.contact-field-full {
+  grid-column: 1 / -1;
+}
+
+/*
+  Labels au-dessus des contrôles : le sens du champ reste visible quand le placeholder
+  disparaît.
+*/
+.contact-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/*
+  Couleur des astérisques visuels ; le caractère obligatoire reste défini par required dans
+  le HTML.
+*/
+.contact-field label span,
+.required-help > span[aria-hidden] {
+  color: #b12e32;
+}
+
+/*
+  Mention facultatif du téléphone, secondaire mais toujours visible.
+*/
+.contact-field label small {
+  font-size: 10px;
+}
+
+/*
+  Style partagé des contrôles : largeur, bordure, fond, hauteur minimale et typographie.
+  Validation et comportement de saisie viennent des attributs HTML, pas de ces règles.
+*/
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+  display: block;
+  width: 100%;
+  min-height: 43px;
+  padding: 10px 13px;
+  border: 1px solid #c4daf9;
+  border-radius: 9px;
+  background: #fff;
+  color: var(--navy);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/*
+  Couleur des exemples et du choix initial vide : ::placeholder cible le texte indicatif ;
+  :invalid correspond ici au select required tant qu’aucune option valide n’a été choisie.
+*/
+.contact-field input::placeholder,
+.contact-field textarea::placeholder,
+.contact-field select:invalid {
+  color: #657b9e;
+  opacity: 1;
+}
+
+/*
+  Hauteur initiale du message ; resize: vertical permet de l’agrandir sans casser la largeur
+  de la page.
+*/
+.contact-field textarea {
+  min-height: 108px;
+  resize: vertical;
+}
+
+/*
+  Après une interaction, le navigateur peut marquer un champ invalide : sa bordure devient
+  rouge. :is regroupe les contrôles ; les messages d’erreur natifs restent fournis par le
+  navigateur.
+*/
+.contact-field :is(input, select, textarea):user-invalid {
+  border-color: #b12e32;
+}
+
+/*
+  Action principale sur toute la largeur du formulaire, avec une zone de clic confortable.
+*/
+.contact-submit {
+  width: 100%;
+  margin-top: 20px;
+  min-height: 48px;
+  font-size: 14px;
+}
+
+/*
+  Explication du passage à la messagerie, avec une taille discrète et un interligne lisible.
+*/
+.form-help {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+/*
+  Cadre au ratio du plan extrait de la maquette ; overflow masque les parties situées hors du
+  cadre.
+*/
+.contact-map {
+  aspect-ratio: 440 / 242;
+  overflow: hidden;
+  margin-top: 20px;
+  border-radius: 10px;
+  background: #edf3f7;
+}
+
+/*
+  Lien externe sous le plan : l’accès à une vraie carte se fait par cette ancre, pas par
+  l’image statique.
+*/
+.map-link {
+  margin-top: 13px;
+  font-size: 12px;
+}
+
+/*
+  Bloc des horaires : flex associe l’icône et le tableau sur un fond pâle.
+*/
+.contact-hours {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 18px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background: var(--pale);
+}
+
+/*
+  L’icône conserve sa taille dans flex avec flex-shrink: 0.
+*/
+.hours-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+}
+
+/*
+  Tableau sur la largeur disponible ; border-collapse fusionne les bordures des cellules
+  voisines.
+*/
+.contact-hours table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/*
+  Titre sémantique du tableau, aligné à gauche et mis en évidence au-dessus des jours.
+*/
+.contact-hours caption {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: left;
+}
+
+/*
+  Espacement et séparateurs horizontaux communs aux cellules de jours et d’horaires.
+*/
+.contact-hours th,
+.contact-hours td {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/*
+  Retire le dernier séparateur pour terminer proprement le tableau dans son panneau.
+*/
+.contact-hours tr:last-child > * {
+  border: 0;
+}
+
+/*
+  Jour aligné à gauche ; le poids normal évite un contraste typographique excessif.
+*/
+.contact-hours th {
+  padding-right: 12px;
+  text-align: left;
+  font-weight: 400;
+}
+
+/*
+  Horaire aligné à droite ; nowrap garde une plage horaire sur une même ligne.
+*/
+.contact-hours td {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/*
+  Premier palier responsive : compacte les cartes de coordonnées avant qu’elles deviennent
+  trop étroites.
+*/
+@media (max-width: 1244px) {
+/*
+  Réduit padding et distance entre icône et texte pour conserver trois coordonnées lisibles.
+*/
+.contact-card {
+    gap: 14px;
+    padding: 20px 16px;
+  }
+
+  /*
+    Diminue la pastille de 66 à 52 pixels pour laisser davantage de place au texte.
+  */
+  .contact-card .icon-bubble {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/*
+  Palier tablette : réduit certaines tailles et empile les grands panneaux
+  formulaire/localisation.
+*/
+@media (max-width: 1000px) {
+  /*
+    Conserve la répartition texte/photo du bandeau au palier tablette.
+  */
+  .contact-hero-inner {
+    grid-template-columns: 1.25fr 1fr;
+  }
+
+  /*
+    Limite la longueur des lignes du titre lorsque le bandeau se resserre.
+  */
+  .contact-intro h1 {
+    max-width: 450px;
+  }
+
+  /*
+    Aligne les icônes sur le haut des textes et réduit leur écart pour les cartes compactes.
+  */
+  .contact-card {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  /*
+    Réduit encore la pastille pour les trois cartes sur une largeur intermédiaire.
+  */
+  .contact-card .icon-bubble {
+    width: 42px;
+    height: 42px;
+  }
+
+  /*
+    Réduit le pictogramme avec sa pastille pour conserver leurs proportions dans les cartes
+    compactes.
+  */
+  .contact-card .icon-bubble img {
+    width: 25px;
+    height: 25px;
+  }
+
+  /*
+    Réduit la taille des coordonnées afin de conserver leur lisibilité dans les cartes
+    étroites.
+  */
+  .contact-card-value {
+    font-size: 13px;
+  }
+
+  /*
+    Empile formulaire et localisation sur une seule colonne dès le palier tablette.
+  */
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  /*
+    Réduit légèrement les marges intérieures des panneaux.
+  */
+  .contact-panel {
+    padding: 20px;
+  }
+
+  /*
+    Ajuste la taille des titres des deux panneaux à la largeur disponible.
+  */
+  .contact-panel h2 {
+    font-size: 21px;
+  }
+
+  /*
+    Garde deux colonnes de champs puisque le formulaire occupe désormais tout le panneau.
+  */
+  .contact-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /*
+    Compacte les marges et l’espace entre icône et tableau d’horaires.
+  */
+  .contact-hours {
+    gap: 10px;
+    padding: 16px 12px;
+  }
+
+  /*
+    Réduit l’horloge à 26 pixels pour préserver la place des horaires.
+  */
+  .hours-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/*
+  Palier mobile : texte et photo s’empilent, les coordonnées passent sur une colonne et les
+  espacements sont ajustés.
+*/
+@media (max-width: 760px) {
+  /*
+    Empile texte et photo sur une seule colonne et supprime l’écart horizontal de la grille.
+  */
+  .contact-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /*
+    Resserre l’introduction sur mobile tout en séparant le texte de la photo.
+  */
+  .contact-intro {
+    padding: 28px 0 22px;
+  }
+
+  /*
+    Libère la largeur maximale du titre : il utilise maintenant toute la colonne.
+  */
+  .contact-intro h1 {
+    max-width: none;
+  }
+
+  /*
+    Réduit le paragraphe d’introduction pour éviter des lignes trop hautes sur mobile.
+  */
+  .contact-intro > p:last-child {
+    font-size: 14px;
+  }
+
+  /*
+    Conserve un espace sous la photo dans le bandeau empilé et adapte ses coins.
+  */
+  .contact-hero-photo {
+    margin: 0 0 24px;
+    border-radius: 12px;
+  }
+
+/*
+  Empile téléphone, e-mail et adresse sur une seule colonne.
+*/
+.contact-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  /*
+    Recentre verticalement icône et texte, désormais moins contraints en largeur.
+  */
+  .contact-card {
+    align-items: center;
+    gap: 18px;
+  }
+
+  /*
+    Rétablit la taille des coordonnées à 15 pixels lorsque chaque carte utilise toute la
+    ligne.
+  */
+  .contact-card-value {
+    font-size: 15px;
+  }
+
+  /*
+    Maintient les panneaux empilés et augmente leur séparation sur mobile.
+  */
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  /*
+    Conserve deux champs côte à côte jusqu’au dernier palier de 480 pixels.
+  */
+  .contact-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /*
+    Redonne de l’espace intérieur au bloc d’horaires devenu plus large.
+  */
+  .contact-hours {
+    padding: 18px;
+    gap: 16px;
+  }
+}
+
+/*
+  Petit mobile : champs sur une colonne et horaires autorisés à passer à la ligne autour de
+  l’icône.
+*/
+@media (max-width: 480px) {
+  /*
+    Sur petit mobile, chaque champ occupe une ligne entière pour faciliter la saisie.
+  */
+  .contact-fields {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  /*
+    Resserre les marges latérales des panneaux sans toucher à la taille des contrôles.
+  */
+  .contact-panel {
+    padding: 20px 16px;
+  }
+
+  /*
+    Autorise l’icône et le tableau à passer sur des lignes différentes si la largeur manque.
+  */
+  .contact-hours {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px 12px;
+  }
+
+  /*
+    Réduit légèrement le texte du tableau pour garder jours et horaires sur deux colonnes.
+  */
+  .contact-hours table {
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<!--
+  Étape 3 : présenter le calendrier et les horaires sélectionnables, sans contrôle de
+  disponibilité réel. Fichier autonome de la phase sans JavaScript ni backend ; les comportements
+  métier restent à implémenter.
+-->
+<html lang="fr">
+  <!--
+    Métadonnées du document : encodage des accents, largeur adaptée au mobile, description et
+    titre de l'onglet.
+  -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Préparez votre consultation à la clinique Bolingo : service médical, médecin, date et informations du patient.">
+    <title>Choisir une date et une heure · Bolingo</title>
+    <link rel="icon" href="../assets/icons/logo.svg" type="image/svg+xml">
+    <!--
+      Ordre de la cascade : fondations globales, composants communs, pages publiques, puis règles
+      propres au parcours. Le suffixe ?v=20261028-images renouvelle le cache ; ../ remonte du
+      dossier rendez-vous vers la racine du site.
+    -->
+    <link rel="stylesheet" href="../css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/pages.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/reservation.css?v=20261028-images">
+  </head>
+  <body>
+    <!--
+      Premier lien pour le clavier : rejoindre directement le contenu principal sans parcourir
+      tout l'en-tête.
+    -->
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!--
+      En-tête partagé : identité et navigation publique. Aucun bouton de réservation ici, car le
+      visiteur est déjà dans ce parcours.
+    -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!--
+          Lien du logo vers l'accueil. L'icône a un alt vide car le nom de la clinique est déjà
+          fourni par le lien.
+        -->
+        <a class="brand" href="../index.html" aria-label="Bolingo, accueil">
+          <img src="../assets/icons/logo.svg" alt="" width="44" height="44">
+          <span class="brand-copy">
+            <strong>Bolingo</strong>
+            <small>Clinique Médicale</small>
+          </span>
+        </a>
+        <!--
+          Liens vers les pages publiques : ../ sort du dossier courant. Le nom ARIA distingue
+          cette navigation de celle des étapes.
+        -->
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="../index.html">Accueil</a>
+          <a href="../medecins.html">Médecins</a>
+          <a href="../services.html">Services</a>
+          <a href="../apropos.html">À propos</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <!--
+      Contenu unique de la page et cible du lien d'évitement. Les classes raccordent ce bloc aux
+      styles du parcours.
+    -->
+    <main id="contenu" class="booking-page">
+      <!--
+        Conteneur centré : limite la largeur de lecture tout en gardant des marges adaptées aux
+        petits écrans.
+      -->
+      <div class="container booking-container">
+        <!--
+          Les cinq liens chargent des fichiers voisins, donc sans ../. aria-current="step" désigne
+          l'étape présente. La classe step-complete est un état visuel écrit dans chaque page,
+          sans suivi automatique ni sauvegarde.
+        -->
+        <nav aria-label="Étapes du rendez-vous">
+          <ol class="booking-stepper">
+            <li class="step-complete">
+              <a href="index.html">
+                <span class="step-number">1</span>
+                <span>Service</span>
+              </a>
+            </li>
+            <li class="step-complete">
+              <a href="medecin.html">
+                <span class="step-number">2</span>
+                <span>Médecin</span>
+              </a>
+            </li>
+            <li>
+              <a href="date-heure.html" aria-current="step">
+                <span class="step-number">3</span>
+                <span>Date et heure</span>
+              </a>
+            </li>
+            <li>
+              <a href="informations.html">
+                <span class="step-number">4</span>
+                <span>Patient</span>
+              </a>
+            </li>
+            <li>
+              <a href="verification.html">
+                <span class="step-number">5</span>
+                <span>Résumé</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+        <!--
+          Introduction de l'étape : le repère indique la progression et le h1 reste le titre
+          principal unique du document.
+        -->
+        <div class="booking-heading">
+          <p class="eyebrow">PRENDRE RENDEZ-VOUS · ÉTAPE 3 SUR 5</p>
+          <h1>Une date et un horaire pour vous</h1>
+          <p>Choisissez la date et l’heure de votre consultation.</p>
+        </div>
+        <!--
+          Disposition commune : la colonne principale accueille l'étape ; l'aside affiche le
+          résumé. Le CSS les empile sur petit écran.
+        -->
+        <div class="booking-layout">
+          <!--
+            Zone principale de travail : les panneaux regroupent les informations et les actions
+            de navigation suivent leur contenu.
+          -->
+          <div class="booking-main">
+            <!--
+              Le panneau réunit deux groupes indépendants : une date et un horaire. Le titre
+              accessible reprend la légende de la date.
+            -->
+            <section class="booking-panel" aria-labelledby="date-legend">
+              <!--
+                Un fieldset conserve la relation entre la question du legend et ses choix radio,
+                même lorsque leur apparence est personnalisée.
+              -->
+              <fieldset class="booking-fieldset">
+                <legend id="date-legend">Choisissez une date</legend>
+                <!--
+                  Mois présenté en texte : ce calendrier est écrit dans le HTML et ne se recalcule
+                  pas quand la date courante change.
+                -->
+                <div class="calendar-head">
+                  <strong>Novembre 2026</strong>
+                </div>
+                <!--
+                  Tableau à sept colonnes pour les jours de la semaine. caption fournit son nom et
+                  les th avec scope="col" nomment les colonnes. Les cellules vides placent
+                  correctement les dates ; elles ne représentent pas des boutons.
+                -->
+                <table class="booking-calendar">
+                  <caption class="sr-only">Calendrier de novembre 2026</caption>
+                  <!--
+                    En-têtes des jours : abbr expose le nom complet de la journée tout en gardant
+                    un libellé court à l'écran.
+                  -->
+                  <thead>
+                    <tr>
+                      <th scope="col">
+                        <abbr title="Lundi">Lun</abbr>
+                      </th>
+                      <th scope="col">
+                        <abbr title="Mardi">Mar</abbr>
+                      </th>
+                      <th scope="col">
+                        <abbr title="Mercredi">Mer</abbr>
+                      </th>
+                      <th scope="col">
+                        <abbr title="Jeudi">Jeu</abbr>
+                      </th>
+                      <th scope="col">
+                        <abbr title="Vendredi">Ven</abbr>
+                      </th>
+                      <th scope="col">
+                        <abbr title="Samedi">Sam</abbr>
+                      </th>
+                      <th scope="col">
+                        <abbr title="Dimanche">Dim</abbr>
+                      </th>
+                    </tr>
+                  </thead>
+                  <!--
+                    Semaines de novembre 2026 écrites manuellement : le 1er est un dimanche. Aucun
+                    moteur de disponibilité n'est interrogé.
+                  -->
+                  <tbody>
+                    <tr>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                        <!--
+                          Une date grisée est du texte, pas un contrôle. Le chiffre visible est
+                          masqué aux lecteurs d'écran pour éviter le doublon avec sr-only.
+                        -->
+                        <span class="calendar-day is-muted"><span aria-hidden="true">1</span><span class="sr-only">1 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">2</span><span class="sr-only">2 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">3</span><span class="sr-only">3 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">4</span><span class="sr-only">4 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <!--
+                            Les radios name="jour" forment un choix unique. value garde une date
+                            normalisée ; aria-label donne la date complète. Le radio reste
+                            accessible au clavier malgré son apparence masquée : le CSS reporte
+                            sélection et focus sur son label.
+                          -->
+                          <input type="radio" name="jour" value="2026-11-05" aria-label="5 novembre 2026" checked>
+                          <span>5</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-06" aria-label="6 novembre 2026">
+                          <span>6</span>
+                        </label>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">7</span><span class="sr-only">7 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">8</span><span class="sr-only">8 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-09" aria-label="9 novembre 2026">
+                          <span>9</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-10" aria-label="10 novembre 2026">
+                          <span>10</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-11" aria-label="11 novembre 2026">
+                          <span>11</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-12" aria-label="12 novembre 2026">
+                          <span>12</span>
+                        </label>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">13</span><span class="sr-only">13 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">14</span><span class="sr-only">14 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">15</span><span class="sr-only">15 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-16" aria-label="16 novembre 2026">
+                          <span>16</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-17" aria-label="17 novembre 2026">
+                          <span>17</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-18" aria-label="18 novembre 2026">
+                          <span>18</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-19" aria-label="19 novembre 2026">
+                          <span>19</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-20" aria-label="20 novembre 2026">
+                          <span>20</span>
+                        </label>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">21</span><span class="sr-only">21 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">22</span><span class="sr-only">22 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-23" aria-label="23 novembre 2026">
+                          <span>23</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-24" aria-label="24 novembre 2026">
+                          <span>24</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-25" aria-label="25 novembre 2026">
+                          <span>25</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-26" aria-label="26 novembre 2026">
+                          <span>26</span>
+                        </label>
+                      </td>
+                      <td>
+                        <label class="calendar-day">
+                          <input type="radio" name="jour" value="2026-11-27" aria-label="27 novembre 2026">
+                          <span>27</span>
+                        </label>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">28</span><span class="sr-only">28 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">29</span><span class="sr-only">29 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="calendar-day is-muted"><span aria-hidden="true">30</span><span class="sr-only">30 novembre 2026, non sélectionnable</span></span>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!--
+                  Légende des états de date. Les petits carrés sont décoratifs ; les textes
+                  expliquent leur signification.
+                -->
+                <div class="calendar-key">
+                  <span>
+                    <i aria-hidden="true">
+                    </i>Sélectionné</span>
+                  <span>
+                    <i class="key-example" aria-hidden="true">
+                    </i>Date sélectionnable</span>
+                </div>
+              </fieldset>
+              <!--
+                Deuxième groupe de sélection, séparé par une bordure : les horaires ont leur
+                propre name="heure", distinct du choix du jour.
+              -->
+              <div class="booking-times">
+                <!--
+                  Second fieldset, réservé aux horaires : sa légende et ses radios forment un
+                  groupe distinct de celui des dates.
+                -->
+                <fieldset class="booking-fieldset">
+                  <legend>Choisissez un horaire</legend>
+                  <!--
+                    Grille de créneaux natifs : chaque label contient un radio. Les états checked
+                    et disabled sont définis dans le HTML. Les choix faits ici ne modifient ni le
+                    résumé latéral ni les pages suivantes de cette version statique.
+                  -->
+                  <div class="time-choices">
+                    <label class="time-choice">
+                      <input type="radio" name="heure" value="09:00" aria-label="09:00">
+                      <span>09 h 00</span>
+                    </label>
+                    <label class="time-choice">
+                      <input type="radio" name="heure" value="09:30" aria-label="09:30" checked>
+                      <span>09 h 30</span>
+                    </label>
+                    <label class="time-choice">
+                      <input type="radio" name="heure" value="10:00" aria-label="10:00">
+                      <span>10 h 00</span>
+                    </label>
+                    <label class="time-choice">
+                      <!--
+                        Créneau indisponible dans l'état présenté : disabled empêche la sélection
+                        ; le texte visible complète la bordure en pointillés.
+                      -->
+                      <input type="radio" name="heure" value="10:30" aria-label="10:30, indisponible" disabled>
+                      <span>10 h 30</span>
+                      <small>Indisponible</small>
+                    </label>
+                    <label class="time-choice">
+                      <input type="radio" name="heure" value="11:00" aria-label="11:00">
+                      <span>11 h 00</span>
+                    </label>
+                    <label class="time-choice">
+                      <input type="radio" name="heure" value="11:30" aria-label="11:30">
+                      <span>11 h 30</span>
+                    </label>
+                    <label class="time-choice">
+                      <input type="radio" name="heure" value="14:00" aria-label="14:00">
+                      <span>14 h 00</span>
+                    </label>
+                    <label class="time-choice">
+                      <input type="radio" name="heure" value="14:30" aria-label="14:30">
+                      <span>14 h 30</span>
+                    </label>
+                  </div>
+                </fieldset>
+                <!--
+                  Durée et fuseau présentés sous les créneaux. Ce sont des informations fixes,
+                  sans calcul d'heure ni conversion automatique.
+                -->
+                <p class="duration-note">
+                  <img src="../assets/icons/clock.svg" alt="" width="24" height="24" class="">Durée estimée : 30 minutes · heure de Kinshasa</p>
+              </div>
+            </section>
+            <!--
+              Navigation vers le médecin ou les informations du patient. Un simple lien ouvre la
+              page suivante sans transmettre date ou horaire.
+            -->
+            <div class="booking-actions">
+              <a class="button button-secondary" href="medecin.html">Retour</a>
+              <a class="button button-primary" href="informations.html">Continuer <img src="../assets/icons/arrow-right.svg" alt="" width="24" height="24" class="">
+              </a>
+            </div>
+          </div>
+          <!--
+            Résumé latéral partagé et fixe : ces valeurs sont saisies dans le HTML, pas calculées
+            à partir des contrôles. Le titre référencé par aria-labelledby nomme ce bloc ; dl
+            associe chaque libellé dt à sa valeur dd.
+          -->
+          <aside class="booking-summary" aria-labelledby="scenario-title">
+            <h2 id="scenario-title">Votre rendez-vous</h2>
+            <dl>
+              <div>
+                <dt>Service</dt>
+                <dd>Médecine générale</dd>
+              </div>
+              <div>
+                <dt>Médecin</dt>
+                <dd>Dr Jean Mputu</dd>
+              </div>
+              <div>
+                <dt>Date et heure</dt>
+                <dd>Jeudi 5 novembre 2026<br>09 h 30 · heure de Kinshasa</dd>
+              </div>
+              <div>
+                <dt>Durée estimée</dt>
+                <dd>30 minutes</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <!--
+      Pied de page allégé du parcours : identité et accès aux informations pratiques, sans répéter
+      l'action de réservation.
+    -->
+    <footer class="site-footer">
+      <div class="container booking-footer-inner">
+        <p>© 2026 Bolingo Clinique Médicale</p>
+        <a href="../contact.html">Coordonnées et informations pratiques</a>
+      </div>
+    </footer>
+  </body>
+</html>

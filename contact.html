@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<!--
+  Page Contact : coordonnées, préparation d’un e-mail, plan du quartier et horaires
+  d’ouverture. Le document est autonome : HTML pour le contenu, CSS pour la présentation,
+  sans script ni moteur de modèles.
+-->
+<html lang="fr">
+  <!--
+    Métadonnées non affichées dans la page : encodage des accents, viewport mobile,
+    description et titre de l’onglet.
+  -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Contactez la clinique Bolingo : téléphone, e-mail, plan d’accès et horaires d’ouverture à Kinshasa.">
+    <title>Contact — Bolingo</title>
+    <!--
+      Favicon SVG local : aucune bibliothèque externe n’est nécessaire pour l’icône de
+      l’onglet.
+    -->
+    <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+    <!--
+      Ordre de la cascade : global.css pose les bases ; components.css fournit les éléments
+      communs ; les feuilles suivantes précisent cette page. Le paramètre ?v=... demande la
+      version récente au navigateur.
+    -->
+    <link rel="stylesheet" href="css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="css/contact.css?v=20261028-images">
+  </head>
+  <body>
+    <!--
+      Lien d’évitement : au clavier, il permet de rejoindre directement main#contenu sans
+      parcourir tout le menu.
+    -->
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!--
+      En-tête partagé : marque, menu principal et accès au parcours de rendez-vous. Comme il
+      n’y a pas de gabarit côté serveur, maintenir ces liens dans les cinq pages publiques
+      et les six pages du parcours. Dans le parcours, les chemins remontent avec ../ et le
+      bouton de réservation n’est pas repris.
+    -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!--
+          La marque revient à l’accueil. L’icône a alt vide car le nom est déjà écrit ;
+          aria-label précise la destination.
+        -->
+        <a class="brand" href="index.html" aria-label="Bolingo — Accueil">
+          <img src="assets/icons/logo.svg" width="46" height="46" alt="">
+          <span class="brand-copy">
+            <strong>Bolingo</strong>
+            <small>Clinique Médicale</small>
+          </span>
+        </a>
+        <!--
+          Navigation sémantique : aria-current="page" désigne uniquement la rubrique en
+          cours. Les chemins sont relatifs au fichier présent : les cinq pages publiques se
+          trouvent dans le même dossier.
+        -->
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="index.html">Accueil</a>
+          <a href="medecins.html">Médecins</a>
+          <a href="services.html">Services</a>
+          <a href="apropos.html">À propos</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </nav>
+        <!--
+          Ce lien ouvre rendez-vous/index.html : il navigue vers le parcours sans créer ni
+          enregistrer de rendez-vous.
+        -->
+        <a class="button button-primary header-cta" href="rendez-vous/index.html">
+          <img src="assets/icons/calendar.svg" width="20" height="20" alt="">Prendre rendez-vous</a>
+      </div>
+    </header>
+    <!--
+      Contenu principal unique. Les titres h1, puis h2 et h3 structurent la lecture ;
+      aria-labelledby relie les sections à leurs titres visibles, lorsqu’il est utilisé.
+    -->
+    <main id="contenu">
+      <!--
+        Introduction Contact : texte et réception se partagent la grille, puis s’empilent sur
+        petit écran.
+      -->
+      <section class="contact-hero" aria-labelledby="contact-titre">
+        <div class="container contact-hero-inner">
+          <div class="contact-intro">
+            <p class="eyebrow">Contact</p>
+            <h1 id="contact-titre">Nous sommes <span>à votre écoute</span></h1>
+            <p>Une question, un besoin d’information ou une prise de rendez-vous ? Notre équipe est là pour vous aider.</p>
+          </div>
+          <!--
+            Photo de réception complète : width/height fixent le ratio, srcset/sizes adaptent
+            le fichier téléchargé et alt décrit le lieu. eager charge ce visuel visible dès
+            l’arrivée ; async évite un décodage bloquant.
+          -->
+          <div class="contact-hero-photo">
+            <img class="clinic-photo" src="assets/images/visuels/reception-bolingo.webp"
+              srcset="assets/images/visuels/reception-bolingo-640.webp 640w, assets/images/visuels/reception-bolingo-1024.webp 1024w, assets/images/visuels/reception-bolingo.webp 1672w"
+              sizes="(max-width: 760px) calc(100vw - 40px), 590px" width="1672" height="941"
+              alt="La réception lumineuse de la clinique Bolingo" loading="eager" decoding="async">
+          </div>
+        </div>
+      </section>
+      <div class="container contact-content">
+        <!--
+          Trois cartes : téléphone, e-mail et adresse. Les liens tel: et mailto: sollicitent
+          les applications de l’appareil.
+        -->
+        <section class="contact-cards" aria-label="Nos coordonnées">
+          <!--
+            Carte de coordonnées : pictogramme décoratif, titre puis information ou lien de
+            contact.
+          -->
+          <article class="contact-card">
+            <span class="icon-bubble"><img src="assets/icons/phone.svg" width="32" height="32" alt=""></span>
+            <div>
+              <h2>Téléphone</h2>
+              <!--
+                Le protocole tel: propose d’appeler avec une application compatible ; aucun
+                appel n’est lancé par un script.
+              -->
+              <a class="contact-card-value" href="tel:+243812345678">+243 812 345 678</a>
+              <p>Lun. – ven., 8 h 00 – 18 h 00</p>
+            </div>
+          </article>
+          <!--
+            Carte de coordonnées : pictogramme décoratif, titre puis information ou lien de
+            contact.
+          -->
+          <article class="contact-card">
+            <span class="icon-bubble"><img src="assets/icons/mail.svg" width="32" height="32" alt=""></span>
+            <div>
+              <h2>E-mail</h2>
+              <!--
+                Lien vers la messagerie pour écrire à l’adresse indiquée ; le site ne gère
+                pas lui-même les e-mails.
+              -->
+              <a class="contact-card-value" href="mailto:info@bolingo.cd">info@bolingo.cd</a>
+              <p>Écrivez à notre équipe.</p>
+            </div>
+          </article>
+          <!--
+            Carte de coordonnées : pictogramme décoratif, titre puis information ou lien de
+            contact.
+          -->
+          <article class="contact-card">
+            <span class="icon-bubble"><img src="assets/icons/pin.svg" width="32" height="32" alt=""></span>
+            <div>
+              <h2>Adresse</h2>
+              <!--
+                Adresse postale dans address ; br sépare ses lignes sans ajouter de nouveaux
+                paragraphes.
+              -->
+              <address class="contact-card-value">123 Avenue de la Santé<br>Kinshasa, RDC</address>
+              <p>Commune de la Gombe</p>
+            </div>
+          </article>
+        </section>
+        <!--
+          Deux panneaux : formulaire et localisation. Le CSS les empile lorsque la largeur ne
+          suffit plus.
+        -->
+        <div class="contact-layout">
+          <!--
+            Le h2 nomme cette section et le formulaire grâce à aria-labelledby.
+          -->
+          <section class="contact-panel message-panel" aria-labelledby="message-titre">
+            <h2 id="message-titre">Envoyez-nous un message</h2>
+            <p class="panel-intro">Remplissez ce formulaire pour écrire à notre équipe.</p>
+            <!--
+              Formulaire sans backend : action="mailto:..." remet le message à une messagerie
+              configurée. method="post" et enctype="text/plain" demandent un corps en texte ;
+              subject=... prépare l’objet. Le comportement dépend du navigateur et du client
+              mail : le site ne garantit ni envoi ni réception. Les name fournissent les
+              libellés transmis ; aria-describedby relie le formulaire à l’aide sous le
+              bouton.
+            -->
+            <form class="contact-form" action="mailto:info@bolingo.cd?subject=Contact%20-%20Clinique%20Bolingo" method="post" enctype="text/plain" accept-charset="UTF-8" aria-labelledby="message-titre" aria-describedby="message-aide">
+              <!--
+                L’astérisque visuel est masqué aux lecteurs d’écran ; son équivalent sr-only
+                explique les champs obligatoires.
+              -->
+              <p class="required-help">Les champs marqués d’un <span aria-hidden="true">*</span><span class="sr-only">astérisque</span> sont obligatoires.</p>
+              <!--
+                Champs organisés par grille. Les labels explicites restent visibles : les
+                placeholders ne les remplacent pas.
+              -->
+              <div class="contact-fields">
+                <div class="contact-field">
+                  <!--
+                    for/id associent le label au champ. required active la contrainte native,
+                    autocomplete facilite la saisie et maxlength limite la longueur.
+                  -->
+                  <label for="contact-nom">Nom complet <span aria-hidden="true">*</span></label>
+                  <input id="contact-nom" name="Nom complet" type="text" autocomplete="name" placeholder="Votre nom" maxlength="100" required>
+                </div>
+                <div class="contact-field">
+                  <!--
+                    type="email" vérifie le format de base et required impose une valeur ;
+                    cela ne vérifie pas l’existence de la boîte mail.
+                  -->
+                  <label for="contact-email">E-mail <span aria-hidden="true">*</span></label>
+                  <input id="contact-email" name="E-mail" type="email" autocomplete="email" placeholder="votre@email.com" maxlength="254" required>
+                </div>
+                <div class="contact-field">
+                  <!--
+                    Champ facultatif : type="tel" propose un clavier adapté sur mobile, sans
+                    imposer ici de format international.
+                  -->
+                  <label for="contact-telephone">Téléphone <small>(facultatif)</small></label>
+                  <input id="contact-telephone" name="Telephone" type="tel" autocomplete="tel" placeholder="+243 …" maxlength="30">
+                </div>
+                <div class="contact-field">
+                  <!--
+                    La première option vide sert d’invite. required impose de choisir un
+                    sujet avant la préparation du message.
+                  -->
+                  <label for="contact-sujet">Sujet <span aria-hidden="true">*</span></label>
+                  <select id="contact-sujet" name="Sujet" required>
+                    <option value="" selected disabled>Choisir un sujet</option>
+                    <option>Demande d’informations</option>
+                    <option>Prise de rendez-vous</option>
+                    <option>Services médicaux</option>
+                    <option>Autre demande</option>
+                  </select>
+                </div>
+                <div class="contact-field contact-field-full">
+                  <!--
+                    Zone multiligne obligatoire : rows règle la hauteur initiale, maxlength
+                    borne la longueur et le CSS permet un redimensionnement vertical.
+                  -->
+                  <label for="contact-message">Votre message <span aria-hidden="true">*</span></label>
+                  <textarea id="contact-message" name="Message" rows="4" placeholder="Écrivez votre message ici…" maxlength="3000" required></textarea>
+                </div>
+              </div>
+              <!--
+                submit déclenche d’abord les contraintes HTML natives. Une saisie valide
+                ouvre ensuite la messagerie ; aucun écran de réussite artificiel ni
+                enregistrement côté serveur n’est produit.
+              -->
+              <button class="button button-primary contact-submit" type="submit">
+                <img src="assets/icons/send.svg" width="21" height="21" alt="">Préparer le message
+              </button>
+              <!--
+                L’aide est reliée au formulaire par aria-describedby pour expliquer le rôle
+                de l’application de messagerie.
+              -->
+              <p class="form-help" id="message-aide">Votre application de messagerie s’ouvrira pour vous permettre de vérifier et d’envoyer votre message. Une messagerie doit être configurée sur votre appareil.</p>
+            </form>
+          </section>
+          <!--
+            Localisation et horaires : contenus statiques indépendants du formulaire.
+          -->
+          <section class="contact-panel location-panel" aria-labelledby="localisation-titre">
+            <h2 id="localisation-titre">Notre localisation</h2>
+            <p class="panel-intro">Retrouvez-nous dans la commune de la Gombe, à Kinshasa.</p>
+            <!--
+              Le plan est une image de la maquette, pas une carte interactive. viewBox
+              sélectionne sa zone dans la capture. Le conteneur role="img" fournit la
+              description ; aria-hidden sur le SVG évite une annonce en double.
+            -->
+            <div class="contact-map" role="img" aria-label="Plan de localisation de la clinique Bolingo dans la commune de la Gombe, à Kinshasa">
+              <svg viewBox="744 532 440 242" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+                <image href="assets/images/reference-contact-bolingo.webp" width="1312" height="1199"/>
+              </svg>
+            </div>
+            <!--
+              Recherche externe du quartier, sans localisation automatique du visiteur.
+              target="_blank" ouvre un onglet ; rel="noopener noreferrer" isole cet onglet et
+              sr-only annonce le changement de contexte.
+            -->
+            <a class="text-link map-link" href="https://www.openstreetmap.org/search?query=Gombe%2C%20Kinshasa%2C%20RDC" target="_blank" rel="noopener noreferrer">Voir le quartier sur la carte<span class="sr-only"> (nouvel onglet)</span><img src="assets/icons/arrow-right.svg" width="18" height="18" alt=""></a>
+            <!--
+              Tableau d’horaires : caption donne le titre, th scope="row" associe chaque jour
+              à son horaire. Les données sont saisies manuellement.
+            -->
+            <div class="contact-hours">
+              <img class="hours-icon" src="assets/icons/clock.svg" width="34" height="34" alt="">
+              <table>
+                <caption>Nos horaires d’ouverture</caption>
+                <tbody>
+                  <tr><th scope="row">Lundi – Vendredi</th><td>8 h 00 – 18 h 00</td></tr>
+                  <tr><th scope="row">Samedi</th><td>8 h 00 – 14 h 00</td></tr>
+                  <tr><th scope="row">Dimanche</th><td>Fermé</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <!--
+      Pied de page commun : présentation courte, navigation secondaire et coordonnées. Le
+      contenu est écrit dans le HTML ; aucune donnée n’est récupérée depuis un serveur.
+    -->
+    <footer class="site-footer">
+      <div class="container">
+        <!--
+          Les trois groupes sont distribués par la grille de components.css, puis empilés
+          selon la largeur disponible.
+        -->
+        <div class="footer-grid">
+          <div class="footer-intro">
+            <a class="brand" href="index.html">
+              <img src="assets/icons/logo-white.svg" width="44" height="44" alt="">
+              <span class="brand-copy">
+                <strong>Bolingo</strong>
+                <small>Clinique Médicale</small>
+              </span>
+            </a>
+            <p>Votre santé est notre priorité. Un environnement moderne et bienveillant, pensé autour du patient.</p>
+          </div>
+          <div>
+            <h2>Liens utiles</h2>
+            <!--
+              Le nom accessible distingue cette navigation de celle de l’en-tête. Contact
+              mène à une page dédiée.
+            -->
+            <nav class="footer-links" aria-label="Navigation de pied de page">
+              <a href="index.html">Accueil</a>
+              <a href="apropos.html">À propos</a>
+              <a href="medecins.html">Médecins</a>
+              <a href="contact.html">Contact</a>
+              <a href="services.html">Services</a>
+            </nav>
+          </div>
+          <div>
+            <h2>Contact</h2>
+            <!--
+              address regroupe les coordonnées de la clinique ; les petites icônes
+              décoratives sont ignorées grâce à alt="".
+            -->
+            <address class="footer-contact">
+              <span>
+                <img src="assets/icons/phone.svg" width="16" height="16" alt="">+243 812 345 678</span>
+              <span>
+                <img src="assets/icons/mail.svg" width="16" height="16" alt="">info@bolingo.cd</span>
+              <span>
+                <img src="assets/icons/pin.svg" width="16" height="16" alt="">123 Avenue de la Santé, Kinshasa, RDC</span>
+            </address>
+          </div>
+        </div>
+        <!--
+          Dernière ligne du pied de page : mentions de la clinique et signature visuelle.
+        -->
+        <div class="footer-bottom">
+          <span>© 2026 Bolingo · Clinique Médicale.</span>
+          <span>Votre santé, notre priorité.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

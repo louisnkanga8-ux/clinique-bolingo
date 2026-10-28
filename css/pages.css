@@ -1,0 +1,978 @@
+/* Accueil et présentation de la clinique. */
+/*
+ * ACCUEIL — introduction. Le fond pâle et overflow: hidden contiennent le visuel et les éventuels
+ * débords décoratifs dans la section.
+ */
+.home-hero {
+  background: linear-gradient(100deg,#f2f8ff,#f8fbff);
+  overflow: hidden;
+}
+
+/*
+ * Deux colonnes : texte légèrement plus large que la photo. align-items: center les centre
+ * verticalement ; min-height garantit une présence suffisante sur ordinateur.
+ */
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  align-items: center;
+  min-height: 480px;
+}
+
+/*
+ * Zone de texte du bandeau. z-index fonctionne avec position: relative et garde le contenu
+ * au-dessus d’un éventuel élément décoratif.
+ */
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  padding: 42px 0 34px;
+}
+
+/*
+ * Largeur de lecture du titre et mise en bleu de son span. La même accentuation est utilisée dans
+ * le titre de la page À propos.
+ */
+.hero-copy h1 {
+  max-width: 620px;
+}
+
+.hero-copy h1 span,.about-intro h1 span {
+  color: var(--blue);
+}
+
+/*
+ * Le signe > vise un enfant direct, et :not(.eyebrow) exclut le petit libellé. Cette règle
+ * concerne donc seulement le paragraphe principal de présentation.
+ */
+.hero-copy>p:not(.eyebrow) {
+  max-width: 540px;
+  margin-top: 17px;
+  font-size: 16px;
+  color: #344c74;
+}
+
+/*
+ * Actions placées côte à côte quand la place suffit ; flex-wrap autorise leur retour à la ligne
+ * sans déborder.
+ */
+.hero-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+/*
+ * Conteneur de la photo de consultation entière. L’image clinic-photo garde sa hauteur naturelle
+ * ; ici on règle seulement la position, l’écart au texte et les coins.
+ */
+.hero-photo {
+  align-self: center;
+  margin-left: 24px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/*
+ * Rangée des trois arguments sous les boutons. Chaque bloc associe une petite pastille et deux
+ * niveaux de texte.
+ */
+.hero-benefits {
+  display: flex;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+/*
+ * Chaque argument est un petit groupe Flexbox. La largeur maximale limite la longueur des lignes
+ * ; les règles suivantes dimensionnent l’icône et mettent son titre en valeur.
+ */
+.hero-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  max-width: 175px;
+  font-size: 10px;
+  line-height: 1.55;
+  color: #435776;
+}
+
+.hero-benefit .icon-bubble {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: #dfedff;
+}
+
+.hero-benefit img {
+  width: 23px;
+  height: 23px;
+}
+
+.hero-benefit strong {
+  display: block;
+  font-size: 11px;
+  color: var(--navy);
+  margin: 1px 0 3px;
+}
+
+/* Espacement vertical commun aux sections de la page d’accueil. */
+.home-section {
+  padding: 46px 0;
+}
+
+/*
+ * Titre de section et lien vers la page complète sur une même ligne. Le lien ne se rétrécit pas ;
+ * la disposition change sur téléphone.
+ */
+.section-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.section-heading-row p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 9px;
+}
+
+.section-heading-row .button {
+  flex-shrink: 0;
+}
+
+/*
+ * Grille de quatre médecins. minmax(0, 1fr) donne des colonnes égales et les autorise à rétrécir
+ * malgré le contenu.
+ */
+.home-doctors {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 22px;
+}
+
+/*
+ * Cadre d’une fiche de médecin : fond blanc, bordure et ombre légère. overflow: hidden découpe la
+ * photo selon les coins arrondis sans changer son cadrage.
+ */
+.home-doctor {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+
+/*
+ * Espacements et hiérarchie des informations dans la fiche : nom, spécialité puis lien de profil.
+ */
+.home-doctor-content {
+  padding: 18px;
+}
+
+.home-doctor h3 {
+  font-size: 16px;
+  letter-spacing: -.02em;
+}
+
+.home-doctor p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.home-doctor .text-link {
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+/* Style disponible pour une note sous la grille ; il ne crée aucun texte à lui seul. */
+.home-doctors-note {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 14px;
+}
+
+/*
+ * Fond distinct de la section Services pour séparer les blocs sans ajouter de décoration
+ * volumineuse.
+ */
+.home-services {
+  background: linear-gradient(#f7fbff,#f3f9ff);
+}
+
+/*
+ * Titre centré de section. Le petit libellé est lui aussi centré ; son ::before ajoute un second
+ * trait en complément du ::after de global.css.
+ */
+.center-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.center-heading .eyebrow {
+  justify-content: center;
+}
+
+.center-heading .eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+}
+
+.center-heading>p:last-child {
+  color: var(--muted);
+  margin-top: 9px;
+  font-size: 13px;
+}
+
+/*
+ * Services compacts répartis en trois colonnes ; les seuils plus bas passent à deux puis une
+ * colonne.
+ */
+.home-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 16px;
+}
+
+/*
+ * Chaque service est un lien qui englobe icône, titre, description et flèche. Flexbox aligne ces
+ * éléments et une bordure plus bleue marque le survol.
+ */
+.compact-service {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--navy);
+}
+
+.compact-service:hover {
+  text-decoration: none;
+  border-color: #8cb5fb;
+}
+
+/*
+ * Texte court des services : le titre est plus fort que la description. Les pastilles et la
+ * flèche gardent une taille constante.
+ */
+.compact-service h3 {
+  font-size: 14px;
+  letter-spacing: -.02em;
+}
+
+.compact-service p {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.compact-service .icon-bubble {
+  width: 52px;
+  height: 52px;
+}
+
+/*
+ * margin-left: auto pousse la flèche à droite ; flex-shrink: 0 évite qu’elle soit aplatie quand
+ * le texte est long.
+ */
+.compact-service .arrow {
+  width: 23px;
+  height: 23px;
+  margin-left: auto;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  padding: 3px;
+}
+
+/* Centre le lien qui mène au catalogue complet après la grille de services. */
+.center-action {
+  text-align: center;
+  margin-top: 24px;
+}
+
+/*
+ * Présentation courte de la clinique : deux colonnes réunies dans un même bloc bleu pâle. Les
+ * coins du bloc englobent aussi la photo.
+ */
+.home-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #edf6ff;
+  margin-block: 34px;
+}
+
+/*
+ * Centre verticalement la façade entière face au texte, sans lui imposer une hauteur ni couper
+ * ses bords.
+ */
+.home-about-photo {
+  display: flex;
+  align-items: center;
+}
+
+/* Marge intérieure et tailles de texte du résumé de la clinique sur l’accueil. */
+.home-about-copy {
+  padding: 32px 36px;
+}
+
+.home-about h2 {
+  font-size: 26px;
+}
+
+.home-about p:not(.eyebrow) {
+  font-size: 13px;
+  color: #435a7e;
+  margin: 12px 0 18px;
+}
+
+/* À PROPOS — introduction de la clinique. Ce groupe et les suivants concernent apropos.html. */
+.about-hero {
+  background: #f2f8ff;
+  overflow: hidden;
+}
+
+/*
+ * Texte et bâtiment sur deux colonnes, avec une photo légèrement plus large. Le même conteneur
+ * global limite la largeur de la page.
+ */
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.12fr;
+  min-height: 390px;
+  align-items: center;
+  gap: 28px;
+}
+
+/*
+ * Espace autour de la présentation et taille fluide du titre. max-width limite les lignes du
+ * titre ; le paragraphe a une teinte secondaire.
+ */
+.about-intro {
+  padding: 36px 0;
+}
+
+.about-intro h1 {
+  font-size: clamp(30px,3.4vw,43px);
+  max-width: 440px;
+}
+
+.about-intro>p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 16px 0 22px;
+}
+
+/*
+ * Cadre arrondi de la façade. La classe clinic-photo gère les dimensions naturelles et préserve
+ * toute l’image.
+ */
+.about-building {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/*
+ * Trois engagements présentés en ligne ; chaque article contient une pastille et une courte
+ * explication.
+ */
+.commitments {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+  margin: 28px 0 38px;
+}
+
+/*
+ * Carte d’engagement avec icône et texte côte à côte. Les tailles suivantes sont volontairement
+ * compactes pour garder cette rangée courte.
+ */
+.commitment {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.commitment .icon-bubble {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+}
+
+.commitment h2 {
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+.commitment p {
+  font-size: 11px;
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+/*
+ * Histoire et mission : photo intérieure puis texte sur deux colonnes. align-items: center
+ * équilibre leur position malgré des hauteurs différentes.
+ */
+.about-story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  margin: 38px 0;
+}
+
+/* Coins arrondis de la réception, affichée intégralement par l’image clinic-photo. */
+.clinic-interior {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/*
+ * Style des paragraphes d’histoire et de mission, sans modifier le petit libellé placé au-dessus
+ * du titre.
+ */
+.about-story p:not(.eyebrow) {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 16px;
+}
+
+.about-story h2 {
+  font-size: 30px;
+}
+
+/*
+ * Encadré des chiffres de présentation. Les chiffres appartiennent au scénario décrit dans README
+ * ; ce CSS ne les calcule pas.
+ */
+.statistics {
+  background: #f0f7ff;
+  border-radius: var(--radius);
+  padding: 24px;
+  margin: 36px 0;
+}
+
+.statistics h2 {
+  font-size: 26px;
+}
+
+/*
+ * Quatre chiffres dans des colonnes égales. Chaque chiffre associe une pastille, une valeur forte
+ * et un libellé secondaire.
+ */
+.statistics-list {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 24px;
+  margin: 24px 0 0;
+}
+
+/*
+ * Alignement interne d’un chiffre. strong affiche la valeur sur sa propre ligne ; span décrit ce
+ * que cette valeur représente.
+ */
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.stat .icon-bubble {
+  background: #fff;
+  border: 1px solid #d4e7ff;
+}
+
+.stat strong {
+  font-size: 29px;
+  line-height: 1.2;
+  display: block;
+}
+
+.stat span {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/*
+ * Style éventuel du paragraphe final de l’encadré ; il ne s’applique que si ce dernier enfant est
+ * bien un paragraphe.
+ */
+.statistics>p:last-child {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 20px;
+}
+
+/* Section des valeurs : espacements externes, puis grille de quatre cartes avec texte centré. */
+.values {
+  margin: 42px 0;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+  margin-top: 22px;
+}
+
+/*
+ * Carte de valeur. La pastille est centrée avec une marge automatique ; le titre et la
+ * description restent distincts par leur taille et leur couleur.
+ */
+.value {
+  padding: 22px 17px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.value .icon-bubble {
+  margin: 0 auto 16px;
+}
+
+.value h3 {
+  font-size: 15px;
+  letter-spacing: 0;
+}
+
+.value p {
+  font-size: 12px;
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+/*
+ * Styles de l’ancien bloc de coordonnées, conservés comme composants disponibles. La page À
+ * propos utilise aujourd’hui contact-invitation ; contact.html possède ses propres styles dans
+ * contact.css.
+ */
+.contact-block {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #f4f9ff;
+  padding: 28px;
+  margin: 38px 0;
+}
+
+.contact-block h2 {
+  font-size: 26px;
+}
+
+/*
+ * Variante de coordonnées en deux colonnes : détails d’un côté, horaires de l’autre. Ces règles
+ * ne créent pas de page Contact supplémentaire.
+ */
+.contact-columns {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 44px;
+  margin-top: 22px;
+}
+
+/*
+ * Présentation des coordonnées sous forme de lignes avec icônes ; le texte d’une balise address
+ * reste ici droit, sans italique.
+ */
+.contact-details {
+  display: grid;
+  gap: 14px;
+  font-style: normal;
+}
+
+/*
+ * Ligne de coordonnées : icône à gauche et deux niveaux de texte à droite. Le petit décalage
+ * vertical aligne l’icône avec le texte.
+ */
+.contact-line {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+}
+
+.contact-line>img {
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+}
+
+.contact-line strong {
+  display: block;
+  font-size: 12px;
+}
+
+.contact-line span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/*
+ * Tableau d’horaires du composant historique : bordures fusionnées, légende alignée à gauche et
+ * heures à droite.
+ */
+.opening-hours {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.opening-hours caption {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.opening-hours th,.opening-hours td {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-weight: 400;
+  text-align: left;
+}
+
+.opening-hours td {
+  text-align: right;
+  color: var(--muted);
+}
+
+/*
+ * ORDINATEUR COMPACT / TABLETTE — titres, marges et icônes réduits. Le troisième argument de
+ * l’accueil est temporairement masqué quand la colonne de texte manque de place. Les grilles
+ * conservent ici leur nombre de colonnes.
+ */
+@media(max-width:1000px) {
+  .hero-grid {
+    min-height: 445px;
+  }
+  .hero-copy h1 {
+    font-size: 38px;
+  }
+  .hero-copy>p:not(.eyebrow) {
+    font-size: 14px;
+    max-width: 440px;
+  }
+  .hero-benefits {
+    gap: 12px;
+  }
+  .hero-benefit {
+    max-width: 145px;
+  }
+  .hero-benefit:last-child {
+    display: none;
+  }
+  .home-doctors {
+    gap: 16px;
+  }
+  .home-doctor-content {
+    padding: 15px;
+  }
+  .compact-service {
+    gap: 10px;
+    padding: 14px;
+  }
+  .compact-service .icon-bubble {
+    width: 42px;
+    height: 42px;
+  }
+  .compact-service .icon-bubble img {
+    width: 26px;
+    height: 26px;
+  }
+  .home-about-copy {
+    padding: 26px;
+  }
+  .commitment {
+    padding: 15px;
+    gap: 10px;
+  }
+  .stat {
+    gap: 10px;
+  }
+  .stat .icon-bubble {
+    width: 42px;
+    height: 42px;
+  }
+  .stat strong {
+    font-size: 24px;
+  }
+}
+
+/*
+ * TABLETTE ÉTROITE / MOBILE — introductions et histoire s’empilent ; photos entières sous le
+ * texte. Les médecins, services, chiffres et valeurs passent à deux colonnes, les engagements à
+ * une colonne.
+ */
+@media(max-width:760px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .hero-copy {
+    padding: 32px 0 24px;
+  }
+  .hero-copy h1 {
+    font-size: 37px;
+    max-width: 580px;
+  }
+  .hero-copy>p:not(.eyebrow) {
+    max-width: 560px;
+  }
+  .hero-photo {
+    margin: 0 0 24px;
+    border-radius: 14px;
+  }
+  .hero-benefits {
+    margin-top: 23px;
+  }
+  .hero-benefit:last-child {
+    display: flex;
+  }
+  .hero-benefit {
+    max-width: 180px;
+  }
+  .home-section {
+    padding: 32px 0;
+  }
+  .home-doctors {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .home-services-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .section-heading-row {
+    align-items: flex-start;
+  }
+  .section-heading-row .button {
+    font-size: 11px;
+    padding: 10px 13px;
+  }
+  .home-about {
+    grid-template-columns: 1fr;
+  }
+  .home-about-copy {
+    padding: 26px;
+  }
+  .about-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .about-intro {
+    padding: 30px 0;
+  }
+  .about-building {
+    margin-bottom: 24px;
+  }
+  .commitments {
+    grid-template-columns: 1fr;
+    margin-bottom: 28px;
+  }
+  .commitment {
+    padding: 16px;
+  }
+  .about-story {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .statistics-list,.values-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+  .contact-columns {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+}
+
+/*
+ * PETIT TÉLÉPHONE — textes et espacements plus compacts, titre et action de section empilés,
+ * services sur une colonne. Les portraits restent en deux colonnes pour limiter la longueur de la
+ * page.
+ */
+@media(max-width:480px) {
+  .hero-copy h1 {
+    font-size: 31px;
+  }
+  .hero-copy .eyebrow {
+    font-size: 10px;
+  }
+  .hero-actions {
+    gap: 10px;
+  }
+  .hero-actions .button {
+    font-size: 11px;
+    padding: 11px 14px;
+  }
+  .hero-benefits {
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .hero-benefit {
+    max-width: 46%;
+  }
+  .hero-benefit:last-child {
+    display: none;
+  }
+  .section-heading-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .home-doctors {
+    gap: 12px;
+  }
+  .home-doctor-content {
+    padding: 13px 11px;
+  }
+  .home-doctor h3 {
+    font-size: 13px;
+  }
+  .home-doctor p {
+    font-size: 10px;
+  }
+  .home-doctor .text-link {
+    font-size: 10px;
+  }
+  .home-services-grid {
+    grid-template-columns: 1fr;
+  }
+  .compact-service {
+    padding: 17px;
+  }
+  .compact-service h3 {
+    font-size: 14px;
+  }
+  .home-about h2 {
+    font-size: 25px;
+  }
+  .values-grid {
+    gap: 12px;
+  }
+  .value {
+    padding: 20px 12px;
+  }
+  .value h3 {
+    font-size: 13px;
+  }
+  .value p {
+    font-size: 11px;
+  }
+  .statistics {
+    padding: 20px;
+  }
+  .statistics-list {
+    gap: 22px 12px;
+  }
+  .stat {
+    align-items: flex-start;
+    gap: 9px;
+  }
+  .stat .icon-bubble {
+    width: 34px;
+    height: 34px;
+  }
+  .stat .icon-bubble img {
+    width: 22px;
+    height: 22px;
+  }
+  .stat strong {
+    font-size: 23px;
+  }
+  .stat span {
+    font-size: 10px;
+  }
+  .contact-block {
+    padding: 20px;
+  }
+  .contact-block h2 {
+    font-size: 23px;
+  }
+}
+
+/* Invitation à rejoindre la page Contact depuis À propos. */
+/*
+ * Bandeau actuel de contact dans À propos : icône, texte et lien vers contact.html. Il remplace
+ * le long bloc de coordonnées pour rendre l’accès à la page Contact explicite.
+ */
+.contact-invitation {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 28px;
+  margin: 28px 0;
+  border-radius: var(--radius);
+  background: #eef6ff;
+}
+
+.contact-invitation > .icon-bubble {
+  width: 72px;
+  height: 72px;
+  background: #deedff;
+}
+
+/*
+ * flex: 1 permet au texte de prendre l’espace restant entre la pastille et le bouton ; le bouton
+ * conserve sa largeur grâce à flex-shrink: 0.
+ */
+.contact-invitation-copy {
+  flex: 1;
+}
+
+.contact-invitation h2 {
+  font-size: 18px;
+  letter-spacing: -.3px;
+}
+
+.contact-invitation p {
+  margin-top: 5px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.contact-invitation > .button {
+  flex-shrink: 0;
+}
+
+/*
+ * Invitation sur mobile : retour à la ligne autorisé et bouton sur toute la largeur. flex-basis
+ * réserve au texte la largeur restante à côté de la pastille.
+ */
+@media (max-width: 700px) {
+  .contact-invitation {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .contact-invitation > .icon-bubble {
+    width: 52px;
+    height: 52px;
+  }
+
+  .contact-invitation-copy {
+    flex-basis: calc(100% - 68px);
+  }
+
+  .contact-invitation h2 {
+    font-size: 16px;
+  }
+
+  .contact-invitation > .button {
+    width: 100%;
+  }
+}

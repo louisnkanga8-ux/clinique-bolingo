@@ -1,0 +1,7 @@
+<!--
+  Équipe : dessin vectoriel local, net quelle que soit la taille d’affichage.
+  viewBox définit le repère des coordonnées ; path, circle ou les autres formes dessinent l’icône.
+  fill règle le remplissage, stroke le contour. Les tailles visibles sont définies en HTML/CSS.
+  L’alternative textuelle est portée par l’élément img de la page qui utilise ce fichier.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0063ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3H3ZM16 4a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5v2h-3"/></svg>

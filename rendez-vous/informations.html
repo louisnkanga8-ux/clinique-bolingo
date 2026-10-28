@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--
+  Étape 4 : montrer les champs du patient. Les valeurs restent locales à cette page et ne sont pas
+  transmises. Fichier autonome de la phase sans JavaScript ni backend ; les comportements métier
+  restent à implémenter.
+-->
+<html lang="fr">
+  <!--
+    Métadonnées du document : encodage des accents, largeur adaptée au mobile, description et
+    titre de l'onglet.
+  -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Préparez votre consultation à la clinique Bolingo : service médical, médecin, date et informations du patient.">
+    <title>Informations du patient · Bolingo</title>
+    <link rel="icon" href="../assets/icons/logo.svg" type="image/svg+xml">
+    <!--
+      Ordre de la cascade : fondations globales, composants communs, pages publiques, puis règles
+      propres au parcours. Le suffixe ?v=20261028-images renouvelle le cache ; ../ remonte du
+      dossier rendez-vous vers la racine du site.
+    -->
+    <link rel="stylesheet" href="../css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/pages.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/reservation.css?v=20261028-images">
+  </head>
+  <body>
+    <!--
+      Premier lien pour le clavier : rejoindre directement le contenu principal sans parcourir
+      tout l'en-tête.
+    -->
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!--
+      En-tête partagé : identité et navigation publique. Aucun bouton de réservation ici, car le
+      visiteur est déjà dans ce parcours.
+    -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!--
+          Lien du logo vers l'accueil. L'icône a un alt vide car le nom de la clinique est déjà
+          fourni par le lien.
+        -->
+        <a class="brand" href="../index.html" aria-label="Bolingo, accueil">
+          <img src="../assets/icons/logo.svg" alt="" width="44" height="44">
+          <span class="brand-copy">
+            <strong>Bolingo</strong>
+            <small>Clinique Médicale</small>
+          </span>
+        </a>
+        <!--
+          Liens vers les pages publiques : ../ sort du dossier courant. Le nom ARIA distingue
+          cette navigation de celle des étapes.
+        -->
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="../index.html">Accueil</a>
+          <a href="../medecins.html">Médecins</a>
+          <a href="../services.html">Services</a>
+          <a href="../apropos.html">À propos</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <!--
+      Contenu unique de la page et cible du lien d'évitement. Les classes raccordent ce bloc aux
+      styles du parcours.
+    -->
+    <main id="contenu" class="booking-page">
+      <!--
+        Conteneur centré : limite la largeur de lecture tout en gardant des marges adaptées aux
+        petits écrans.
+      -->
+      <div class="container booking-container">
+        <!--
+          Les cinq liens chargent des fichiers voisins, donc sans ../. aria-current="step" désigne
+          l'étape présente. La classe step-complete est un état visuel écrit dans chaque page,
+          sans suivi automatique ni sauvegarde.
+        -->
+        <nav aria-label="Étapes du rendez-vous">
+          <ol class="booking-stepper">
+            <li class="step-complete">
+              <a href="index.html">
+                <span class="step-number">1</span>
+                <span>Service</span>
+              </a>
+            </li>
+            <li class="step-complete">
+              <a href="medecin.html">
+                <span class="step-number">2</span>
+                <span>Médecin</span>
+              </a>
+            </li>
+            <li class="step-complete">
+              <a href="date-heure.html">
+                <span class="step-number">3</span>
+                <span>Date et heure</span>
+              </a>
+            </li>
+            <li>
+              <a href="informations.html" aria-current="step">
+                <span class="step-number">4</span>
+                <span>Patient</span>
+              </a>
+            </li>
+            <li>
+              <a href="verification.html">
+                <span class="step-number">5</span>
+                <span>Résumé</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
+        <!--
+          Introduction de l'étape : le repère indique la progression et le h1 reste le titre
+          principal unique du document.
+        -->
+        <div class="booking-heading">
+          <p class="eyebrow">PRENDRE RENDEZ-VOUS · ÉTAPE 4 SUR 5</p>
+          <h1>Vos informations personnelles</h1>
+          <p>Renseignez les informations nécessaires à votre consultation.</p>
+        </div>
+        <!--
+          Disposition commune : la colonne principale accueille l'étape ; l'aside affiche le
+          résumé. Le CSS les empile sur petit écran.
+        -->
+        <div class="booking-layout">
+          <!--
+            Zone principale de travail : les panneaux regroupent les informations et les actions
+            de navigation suivent leur contenu.
+          -->
+          <div class="booking-main">
+            <!--
+              Panneau d'identification du patient, nommé par son h2. Tous les champs utiles
+              restent regroupés dans cette seule étape.
+            -->
+            <section class="booking-panel" aria-labelledby="patient-details-title">
+              <h2 id="patient-details-title">Informations du patient</h2>
+              <!--
+                Le texte décrit les champs marqués d'un astérisque ; son id permet de le rattacher
+                au groupe via aria-describedby.
+              -->
+              <p class="booking-helper" id="patient-help">Les champs marqués d’un astérisque (*) sont obligatoires.</p>
+              <!--
+                Ce bloc est volontairement un div, pas un form : aucune soumission HTTP ni
+                collecte n'est câblée. Les valeurs préremplies servent à la présentation. Les
+                modifications ne sont ni stockées par le site ni reprises au récapitulatif.
+              -->
+              <div class="patient-form" role="group" aria-labelledby="patient-details-title" aria-describedby="patient-help">
+                <!--
+                  La grille dispose les champs sur deux colonnes ; is-full étend un champ sur
+                  toute la largeur, puis le CSS passe à une colonne.
+                -->
+                <div class="patient-fields">
+                  <div class="patient-field is-full">
+                    <!--
+                      Le for du label correspond à l'id du champ. required expose son caractère
+                      obligatoire ; l'astérisque décoratif évite une annonce redondante.
+                    -->
+                    <label for="nom">Nom complet <span aria-hidden="true">*</span>
+                    </label>
+                    <!--
+                      name prépare le nom technique futur ; autocomplete suggère le type de donnée
+                      au navigateur et value définit la valeur initiale.
+                    -->
+                    <input id="nom" name="nom" type="text" autocomplete="name" value="Alex Ilunga" required>
+                  </div>
+                  <div class="patient-field">
+                    <!--
+                      type="date" laisse au navigateur le choix du calendrier natif. La valeur du
+                      champ utilise le format ISO année-mois-jour.
+                    -->
+                    <label for="naissance">Date de naissance <span aria-hidden="true">*</span>
+                    </label>
+                    <input id="naissance" name="naissance" type="date" autocomplete="bday" value="1995-06-14" required>
+                  </div>
+                  <div class="patient-field">
+                    <!--
+                      type="tel" facilite le clavier téléphonique sur mobile ; il ne vérifie pas à
+                      lui seul le format international du numéro.
+                    -->
+                    <label for="telephone">Numéro de téléphone <span aria-hidden="true">*</span>
+                    </label>
+                    <input id="telephone" name="telephone" type="tel" autocomplete="tel" value="+243 000 000 000" required>
+                  </div>
+                  <div class="patient-field is-full">
+                    <!--
+                      L'e-mail est facultatif, donc sans required. type="email" fournit la
+                      sémantique native ; aucun message n'est envoyé.
+                    -->
+                    <label for="email">Adresse e-mail <small>(facultatif)</small>
+                    </label>
+                    <input id="email" name="email" type="email" autocomplete="email" value="alex.ilunga@example.com">
+                  </div>
+                  <div class="patient-field is-full">
+                    <!--
+                      Le textarea reçoit un texte multiligne. maxlength limite la saisie à 500
+                      caractères ; aria-describedby ajoute l'aide située juste après.
+                    -->
+                    <label for="motif">Motif de consultation <span aria-hidden="true">*</span>
+                    </label>
+                    <textarea id="motif" name="motif" rows="3" maxlength="500" aria-describedby="motif-help" required>Consultation générale.</textarea>
+                    <small id="motif-help">Décrivez brièvement le motif de votre consultation.</small>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!--
+              Continuer est un lien, pas un bouton submit : il ne déclenche pas la validation
+              native required et ne transporte aucune saisie. La validation et la conservation des
+              informations devront être ajoutées dans une phase fonctionnelle autorisée.
+            -->
+            <div class="booking-actions">
+              <a class="button button-secondary" href="date-heure.html">Retour</a>
+              <a class="button button-primary" href="verification.html">Continuer <img src="../assets/icons/arrow-right.svg" alt="" width="24" height="24" class="">
+              </a>
+            </div>
+          </div>
+          <!--
+            Résumé latéral partagé et fixe : ces valeurs sont saisies dans le HTML, pas calculées
+            à partir des contrôles. Le titre référencé par aria-labelledby nomme ce bloc ; dl
+            associe chaque libellé dt à sa valeur dd.
+          -->
+          <aside class="booking-summary" aria-labelledby="scenario-title">
+            <h2 id="scenario-title">Votre rendez-vous</h2>
+            <dl>
+              <div>
+                <dt>Service</dt>
+                <dd>Médecine générale</dd>
+              </div>
+              <div>
+                <dt>Médecin</dt>
+                <dd>Dr Jean Mputu</dd>
+              </div>
+              <div>
+                <dt>Date et heure</dt>
+                <dd>Jeudi 5 novembre 2026<br>09 h 30 · heure de Kinshasa</dd>
+              </div>
+              <div>
+                <dt>Durée estimée</dt>
+                <dd>30 minutes</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <!--
+      Pied de page allégé du parcours : identité et accès aux informations pratiques, sans répéter
+      l'action de réservation.
+    -->
+    <footer class="site-footer">
+      <div class="container booking-footer-inner">
+        <p>© 2026 Bolingo Clinique Médicale</p>
+        <a href="../contact.html">Coordonnées et informations pratiques</a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!--
+  Annuaire public : huit fiches de médecins, leurs spécialités et un complément de profil
+  accessible sans JavaScript. Le document est autonome : HTML pour le contenu, CSS pour la
+  présentation, sans script ni moteur de modèles.
+-->
+<html lang="fr">
+  <!--
+    Métadonnées non affichées dans la page : encodage des accents, viewport mobile,
+    description et titre de l’onglet.
+  -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Découvrez les médecins de la clinique Bolingo, leurs spécialités et leur expérience.">
+    <!--
+      Favicon SVG local : aucune bibliothèque externe n’est nécessaire pour l’icône de
+      l’onglet.
+    -->
+    <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+    <title>Nos médecins — Bolingo</title>
+    <!--
+      Ordre de la cascade : global.css pose les bases ; components.css fournit les éléments
+      communs ; les feuilles suivantes précisent cette page. Le paramètre ?v=... demande la
+      version récente au navigateur.
+    -->
+    <link rel="stylesheet" href="css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="css/pages.css?v=20261028-images">
+    <link rel="stylesheet" href="css/catalogue.css?v=20261028-images">
+  </head>
+  <body>
+    <!--
+      Lien d’évitement : au clavier, il permet de rejoindre directement main#contenu sans
+      parcourir tout le menu.
+    -->
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!--
+      En-tête partagé : marque, menu principal et accès au parcours de rendez-vous. Comme il
+      n’y a pas de gabarit côté serveur, maintenir ces liens dans les cinq pages publiques
+      et les six pages du parcours. Dans le parcours, les chemins remontent avec ../ et le
+      bouton de réservation n’est pas repris.
+    -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!--
+          La marque revient à l’accueil. L’icône a alt vide car le nom est déjà écrit ;
+          aria-label précise la destination.
+        -->
+        <a class="brand" href="index.html" aria-label="Bolingo — Accueil">
+          <img src="assets/icons/logo.svg" alt="" width="44" height="44">
+          <span class="brand-copy">
+            <strong>Bolingo</strong>
+            <small>Clinique Médicale</small>
+          </span>
+        </a>
+        <!--
+          Navigation sémantique : aria-current="page" désigne uniquement la rubrique en
+          cours. Les chemins sont relatifs au fichier présent : les cinq pages publiques se
+          trouvent dans le même dossier.
+        -->
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="index.html">Accueil</a>
+          <a href="medecins.html" aria-current="page">Médecins</a>
+          <a href="services.html">Services</a>
+          <a href="apropos.html">À propos</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <!--
+          Ce lien ouvre rendez-vous/index.html : il navigue vers le parcours sans créer ni
+          enregistrer de rendez-vous.
+        -->
+        <a class="button button-primary header-cta" href="rendez-vous/index.html">
+          <img class="icon" src="assets/icons/calendar.svg" alt="" width="19" height="19">Prendre rendez-vous</a>
+      </div>
+    </header>
+    <!--
+      Contenu principal unique. Les titres h1, puis h2 et h3 structurent la lecture ;
+      aria-labelledby relie les sections à leurs titres visibles, lorsqu’il est utilisé.
+    -->
+    <main id="contenu" class="catalogue-main">
+      <div class="container">
+        <!--
+          Titre compact de l’annuaire : aucune grande introduction ne repousse les outils et
+          les fiches vers le bas.
+        -->
+        <div class="page-heading catalogue-heading">
+          <h1>Nos médecins</h1>
+        </div>
+        <!--
+          Recherche et filtres préparés pour une phase future : disabled empêche toute fausse
+          interaction. HTML/CSS seul ne filtre pas les médecins ; aria-describedby relie les
+          contrôles à l’explication visible.
+        -->
+        <section class="catalogue-tools" aria-label="Recherche et filtres">
+          <!--
+            La grille place recherche et spécialité côte à côte, puis sur une colonne en
+            mobile. Chaque label utilise le même id que son champ.
+          -->
+          <div class="catalogue-search">
+            <div class="catalogue-field">
+              <label for="recherche-medecin">Rechercher un médecin</label>
+              <input type="search" id="recherche-medecin" placeholder="Nom ou spécialité" disabled aria-describedby="filtres-note">
+            </div>
+            <div class="catalogue-field">
+              <label for="specialite">Spécialité</label>
+              <select id="specialite" disabled aria-describedby="filtres-note">
+                <option>Toutes les spécialités</option>
+                <option>Médecine générale</option>
+                <option>Cardiologie</option>
+                <option>Pédiatrie</option>
+                <option>Ophtalmologie</option>
+                <option>Gynécologie</option>
+                <option>Orthopédie</option>
+                <option>Dermatologie</option>
+                <option>Analyses et laboratoire</option>
+              </select>
+            </div>
+          </div>
+          <p class="catalogue-tool-note" id="filtres-note">Recherche et filtres bientôt disponibles.</p>
+          <!--
+            Boutons de spécialités statiques : les effectifs sont écrits dans la page, sans
+            calcul. Le groupe possède un nom accessible ; sur petit écran, le CSS masque
+            cette répétition du sélecteur.
+          -->
+          <div class="specialty-filters" role="group" aria-label="Filtres par spécialité" aria-describedby="filtres-note">
+            <button class="specialty-filter specialty-filter-all" type="button" disabled>Tous (8)</button>
+            <button class="specialty-filter" type="button" disabled>Médecine générale (1)</button>
+            <button class="specialty-filter" type="button" disabled>Cardiologie (1)</button>
+            <button class="specialty-filter" type="button" disabled>Pédiatrie (1)</button>
+            <button class="specialty-filter" type="button" disabled>Ophtalmologie (1)</button>
+            <button class="specialty-filter" type="button" disabled>Gynécologie (1)</button>
+            <button class="specialty-filter" type="button" disabled>Orthopédie (1)</button>
+            <button class="specialty-filter" type="button" disabled>Dermatologie (1)</button>
+            <button class="specialty-filter" type="button" disabled>Analyses et laboratoire (1)</button>
+          </div>
+        </section>
+        <!--
+          Huit articles indépendants dans une grille responsive. Leurs id sont les
+          destinations des liens de l’accueil. Profils, avis et expérience sont des contenus
+          de présentation renseignés manuellement, sans données en temps réel.
+        -->
+        <section class="doctors-grid" aria-label="Nos médecins">
+          <!--
+            Fiche médecin : id stable pour les liens directs, portrait, spécialité, avis et
+            présentation professionnelle.
+          -->
+          <article class="doctor-card" id="jean-mputu">
+            <!--
+              Les portraits individuels sont affichés en entier, sans recadrage. srcset
+              associe chaque fichier à sa largeur réelle ; sizes décrit la place attendue
+              selon le nombre de colonnes. width/height évitent un saut de mise en page, alt
+              identifie la personne et lazy/async limitent le travail initial du navigateur.
+            -->
+            <img class="portrait portrait-jean"
+              src="assets/images/medecins/portrait-01-bolingo.webp"
+              srcset="assets/images/medecins/portrait-01-bolingo-400.webp 400w, assets/images/medecins/portrait-01-bolingo-800.webp 800w, assets/images/medecins/portrait-01-bolingo.webp 1254w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 280px" width="1254" height="1254"
+              alt="Portrait du Dr Jean Mputu" loading="lazy" decoding="async">
+            <div class="doctor-card-body">
+              <h2>Dr Jean Mputu</h2>
+              <p class="doctor-specialty">
+                <img class="icon" src="assets/icons/stethoscope.svg" alt="" width="21" height="21">Médecine générale</p>
+              <!--
+                Note et nombre d’avis saisis dans le HTML : il n’existe pas encore de
+                collecte ni de calcul d’évaluations.
+              -->
+              <p class="doctor-rating">
+                <img class="icon" src="assets/icons/star.svg" alt="" width="19" height="19">
+                <span>
+                  <strong>4,9/5</strong> · 120 avis</span>
+              </p>
+              <p class="doctor-experience">8 ans d’expérience</p>
+              <!--
+                Composant HTML natif : summary ouvre et ferme le texte au clic ou au clavier,
+                sans JavaScript. Le complément catalogue-sr-only précise le nom du médecin
+                aux lecteurs d’écran.
+              -->
+              <details class="doctor-profile">
+                <summary>Voir le profil<span class="catalogue-sr-only"> du Dr Jean Mputu</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>Le Dr Jean Mputu assure les consultations courantes, la prévention et le suivi médical des adultes. Il oriente vers un spécialiste selon le besoin.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Fiche médecin : id stable pour les liens directs, portrait, spécialité, avis et
+            présentation professionnelle.
+          -->
+          <article class="doctor-card" id="nadia-kiala">
+            <img class="portrait portrait-nadia"
+              src="assets/images/medecins/portrait-02-bolingo.webp"
+              srcset="assets/images/medecins/portrait-02-bolingo-400.webp 400w, assets/images/medecins/portrait-02-bolingo-800.webp 800w, assets/images/medecins/portrait-02-bolingo.webp 1254w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 280px" width="1254" height="1254"
+              alt="Portrait de la Dr Nadia Kiala" loading="lazy" decoding="async">
+            <div class="doctor-card-body">
+              <h2>Dr Nadia Kiala</h2>
+              <p class="doctor-specialty">
+                <img class="icon" src="assets/icons/heart.svg" alt="" width="21" height="21">Cardiologie</p>
+              <!--
+                Note et nombre d’avis saisis dans le HTML : il n’existe pas encore de
+                collecte ni de calcul d’évaluations.
+              -->
+              <p class="doctor-rating">
+                <img class="icon" src="assets/icons/star.svg" alt="" width="19" height="19">
+                <span>
+                  <strong>4,8/5</strong> · 95 avis</span>
+              </p>
+              <p class="doctor-experience">7 ans d’expérience</p>
+              <!--
+                Composant HTML natif : summary ouvre et ferme le texte au clic ou au clavier,
+                sans JavaScript. Le complément catalogue-sr-only précise le nom du médecin
+                aux lecteurs d’écran.
+              -->
+              <details class="doctor-profile">
+                <summary>Voir le profil<span class="catalogue-sr-only"> de la Dr Nadia Kiala</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>La Dr Nadia Kiala se consacre à la santé du cœur et au suivi cardiovasculaire. Elle accorde une place à la prévention et à l’explication des examens.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Fiche médecin : id stable pour les liens directs, portrait, spécialité, avis et
+            présentation professionnelle.
+          -->
+          <article class="doctor-card" id="alain-tshiama">
+            <img class="portrait portrait-alain"
+              src="assets/images/medecins/portrait-05-bolingo.webp"
+              srcset="assets/images/medecins/portrait-05-bolingo-400.webp 400w, assets/images/medecins/portrait-05-bolingo-800.webp 800w, assets/images/medecins/portrait-05-bolingo.webp 1254w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 280px" width="1254" height="1254"
+              alt="Portrait du Dr Alain Tshiama" loading="lazy" decoding="async">
+            <div class="doctor-card-body">
+              <h2>Dr Alain Tshiama</h2>
+              <p class="doctor-specialty">
+                <img class="icon" src="assets/icons/bone.svg" alt="" width="21" height="21">Orthopédie</p>
+              <!--
+                Note et nombre d’avis saisis dans le HTML : il n’existe pas encore de
+                collecte ni de calcul d’évaluations.
+              -->
+              <p class="doctor-rating">
+                <img class="icon" src="assets/icons/star.svg" alt="" width="19" height="19">
+                <span>
+                  <strong>4,7/5</strong> · 88 avis</span>
+              </p>
+              <p class="doctor-experience">10 ans d’expérience</p>
+              <!--
+                Composant HTML natif : summary ouvre et ferme le texte au clic ou au clavier,
+                sans JavaScript. Le complément catalogue-sr-only précise le nom du médecin
+                aux lecteurs d’écran.
+              -->
+              <details class="doctor-profile">
+                <summary>Voir le profil<span class="catalogue-sr-only"> du Dr Alain Tshiama</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>Le Dr Alain Tshiama accompagne les patients présentant des troubles des os ou des articulations. Il suit leur mobilité et leur récupération.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Fiche médecin : id stable pour les liens directs, portrait, spécialité, avis et
+            présentation professionnelle.
+          -->
+          <article class="doctor-card" id="emily-roberts">
+            <img class="portrait portrait-emily"
+              src="assets/images/medecins/portrait-04-bolingo.webp"
+              srcset="assets/images/medecins/portrait-04-bolingo-400.webp 400w, assets/images/medecins/portrait-04-bolingo-800.webp 800w, assets/images/medecins/portrait-04-bolingo.webp 1254w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 280px" width="1254" height="1254"
+              alt="Portrait de la Dr Emily Roberts" loading="lazy" decoding="async">
+            <div class="doctor-card-body">
+              <h2>Dr Emily Roberts</h2>
+              <p class="doctor-specialty">
+                <img class="icon" src="assets/icons/baby.svg" alt="" width="21" height="21">Pédiatrie</p>
+              <!--
+                Note et nombre d’avis saisis dans le HTML : il n’existe pas encore de
+                collecte ni de calcul d’évaluations.
+              -->
+              <p class="doctor-rating">
+                <img class="icon" src="assets/icons/star.svg" alt="" width="19" height="19">
+                <span>
+                  <strong>4,8/5</strong> · 76 avis</span>
+              </p>
+              <p class="doctor-experience">6 ans d’expérience</p>
+              <!--
+                Composant HTML natif : summary ouvre et ferme le texte au clic ou au clavier,
+                sans JavaScript. Le complément catalogue-sr-only précise le nom du médecin
+                aux lecteurs d’écran.
+              -->
+              <details class="doctor-profile">
+                <summary>Voir le profil<span class="catalogue-sr-only"> de la Dr Emily Roberts</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>La Dr Emily Roberts suit la santé et la croissance des enfants. Elle accompagne les familles lors des consultations et des bilans de suivi.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Fiche médecin : id stable pour les liens directs, portrait, spécialité, avis et
+            présentation professionnelle.
+          -->
+          <article class="doctor-card" id="sarah-kabasele">
+            <img class="portrait portrait-sarah"
+              src="assets/images/medecins/portrait-06-bolingo.webp"
+              srcset="assets/images/medecins/portrait-06-bolingo-400.webp 400w, assets/images/medecins/portrait-06-bolingo-800.webp 800w, assets/images/medecins/portrait-06-bolingo.webp 1254w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 280px" width="1254" height="1254"
+              alt="Portrait de la Dr Sarah Kabasele" loading="lazy" decoding="async">
+            <div class="doctor-card-body">
+              <h2>Dr Sarah Kabasele</h2>
+              <p class="doctor-specialty">
+                <img class="icon" src="assets/icons/heart.svg" alt="" width="21" height="21">Gynécologie</p>
+              <!--
+                Note et nombre d’avis saisis dans le HTML : il n’existe pas encore de
+                collecte ni de calcul d’évaluations.
+              -->
+              <p class="doctor-rating">
+                <img class="icon" src="assets/icons/star.svg" alt="" width="19" height="19">
+                <span>
+                  <strong>4,9/5</strong> · 112 avis</span>
+              </p>
+              <p class="doctor-experience">9 ans d’expérience</p>
+              <!--
+                Composant HTML natif : summary ouvre et ferme le texte au clic ou au clavier,
+                sans JavaScript. Le complément catalogue-sr-only précise le nom du médecin
+                aux lecteurs d’écran.
+              -->
+              <details class="doctor-profile">
+                <summary>Voir le profil<span class="catalogue-sr-only"> de la Dr Sarah Kabasele</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>La Dr Sarah Kabasele propose un suivi gynécologique fondé sur l’écoute et la prévention, avec des explications adaptées à chaque patiente.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Fiche médecin : id stable pour les liens directs, portrait, spécialité, avis et
+            présentation professionnelle.
+          -->
+          <article class="doctor-card" id="patrick-lumbu">
+            <img class="portrait portrait-patrick"
+              src="assets/images/medecins/portrait-08-bolingo.webp"
+              srcset="assets/images/medecins/portrait-08-bolingo-400.webp 400w, assets/images/medecins/portrait-08-bolingo-800.webp 800w, assets/images/medecins/portrait-08-bolingo.webp 1254w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 280px" width="1254" height="1254"
+              alt="Portrait du Dr Patrick Lumbu" loading="lazy" decoding="async">
+            <div class="doctor-card-body">
+              <h2>Dr Patrick Lumbu</h2>
+              <p class="doctor-specialty">
+                <img class="icon" src="assets/icons/eye.svg" alt="" width="21" height="21">Ophtalmologie</p>
+              <!--
+                Note et nombre d’avis saisis dans le HTML : il n’existe pas encore de
+                collecte ni de calcul d’évaluations.
+              -->
+              <p class="doctor-rating">
+                <img class="icon" src="assets/icons/star.svg" alt="" width="19" height="19">
+                <span>
+                  <strong>4,6/5</strong> · 68 avis</span>
+              </p>
+              <p class="doctor-experience">8 ans d’expérience</p>
+              <!--
+                Composant HTML natif : summary ouvre et ferme le texte au clic ou au clavier,
+                sans JavaScript. Le complément catalogue-sr-only précise le nom du médecin
+                aux lecteurs d’écran.
+              -->
+              <details class="doctor-profile">
+                <summary>Voir le profil<span class="catalogue-sr-only"> du Dr Patrick Lumbu</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>Le Dr Patrick Lumbu réalise des consultations consacrées à la vision et à la santé des yeux, ainsi que le suivi des troubles visuels.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Fiche médecin : id stable pour les liens directs, portrait, spécialité, avis et
+            présentation professionnelle.
+          -->
+          <article class="doctor-card" id="chantal-moke">
+            <img class="portrait portrait-chantal"
+              src="assets/images/medecins/portrait-07-bolingo.webp"
+              srcset="assets/images/medecins/portrait-07-bolingo-400.webp 400w, assets/images/medecins/portrait-07-bolingo-800.webp 800w, assets/images/medecins/portrait-07-bolingo.webp 1254w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 280px" width="1254" height="1254"
+              alt="Portrait de la Dr Chantal Moke" loading="lazy" decoding="async">
+            <div class="doctor-card-body">
+              <h2>Dr Chantal Moke</h2>
+              <p class="doctor-specialty">
+                <img class="icon" src="assets/icons/shield.svg" alt="" width="21" height="21">Dermatologie</p>
+              <!--
+                Note et nombre d’avis saisis dans le HTML : il n’existe pas encore de
+                collecte ni de calcul d’évaluations.
+              -->
+              <p class="doctor-rating">
+                <img class="icon" src="assets/icons/star.svg" alt="" width="19" height="19">
+                <span>
+                  <strong>4,7/5</strong> · 54 avis</span>
+              </p>
+              <p class="doctor-experience">6 ans d’expérience</p>
+              <!--
+                Composant HTML natif : summary ouvre et ferme le texte au clic ou au clavier,
+                sans JavaScript. Le complément catalogue-sr-only précise le nom du médecin
+                aux lecteurs d’écran.
+              -->
+              <details class="doctor-profile">
+                <summary>Voir le profil<span class="catalogue-sr-only"> de la Dr Chantal Moke</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>La Dr Chantal Moke accompagne les patients pour les troubles de la peau. Son suivi associe examen clinique, explications et prévention.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Fiche médecin : id stable pour les liens directs, portrait, spécialité, avis et
+            présentation professionnelle.
+          -->
+          <article class="doctor-card" id="fabrice-kalonji">
+            <img class="portrait portrait-fabrice"
+              src="assets/images/medecins/portrait-03-bolingo.webp"
+              srcset="assets/images/medecins/portrait-03-bolingo-400.webp 400w, assets/images/medecins/portrait-03-bolingo-800.webp 800w, assets/images/medecins/portrait-03-bolingo.webp 1254w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 280px" width="1254" height="1254"
+              alt="Portrait du Dr Fabrice Kalonji" loading="lazy" decoding="async">
+            <div class="doctor-card-body">
+              <h2>Dr Fabrice Kalonji</h2>
+              <p class="doctor-specialty">
+                <img class="icon" src="assets/icons/flask.svg" alt="" width="21" height="21">Analyses et laboratoire</p>
+              <!--
+                Note et nombre d’avis saisis dans le HTML : il n’existe pas encore de
+                collecte ni de calcul d’évaluations.
+              -->
+              <p class="doctor-rating">
+                <img class="icon" src="assets/icons/star.svg" alt="" width="19" height="19">
+                <span>
+                  <strong>4,5/5</strong> · 43 avis</span>
+              </p>
+              <p class="doctor-experience">5 ans d’expérience</p>
+              <!--
+                Composant HTML natif : summary ouvre et ferme le texte au clic ou au clavier,
+                sans JavaScript. Le complément catalogue-sr-only précise le nom du médecin
+                aux lecteurs d’écran.
+              -->
+              <details class="doctor-profile">
+                <summary>Voir le profil<span class="catalogue-sr-only"> du Dr Fabrice Kalonji</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>Le Dr Fabrice Kalonji participe à l’activité du laboratoire et à l’interprétation des analyses, en coordination avec les médecins prescripteurs.</p>
+              </details>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+    <!--
+      Pied de page commun : présentation courte, navigation secondaire et coordonnées. Le
+      contenu est écrit dans le HTML ; aucune donnée n’est récupérée depuis un serveur.
+    -->
+    <footer class="site-footer">
+      <div class="container">
+        <!--
+          Les trois groupes sont distribués par la grille de components.css, puis empilés
+          selon la largeur disponible.
+        -->
+        <div class="footer-grid">
+          <div class="footer-intro">
+            <a class="brand" href="index.html">
+              <img src="assets/icons/logo-white.svg" width="44" height="44" alt="">
+              <span class="brand-copy">
+                <strong>Bolingo</strong>
+                <small>Clinique Médicale</small>
+              </span>
+            </a>
+            <p>Votre santé est notre priorité. Un environnement moderne et bienveillant, pensé autour du patient.</p>
+          </div>
+          <div>
+            <h2>Liens utiles</h2>
+            <!--
+              Le nom accessible distingue cette navigation de celle de l’en-tête. Contact
+              mène à une page dédiée.
+            -->
+            <nav class="footer-links" aria-label="Navigation de pied de page">
+              <a href="index.html">Accueil</a>
+              <a href="apropos.html">À propos</a>
+              <a href="medecins.html">Médecins</a>
+              <a href="contact.html">Contact</a>
+              <a href="services.html">Services</a>
+            </nav>
+          </div>
+          <div>
+            <h2>Contact</h2>
+            <!--
+              address regroupe les coordonnées de la clinique ; les petites icônes
+              décoratives sont ignorées grâce à alt="".
+            -->
+            <address class="footer-contact">
+              <span>
+                <img src="assets/icons/phone.svg" width="16" height="16" alt="">+243 812 345 678</span>
+              <span>
+                <img src="assets/icons/mail.svg" width="16" height="16" alt="">info@bolingo.cd</span>
+              <span>
+                <img src="assets/icons/pin.svg" width="16" height="16" alt="">123 Avenue de la Santé, Kinshasa, RDC</span>
+            </address>
+          </div>
+        </div>
+        <!--
+          Dernière ligne du pied de page : mentions de la clinique et signature visuelle.
+        -->
+        <div class="footer-bottom">
+          <span>© 2026 Bolingo · Clinique Médicale</span>
+          <span>Votre santé, notre priorité.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

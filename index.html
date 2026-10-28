@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<!--
+  Accueil : présenter brièvement Bolingo, puis orienter vers les médecins, les services et la
+  réservation. Le document est autonome : HTML pour le contenu, CSS pour la présentation,
+  sans script ni moteur de modèles.
+-->
+<html lang="fr">
+  <!--
+    Métadonnées non affichées dans la page : encodage des accents, viewport mobile,
+    description et titre de l’onglet.
+  -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bolingo, votre clinique médicale à Kinshasa. Découvrez nos médecins, nos services et notre parcours de prise de rendez-vous.">
+    <title>Bolingo — Clinique Médicale</title>
+    <!--
+      Favicon SVG local : aucune bibliothèque externe n’est nécessaire pour l’icône de
+      l’onglet.
+    -->
+    <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+    <!--
+      Ordre de la cascade : global.css pose les bases ; components.css fournit les éléments
+      communs ; les feuilles suivantes précisent cette page. Le paramètre ?v=... demande la
+      version récente au navigateur.
+    -->
+    <link rel="stylesheet" href="css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="css/pages.css?v=20261028-images">
+  </head>
+  <body>
+    <!--
+      Lien d’évitement : au clavier, il permet de rejoindre directement main#contenu sans
+      parcourir tout le menu.
+    -->
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!--
+      En-tête partagé : marque, menu principal et accès au parcours de rendez-vous. Comme il
+      n’y a pas de gabarit côté serveur, maintenir ces liens dans les cinq pages publiques
+      et les six pages du parcours. Dans le parcours, les chemins remontent avec ../ et le
+      bouton de réservation n’est pas repris.
+    -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!--
+          La marque revient à l’accueil. L’icône a alt vide car le nom est déjà écrit ;
+          aria-label précise la destination.
+        -->
+        <a class="brand" href="index.html" aria-label="Bolingo — Accueil">
+          <img src="assets/icons/logo.svg" width="46" height="46" alt="">
+          <span class="brand-copy">
+            <strong>Bolingo</strong>
+            <small>Clinique Médicale</small>
+          </span>
+        </a>
+        <!--
+          Navigation sémantique : aria-current="page" désigne uniquement la rubrique en
+          cours. Les chemins sont relatifs au fichier présent : les cinq pages publiques se
+          trouvent dans le même dossier.
+        -->
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="index.html" aria-current="page">Accueil</a>
+          <a href="medecins.html">Médecins</a>
+          <a href="services.html">Services</a>
+          <a href="apropos.html">À propos</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <!--
+          Ce lien ouvre rendez-vous/index.html : il navigue vers le parcours sans créer ni
+          enregistrer de rendez-vous.
+        -->
+        <a class="button button-primary header-cta" href="rendez-vous/index.html">
+          <img src="assets/icons/calendar.svg" width="20" height="20" alt="">Prendre rendez-vous</a>
+      </div>
+    </header>
+    <!--
+      Contenu principal unique. Les titres h1, puis h2 et h3 structurent la lecture ;
+      aria-labelledby relie les sections à leurs titres visibles, lorsqu’il est utilisé.
+    -->
+    <main id="contenu">
+      <!--
+        Introduction principale : un seul h1, une présentation courte et les liens
+        essentiels. La grille CSS associe texte et photo.
+      -->
+      <section class="home-hero" aria-labelledby="titre-accueil">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Votre santé, notre priorité</p>
+            <h1 id="titre-accueil">Des soins de qualité<br>pour une <span>vie plus saine</span>
+            </h1>
+            <p>Bolingo vous offre une prise en charge médicale complète avec des professionnels qualifiés, dans un environnement moderne et bienveillant.</p>
+            <!--
+              Liens d’action : la classe button donne leur apparence, mais les éléments
+              restent des ancres de navigation.
+            -->
+            <div class="hero-actions">
+              <a class="button button-primary" href="rendez-vous/index.html">
+                <img src="assets/icons/calendar.svg" width="20" height="20" alt="">Prendre rendez-vous<img src="assets/icons/arrow-right.svg" width="18" height="18" alt="">
+              </a>
+              <a class="button button-secondary" href="apropos.html">En savoir plus</a>
+            </div>
+            <!--
+              Trois arguments courts partagent le même composant : pastille d’icône et texte.
+              Leur placement dépend de pages.css.
+            -->
+            <div class="hero-benefits">
+              <div class="hero-benefit">
+                <span class="icon-bubble">
+                  <img src="assets/icons/shield.svg" width="23" height="23" alt="">
+                </span>
+                <div>
+                  <strong>Soins de qualité</strong>Des professionnels expérimentés</div>
+              </div>
+              <div class="hero-benefit">
+                <span class="icon-bubble">
+                  <img src="assets/icons/users.svg" width="23" height="23" alt="">
+                </span>
+                <div>
+                  <strong>Accueil chaleureux</strong>Une équipe à votre écoute</div>
+              </div>
+              <div class="hero-benefit">
+                <span class="icon-bubble">
+                  <img src="assets/icons/clock.svg" width="23" height="23" alt="">
+                </span>
+                <div>
+                  <strong>Un parcours simple</strong>Votre rendez-vous en cinq étapes</div>
+              </div>
+            </div>
+          </div>
+          <!--
+            Photo de consultation affichée entière. src est le fichier de repli ; srcset
+            propose plusieurs largeurs ; sizes annonce l’espace prévu pour choisir une
+            résolution adaptée. width/height réservent la place. L’image visible dès
+            l’arrivée utilise eager et fetchpriority="high" ; alt décrit son contenu et
+            decoding="async" évite un décodage bloquant.
+          -->
+          <div class="hero-photo">
+            <img class="clinic-photo" src="assets/images/visuels/consultation.webp"
+              srcset="assets/images/visuels/consultation-640.webp 640w, assets/images/visuels/consultation-1024.webp 1024w, assets/images/visuels/consultation.webp 1536w"
+              sizes="(max-width: 760px) calc(100vw - 40px), 590px" width="1536" height="1024"
+              alt="Un médecin échange avec une patiente dans un cabinet lumineux" loading="eager" decoding="async" fetchpriority="high">
+          </div>
+        </div>
+      </section>
+      <!--
+        Aperçu de l’équipe : quatre cartes renvoient vers l’annuaire complet et les ancres de
+        ses profils.
+      -->
+      <section class="home-section" aria-labelledby="equipe-titre">
+        <div class="container">
+          <div class="section-heading-row">
+            <div>
+              <p class="eyebrow">Notre équipe</p>
+              <h2 id="equipe-titre">Des médecins à votre service</h2>
+              <p>Une équipe de professionnels qualifiés et engagés pour votre santé.</p>
+            </div>
+            <a class="button button-secondary" href="medecins.html">Voir tous les médecins<img src="assets/icons/arrow-right.svg" width="19" height="19" alt="">
+            </a>
+          </div>
+          <!--
+            Grille de portraits carrés. Pour chaque img : alt nomme le médecin, width/height
+            fixent le ratio, srcset/sizes adaptent le fichier et loading="lazy" diffère les
+            images encore éloignées de la zone visible. Le CSS commun utilise object-fit:
+            contain pour conserver le portrait complet sans zoom.
+          -->
+          <div class="home-doctors">
+            <!--
+              Carte médecin : portrait, nom, spécialité et lien vers son profil. Le fragment
+              #... cible un id stable dans medecins.html.
+            -->
+            <article class="home-doctor">
+              <img class="portrait portrait-jean"
+                src="assets/images/medecins/portrait-01-bolingo.webp"
+                srcset="assets/images/medecins/portrait-01-bolingo-400.webp 400w, assets/images/medecins/portrait-01-bolingo-800.webp 800w, assets/images/medecins/portrait-01-bolingo.webp 1254w"
+                sizes="(max-width: 760px) 50vw, 280px" width="1254" height="1254"
+                alt="Portrait du Dr Jean Mputu" loading="lazy" decoding="async">
+              <div class="home-doctor-content">
+                <h3>Dr Jean Mputu</h3>
+                <p>Médecine générale</p>
+                <a class="text-link" href="medecins.html#jean-mputu">Voir le profil<span class="sr-only"> du Dr Jean Mputu</span>
+                  <img src="assets/icons/arrow-right.svg" width="18" height="18" alt="">
+                </a>
+              </div>
+            </article>
+            <!--
+              Carte médecin : portrait, nom, spécialité et lien vers son profil. Le fragment
+              #... cible un id stable dans medecins.html.
+            -->
+            <article class="home-doctor">
+              <img class="portrait portrait-nadia"
+                src="assets/images/medecins/portrait-02-bolingo.webp"
+                srcset="assets/images/medecins/portrait-02-bolingo-400.webp 400w, assets/images/medecins/portrait-02-bolingo-800.webp 800w, assets/images/medecins/portrait-02-bolingo.webp 1254w"
+                sizes="(max-width: 760px) 50vw, 280px" width="1254" height="1254"
+                alt="Portrait du Dr Nadia Kiala" loading="lazy" decoding="async">
+              <div class="home-doctor-content">
+                <h3>Dr Nadia Kiala</h3>
+                <p>Cardiologie</p>
+                <a class="text-link" href="medecins.html#nadia-kiala">Voir le profil<span class="sr-only"> du Dr Nadia Kiala</span>
+                  <img src="assets/icons/arrow-right.svg" width="18" height="18" alt="">
+                </a>
+              </div>
+            </article>
+            <!--
+              Carte médecin : portrait, nom, spécialité et lien vers son profil. Le fragment
+              #... cible un id stable dans medecins.html.
+            -->
+            <article class="home-doctor">
+              <img class="portrait portrait-alain"
+                src="assets/images/medecins/portrait-05-bolingo.webp"
+                srcset="assets/images/medecins/portrait-05-bolingo-400.webp 400w, assets/images/medecins/portrait-05-bolingo-800.webp 800w, assets/images/medecins/portrait-05-bolingo.webp 1254w"
+                sizes="(max-width: 760px) 50vw, 280px" width="1254" height="1254"
+                alt="Portrait du Dr Alain Tshiama" loading="lazy" decoding="async">
+              <div class="home-doctor-content">
+                <h3>Dr Alain Tshiama</h3>
+                <p>Orthopédie</p>
+                <a class="text-link" href="medecins.html#alain-tshiama">Voir le profil<span class="sr-only"> du Dr Alain Tshiama</span>
+                  <img src="assets/icons/arrow-right.svg" width="18" height="18" alt="">
+                </a>
+              </div>
+            </article>
+            <!--
+              Carte médecin : portrait, nom, spécialité et lien vers son profil. Le fragment
+              #... cible un id stable dans medecins.html.
+            -->
+            <article class="home-doctor">
+              <img class="portrait portrait-emily"
+                src="assets/images/medecins/portrait-04-bolingo.webp"
+                srcset="assets/images/medecins/portrait-04-bolingo-400.webp 400w, assets/images/medecins/portrait-04-bolingo-800.webp 800w, assets/images/medecins/portrait-04-bolingo.webp 1254w"
+                sizes="(max-width: 760px) 50vw, 280px" width="1254" height="1254"
+                alt="Portrait du Dr Emily Roberts" loading="lazy" decoding="async">
+              <div class="home-doctor-content">
+                <h3>Dr Emily Roberts</h3>
+                <p>Pédiatrie</p>
+                <a class="text-link" href="medecins.html#emily-roberts">Voir le profil<span class="sr-only"> du Dr Emily Roberts</span>
+                  <img src="assets/icons/arrow-right.svg" width="18" height="18" alt="">
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <!--
+        Accès rapide aux six services : chaque carte est un lien unique vers l’id
+        correspondant dans services.html.
+      -->
+      <section class="home-section home-services" aria-labelledby="services-titre">
+        <div class="container">
+          <div class="center-heading">
+            <p class="eyebrow">Nos services</p>
+            <h2 id="services-titre">Des soins pour toute la famille</h2>
+            <p>Des services médicaux pour répondre à vos besoins à chaque étape de votre vie.</p>
+          </div>
+          <!--
+            Une carte compacte réunit icône, titre, description et flèche. Les icônes ne
+            répètent pas le texte aux lecteurs d’écran.
+          -->
+          <div class="home-services-grid">
+            <!--
+              Carte-lien de service : son fragment #... correspond à un id du catalogue pour
+              y accéder directement.
+            -->
+            <a class="compact-service" href="services.html#medecine-generale">
+              <span class="icon-bubble">
+                <img src="assets/icons/stethoscope.svg" width="30" height="30" alt="">
+              </span>
+              <div>
+                <h3>Médecine générale</h3>
+                <p>Bilan de santé et prise en charge des problèmes courants.</p>
+              </div>
+              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+            </a>
+            <!--
+              Carte-lien de service : son fragment #... correspond à un id du catalogue pour
+              y accéder directement.
+            -->
+            <a class="compact-service" href="services.html#cardiologie">
+              <span class="icon-bubble">
+                <img src="assets/icons/heart.svg" width="30" height="30" alt="">
+              </span>
+              <div>
+                <h3>Cardiologie</h3>
+                <p>Soins spécialisés pour le cœur et la circulation sanguine.</p>
+              </div>
+              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+            </a>
+            <!--
+              Carte-lien de service : son fragment #... correspond à un id du catalogue pour
+              y accéder directement.
+            -->
+            <a class="compact-service" href="services.html#pediatrie">
+              <span class="icon-bubble">
+                <img src="assets/icons/baby.svg" width="30" height="30" alt="">
+              </span>
+              <div>
+                <h3>Pédiatrie</h3>
+                <p>Suivi médical et soins adaptés aux enfants.</p>
+              </div>
+              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+            </a>
+            <!--
+              Carte-lien de service : son fragment #... correspond à un id du catalogue pour
+              y accéder directement.
+            -->
+            <a class="compact-service" href="services.html#ophtalmologie">
+              <span class="icon-bubble">
+                <img src="assets/icons/eye.svg" width="30" height="30" alt="">
+              </span>
+              <div>
+                <h3>Ophtalmologie</h3>
+                <p>Diagnostic et traitement des troubles de la vision.</p>
+              </div>
+              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+            </a>
+            <!--
+              Carte-lien de service : son fragment #... correspond à un id du catalogue pour
+              y accéder directement.
+            -->
+            <a class="compact-service" href="services.html#orthopedie">
+              <span class="icon-bubble">
+                <img src="assets/icons/bone.svg" width="30" height="30" alt="">
+              </span>
+              <div>
+                <h3>Orthopédie</h3>
+                <p>Prise en charge des os, articulations et traumatismes.</p>
+              </div>
+              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+            </a>
+            <!--
+              Carte-lien de service : son fragment #... correspond à un id du catalogue pour
+              y accéder directement.
+            -->
+            <a class="compact-service" href="services.html#laboratoire">
+              <span class="icon-bubble">
+                <img src="assets/icons/flask.svg" width="30" height="30" alt="">
+              </span>
+              <div>
+                <h3>Analyses et laboratoire</h3>
+                <p>Bilans et examens médicaux fiables et rapides.</p>
+              </div>
+              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+            </a>
+          </div>
+          <!--
+            Lien vers le catalogue complet après les raccourcis vers ses sections.
+          -->
+          <div class="center-action">
+            <a class="button button-secondary" href="services.html">Voir tous nos services<img src="assets/icons/arrow-right.svg" width="19" height="19" alt="">
+            </a>
+          </div>
+        </div>
+      </section>
+      <!--
+        Présentation courte de la clinique : photographie de la façade et lien vers la page À
+        propos.
+      -->
+      <section class="container home-about" aria-labelledby="clinique-titre">
+        <!--
+          Image locale responsive : les variantes ne changent que la résolution. Le
+          chargement différé concerne cette section située plus bas.
+        -->
+        <div class="home-about-photo">
+            <img class="clinic-photo" src="assets/images/visuels/facade-bolingo.webp"
+              srcset="assets/images/visuels/facade-bolingo-640.webp 640w, assets/images/visuels/facade-bolingo-1024.webp 1024w, assets/images/visuels/facade-bolingo.webp 1672w"
+              sizes="(max-width: 760px) calc(100vw - 40px), 590px" width="1672" height="941"
+              alt="Façade et entrée de la clinique Bolingo entourée de palmiers" loading="lazy" decoding="async">
+          </div>
+        <div class="home-about-copy">
+          <p class="eyebrow">À propos de Bolingo</p>
+          <h2 id="clinique-titre">Une clinique proche de vous</h2>
+          <p>Bolingo place la santé et le bien-être de ses patients au cœur de ses priorités. Nous combinons expertise médicale, équipements modernes et accueil humain.</p>
+          <a class="button button-secondary" href="apropos.html">Découvrir notre clinique<img src="assets/icons/arrow-right.svg" width="19" height="19" alt="">
+          </a>
+        </div>
+      </section>
+    </main>
+    <!--
+      Pied de page commun : présentation courte, navigation secondaire et coordonnées. Le
+      contenu est écrit dans le HTML ; aucune donnée n’est récupérée depuis un serveur.
+    -->
+    <footer class="site-footer">
+      <div class="container">
+        <!--
+          Les trois groupes sont distribués par la grille de components.css, puis empilés
+          selon la largeur disponible.
+        -->
+        <div class="footer-grid">
+          <div class="footer-intro">
+            <a class="brand" href="index.html">
+              <img src="assets/icons/logo-white.svg" width="44" height="44" alt="">
+              <span class="brand-copy">
+                <strong>Bolingo</strong>
+                <small>Clinique Médicale</small>
+              </span>
+            </a>
+            <p>Votre santé est notre priorité. Un environnement moderne et bienveillant, pensé autour du patient.</p>
+          </div>
+          <div>
+            <h2>Liens utiles</h2>
+            <!--
+              Le nom accessible distingue cette navigation de celle de l’en-tête. Contact
+              mène à une page dédiée.
+            -->
+            <nav class="footer-links" aria-label="Navigation de pied de page">
+              <a href="index.html">Accueil</a>
+              <a href="apropos.html">À propos</a>
+              <a href="medecins.html">Médecins</a>
+              <a href="contact.html">Contact</a>
+              <a href="services.html">Services</a>
+            </nav>
+          </div>
+          <div>
+            <h2>Contact</h2>
+            <!--
+              address regroupe les coordonnées de la clinique ; les petites icônes
+              décoratives sont ignorées grâce à alt="".
+            -->
+            <address class="footer-contact">
+              <span>
+                <img src="assets/icons/phone.svg" width="16" height="16" alt="">+243 812 345 678</span>
+              <span>
+                <img src="assets/icons/mail.svg" width="16" height="16" alt="">info@bolingo.cd</span>
+              <span>
+                <img src="assets/icons/pin.svg" width="16" height="16" alt="">123 Avenue de la Santé, Kinshasa, RDC</span>
+            </address>
+          </div>
+        </div>
+        <!--
+          Dernière ligne du pied de page : mentions de la clinique et signature visuelle.
+        -->
+        <div class="footer-bottom">
+          <span>© 2026 Bolingo · Clinique Médicale.</span>
+          <span>Votre santé, notre priorité.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

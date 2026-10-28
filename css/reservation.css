@@ -1,0 +1,1315 @@
+/*
+ * Feuille dédiée aux six écrans du parcours Bolingo. Ordre de chargement : global.css,
+ * components.css, pages.css, puis reservation.css ; ces règles spécialisent les bases communes.
+ * Lecture : structure et progression, service et médecin, calendrier, patient, récapitulatif,
+ * aperçu final, puis seuils responsive. Les sélections CSS reflètent des contrôles natifs ; elles
+ * ne recommandent aucun médecin et ne transmettent aucune donnée.
+ */
+/* Parcours statique : aucun traitement ni stockage de données. */
+/*
+ * Fond du parcours et respirations extérieures. Les unités rem suivent la taille de texte de
+ * référence définie par le navigateur.
+ */
+.booking-page {
+  padding: 2rem 0 4rem;
+  background: linear-gradient(180deg, #f4f9ff 0, #fff 44rem);
+}
+
+/*
+ * Limite de largeur spécifique au parcours ; la classe container partagée continue de centrer le
+ * contenu et de gérer les marges.
+ */
+.booking-page .booking-container {
+  max-width: 1140px;
+}
+
+/*
+ * Progression en cinq colonnes égales. minmax(0, 1fr) permet aux éléments de rétrécir sans
+ * imposer un débordement.
+ */
+.booking-stepper {
+  margin: 0 0 2.6rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .65rem;
+}
+
+/*
+ * Chaque étape peut se réduire dans sa colonne ; position: relative prépare un repère local pour
+ * son habillage.
+ */
+.booking-stepper li {
+  position: relative;
+  min-width: 0;
+}
+
+/*
+ * Flexbox aligne numéro et libellé horizontalement ; gap espace les enfants sans ajouter une
+ * marge à chacun.
+ */
+.booking-stepper a {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  text-decoration: none;
+  color: #516689;
+  font-size: .86rem;
+  line-height: 1.35;
+  padding: .35rem 0;
+}
+
+/*
+ * L'attribut sémantique de l'étape courante pilote aussi son aspect. Il est défini dans le HTML
+ * de chaque écran, sans script.
+ */
+.booking-stepper a[aria-current="step"] {
+  color: #0056df;
+  font-weight: 700;
+}
+
+/*
+ * Pastille de numéro centrée grâce à Grid. flex-shrink: 0 conserve sa forme quand le libellé
+ * prend davantage de place.
+ */
+.step-number {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #c6d9f3;
+  font-weight: 700;
+}
+
+/*
+ * Couleurs de la pastille active ; le sélecteur dépend du même attribut aria-current que le lien.
+ */
+[aria-current="step"] .step-number {
+  background: #0063ff;
+  color: #fff;
+  border-color: #0063ff;
+}
+
+/*
+ * État visuel des étapes précédentes. La classe n'implique aucun calcul de progression ou
+ * enregistrement des réponses.
+ */
+.step-complete .step-number {
+  border-color: #8ebaff;
+  background: #e7f1ff;
+  color: #0056df;
+}
+
+/*
+ * Séparation entre l'introduction et les panneaux. Les règles suivantes hiérarchisent repère,
+ * titre et texte d'accompagnement.
+ */
+.booking-heading {
+  margin-bottom: 1.6rem;
+}
+
+.booking-heading .eyebrow {
+  margin: 0 0 .5rem;
+}
+
+/*
+ * clamp combine une taille minimale, une valeur liée à la largeur de fenêtre et une taille
+ * maximale pour un titre fluide.
+ */
+.booking-heading h1 {
+  margin: 0 0 .65rem;
+  color: #081d4a;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+
+/*
+ * Le dernier paragraphe de l'introduction reçoit une longueur de ligne limitée pour rester facile
+ * à lire.
+ */
+.booking-heading p:last-child {
+  margin: 0;
+  max-width: 760px;
+  color: #516689;
+  line-height: 1.65;
+}
+
+/*
+ * Grille principale : une colonne souple pour l'étape et 290 px pour le résumé. align-items:
+ * start évite d'étirer les cartes.
+ */
+.booking-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 1.6rem;
+  align-items: start;
+}
+
+/*
+ * Autorise la colonne principale à rétrécir dans la grille, même si elle contient un champ ou un
+ * texte long.
+ */
+.booking-main {
+  min-width: 0;
+}
+
+/*
+ * Habillage commun des cartes : surface blanche, bordure, coins arrondis et ombre légère. Le
+ * contenu reste porté par le HTML.
+ */
+.booking-panel {
+  background: #fff;
+  border: 1px solid #dfebfb;
+  border-radius: 16px;
+  padding: 1.6rem;
+  box-shadow: 0 5px 22px rgb(20 65 120 / 4%);
+}
+
+/*
+ * Le combinateur + ne sépare que deux panneaux immédiatement voisins ; le premier ne reçoit pas
+ * de marge haute supplémentaire.
+ */
+.booking-panel + .booking-panel {
+  margin-top: 1rem;
+}
+
+/*
+ * Titres secondaires des panneaux : échelle plus discrète que le h1. Le paragraphe conserve
+ * ensuite un interligne confortable.
+ */
+.booking-panel h2 {
+  font-size: 1.15rem;
+  margin: 0 0 .55rem;
+  color: #081d4a;
+  line-height: 1.4;
+}
+
+.booking-panel p {
+  line-height: 1.6;
+}
+
+/*
+ * Textes d'aide secondaires : leur discrétion visuelle ne remplace pas les associations
+ * aria-describedby du HTML.
+ */
+.booking-helper {
+  font-size: .875rem;
+  color: #516689;
+  margin: .7rem 0 0;
+}
+
+/*
+ * Retire la bordure native des groupes de champs sans supprimer leur sémantique. min-width: 0
+ * évite la largeur minimale imposée par défaut.
+ */
+.booking-fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+/*
+ * La légende reste visible et identifie le groupe de contrôles ; son espacement la distingue des
+ * cartes de choix.
+ */
+.booking-fieldset legend {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #081d4a;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+/*
+ * Deux cartes de services par ligne avant le seuil mobile ; chaque piste conserve une largeur
+ * flexible et un espace commun.
+ */
+.service-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+}
+
+/*
+ * Le label constitue toute la carte cliquable. Flexbox place le radio à côté du contenu et la
+ * hauteur minimale harmonise les cartes.
+ */
+.service-choice {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  padding: 1rem;
+  border: 1px solid #dce7f7;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #fff;
+  min-height: 110px;
+}
+
+/*
+ * Retour visuel au survol de la carte ; cette pseudo-classe ne sélectionne pas le service.
+ */
+.service-choice:hover {
+  border-color: #74a8fa;
+}
+
+/*
+ * :has inspecte l'état du radio enfant pour adapter son label. disabled reste la propriété HTML
+ * qui empêche réellement l'interaction.
+ */
+.service-choice:has(input:disabled) {
+  cursor: not-allowed;
+  background: #f8fbff;
+}
+
+/*
+ * La spécialité indisponible adopte un ton secondaire en complément du curseur et de son radio
+ * désactivé.
+ */
+.service-choice:has(input:disabled) strong {
+  color: #526583;
+}
+
+/*
+ * Le choix actif est lu directement dans le radio. calc compense le pixel de bordure
+ * supplémentaire pour éviter un changement de taille.
+ */
+.service-choice:has(input:checked) {
+  border: 2px solid #0063ff;
+  padding: calc(1rem - 1px);
+  background: #f0f6ff;
+}
+
+/*
+ * Le radio natif reste visible et utilisable au clavier. accent-color reprend le bleu de la
+ * clinique et la base Flexbox fixe son encombrement.
+ */
+.service-choice input {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  margin: .25rem 0 0;
+  accent-color: #0063ff;
+}
+
+/*
+ * Dimensions communes aux icônes de service, qui gardent leur place sans se comprimer. strong et
+ * small distinguent ensuite nom et description.
+ */
+.service-choice img {
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+  margin: 0 0 .55rem;
+}
+
+/*
+ * Le nom du service occupe sa propre ligne ; la description small utilise une taille et une
+ * couleur secondaires.
+ */
+.service-choice strong {
+  display: block;
+  color: #081d4a;
+  font-size: .95rem;
+  line-height: 1.35;
+}
+
+.service-choice small {
+  display: block;
+  margin-top: .3rem;
+  font-size: .8rem;
+  color: #516689;
+  line-height: 1.5;
+}
+
+/*
+ * Carte latérale du résumé, avec un fond distinct des panneaux de saisie. Son contenu reste fixe
+ * dans cette phase.
+ */
+.booking-summary {
+  background: #f0f6ff;
+  border: 1px solid #dbe9ff;
+  border-radius: 16px;
+  padding: 1.4rem;
+}
+
+/*
+ * Titre du résumé et espace avant la liste. La marge native de dl est ensuite retirée pour un
+ * alignement régulier.
+ */
+.booking-summary h2 {
+  color: #081d4a;
+  font-size: 1.05rem;
+  margin: 0 0 1rem;
+}
+
+.booking-summary dl {
+  margin: 0;
+}
+
+/*
+ * Chaque enfant direct de dl contient une paire libellé/valeur ; la bordure supérieure sépare les
+ * informations.
+ */
+.booking-summary dl > div {
+  padding: .8rem 0;
+  border-top: 1px solid #d7e6fb;
+}
+
+/*
+ * Le libellé dt est discret ; le dd suivant est plus soutenu. La marge gauche native des
+ * définitions est annulée.
+ */
+.booking-summary dt {
+  font-size: .78rem;
+  color: #516689;
+  margin-bottom: .2rem;
+}
+
+.booking-summary dd {
+  margin: 0;
+  color: #081d4a;
+  font-size: .9rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/*
+ * Barre Flexbox : retour à gauche et suite du parcours à droite. Le retour à la ligne sera
+ * autorisé au seuil étroit.
+ */
+.booking-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/*
+ * Hauteur minimale des actions ; les icônes de ces boutons restent à une taille cohérente avec
+ * leur texte.
+ */
+.booking-actions .button {
+  min-height: 46px;
+}
+
+.booking-actions .button img {
+  width: 18px;
+  height: 18px;
+}
+
+/*
+ * Le filtre transforme les icônes en blanc pour leur lecture sur le bouton principal bleu, sans
+ * modifier les fichiers SVG.
+ */
+.booking-actions .button-primary img {
+  filter: brightness(0) invert(1);
+}
+
+/*
+ * Petit repère de la fiche médecin : inline-flex aligne l'icône et le texte tout en gardant une
+ * largeur liée au contenu.
+ */
+.recommendation-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin: 0 0 1.2rem;
+  border-radius: 20px;
+  padding: .4rem .7rem;
+  color: #0056df;
+  background: #e9f2ff;
+  font-weight: 600;
+  font-size: .78rem;
+}
+
+.recommendation-label img {
+  width: 16px;
+  height: 16px;
+}
+
+/*
+ * Portrait et description sont alignés côte à côte ; le gap évite de gérer séparément leurs
+ * marges.
+ */
+.recommended-doctor {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+/*
+ * Conserve le portrait carré entier, sans zoom ni recadrage. height: auto respecte la proportion
+ * ; la base Flexbox empêche son écrasement.
+ */
+.recommended-doctor .portrait {
+  width: 150px;
+  height: auto;
+  aspect-ratio: 1;
+  flex: 0 0 150px;
+  border-radius: 12px;
+  background-color: #edf4fc;
+}
+
+/*
+ * Nom du médecin plus présent que les informations professionnelles ; les règles suivantes
+ * distinguent spécialité et détails.
+ */
+.recommended-doctor h2 {
+  margin-bottom: .25rem;
+  font-size: 1.4rem;
+}
+
+/*
+ * Spécialité en bleu pour la relier visuellement au service choisi ; ce style n'effectue aucun
+ * filtrage métier.
+ */
+.doctor-specialty {
+  margin: 0 0 .65rem;
+  color: #0056df;
+  font-size: .95rem;
+}
+
+/*
+ * Informations professionnelles secondaires et marges compactes entre leurs lignes.
+ */
+.doctor-detail {
+  margin: .2rem 0;
+  color: #516689;
+  font-size: .87rem;
+}
+
+/*
+ * Label de sélection du médecin : Flexbox aligne le radio et son texte, séparés de la fiche par
+ * une bordure.
+ */
+.doctor-select {
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem;
+  margin-top: 1.3rem;
+  border-top: 1px solid #e4edf9;
+  padding-top: 1.1rem;
+  color: #081d4a;
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+/*
+ * Radio natif à taille stable et couleur personnalisée ; il conserve le fonctionnement clavier du
+ * navigateur.
+ */
+.doctor-select input {
+  width: 18px;
+  height: 18px;
+  accent-color: #0063ff;
+  margin: .1rem 0 0;
+  flex-shrink: 0;
+}
+
+/*
+ * Bloc réservé aux alternatives de même spécialité, avec une bordure en pointillés pour le
+ * distinguer de la fiche proposée.
+ */
+.doctor-unavailable {
+  padding: 1.1rem 1.25rem;
+  background: #f7f9fc;
+  border: 1px dashed #cbd9ec;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+/*
+ * Le titre et le paragraphe de l'alternative ont une hiérarchie sobre ; leurs marges sont
+ * maîtrisées à l'intérieur du bloc.
+ */
+.doctor-unavailable h2 {
+  margin: 0 0 .4rem;
+  font-size: 1rem;
+}
+
+.doctor-unavailable p {
+  font-size: .85rem;
+  color: #516689;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/*
+ * Ligne du mois : Flexbox répartit les éléments éventuels et aligne leurs lignes de texte sur la
+ * même base.
+ */
+.calendar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .5rem;
+  margin: 0 0 1rem;
+}
+
+/*
+ * Hiérarchie du mois et d'un éventuel complément span ; ces règles n'ajoutent aucune navigation
+ * entre les mois.
+ */
+.calendar-head strong {
+  color: #081d4a;
+  font-size: 1.08rem;
+}
+
+.calendar-head span {
+  color: #516689;
+  font-size: .8rem;
+}
+
+/*
+ * Tableau de largeur complète et de colonnes régulières. border-spacing espace les cases sans
+ * modifier les dates du HTML.
+ */
+.booking-calendar {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: .3rem;
+  font-size: .9rem;
+}
+
+/*
+ * Présentation de la légende du tableau lorsqu'elle est visible ; la classe sr-only partagée peut
+ * la réserver aux lecteurs d'écran.
+ */
+.booking-calendar caption {
+  text-align: left;
+  color: #516689;
+  font-size: .8rem;
+  margin-bottom: .5rem;
+}
+
+/*
+ * En-têtes de jours compacts ; les cellules td centrent ensuite les dates et retirent leurs
+ * espacements natifs.
+ */
+.booking-calendar th {
+  font-size: .75rem;
+  color: #516689;
+  font-weight: 500;
+  padding: 0 0 .45rem;
+}
+
+.booking-calendar td {
+  padding: 0;
+  text-align: center;
+}
+
+/*
+ * Case de date : Grid centre son contenu ; position: relative sert de repère au radio
+ * personnalisé positionné à l'intérieur.
+ */
+.calendar-day {
+  display: grid;
+  place-items: center;
+  min-height: 42px;
+  position: relative;
+  border-radius: 9px;
+  color: #081d4a;
+  background: #f7faff;
+  border: 1px solid transparent;
+}
+
+/*
+ * Seules les dates constituées d'un label montrent un curseur de sélection et une bordure. Les
+ * dates textuelles restent inertes.
+ */
+label.calendar-day {
+  cursor: pointer;
+  border-color: #d8e6fa;
+}
+
+/*
+ * Le radio est masqué visuellement, pas retiré du document : il reste focusable et accessible. Ne
+ * pas utiliser display: none ici.
+ */
+.calendar-day input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+/*
+ * La case reprend l'état checked de son radio sans JavaScript ; la date initiale est déterminée
+ * dans le HTML.
+ */
+.calendar-day:has(input:checked) {
+  background: #0063ff;
+  color: #fff;
+  font-weight: 700;
+  border-color: #0063ff;
+}
+
+/*
+ * Le focus clavier du radio invisible est reporté sur toute la case de date ou d'horaire pour
+ * rendre la navigation repérable.
+ */
+.calendar-day:has(input:focus-visible), .time-choice:has(input:focus-visible) {
+  outline: 3px solid #081d4a;
+  outline-offset: 3px;
+}
+
+/*
+ * État visuel des dates non sélectionnables, accompagné d'une formulation accessible dans le
+ * HTML.
+ */
+.calendar-day.is-muted {
+  color: #64748b;
+  background: #f2f4f7;
+}
+
+/*
+ * La légende utilise Flexbox et peut se répartir sur plusieurs lignes, plutôt que d'élargir le
+ * calendrier sur mobile.
+ */
+.calendar-key {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: .77rem;
+  color: #516689;
+  margin-top: .85rem;
+}
+
+/*
+ * Chaque item aligne son carré et son libellé ; les éléments i suivants fournissent uniquement
+ * les repères décoratifs.
+ */
+.calendar-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.calendar-key i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #0063ff;
+  border-radius: 3px;
+}
+
+/*
+ * Variante du repère pour une date sélectionnable, différente du carré bleu de la sélection
+ * courante.
+ */
+.calendar-key .key-example {
+  background: #f7faff;
+  border: 1px solid #7da5d9;
+}
+
+/*
+ * Séparation entre calendrier et créneaux : marge, espace intérieur et bordure structurent les
+ * deux groupes de champs.
+ */
+.booking-times {
+  margin-top: 1.7rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid #e4edf9;
+}
+
+/*
+ * Quatre horaires par ligne sur grand écran. Les pistes minmax autorisent leur réduction sans
+ * imposer une largeur excessive.
+ */
+.time-choices {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .65rem;
+}
+
+/*
+ * Le label forme le bouton visuel du créneau ; le positionnement relatif accueille le radio
+ * masqué.
+ */
+.time-choice {
+  position: relative;
+  text-align: center;
+  border: 1px solid #d4e3f8;
+  padding: .65rem .35rem;
+  border-radius: 9px;
+  color: #183968;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+/*
+ * Même principe que les dates : masquer l'apparence du radio tout en conservant la sémantique et
+ * les commandes clavier natives.
+ */
+.time-choice input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+/*
+ * L'état sélectionné combine bordure, graisse et fond ; il reflète le radio, sans vérifier la
+ * disponibilité réelle du créneau.
+ */
+.time-choice:has(input:checked) {
+  border-color: #0063ff;
+  color: #0056df;
+  font-weight: 700;
+  background: #eaf3ff;
+  box-shadow: inset 0 0 0 1px #0063ff;
+}
+
+/*
+ * L'indisponibilité associe fond neutre, pointillés et curseur dédié. Le disabled du HTML bloque
+ * la sélection.
+ */
+.time-choice:has(input:disabled) {
+  color: #69788f;
+  border-style: dashed;
+  background: #f5f6f8;
+  cursor: not-allowed;
+}
+
+/*
+ * Le texte d'état passe sous l'heure pour rester lisible dans une case compacte.
+ */
+.time-choice small {
+  display: block;
+  font-size: .68rem;
+}
+
+/*
+ * Flexbox aligne l'horloge et la durée ; l'icône est dimensionnée séparément pour ne pas dominer
+ * le texte.
+ */
+.duration-note {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  color: #516689;
+  font-size: .84rem;
+  margin: 1.2rem 0 0;
+}
+
+.duration-note img {
+  width: 19px;
+  height: 19px;
+}
+
+/*
+ * Espace avant les champs du patient. Ce nom de classe est purement visuel : le HTML utilise un
+ * groupe sans formulaire soumis.
+ */
+.patient-form {
+  margin-top: 1.3rem;
+}
+
+/*
+ * Grille des champs sur deux colonnes ; le passage à une colonne est prévu à 420 px pour garder
+ * une saisie confortable.
+ */
+.patient-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+/*
+ * Chaque champ empile label, contrôle et aide en Flexbox vertical. min-width: 0 permet leur
+ * adaptation dans la grille.
+ */
+.patient-field {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  min-width: 0;
+}
+
+/*
+ * 1 / -1 couvre toutes les colonnes de la grille ; le nom, l'e-mail et le motif bénéficient de
+ * cette largeur.
+ */
+.patient-field.is-full {
+  grid-column: 1 / -1;
+}
+
+/*
+ * Le libellé reste clairement visible ; le small de la mention facultative utilise une graisse
+ * plus légère.
+ */
+.patient-field label {
+  font-size: .9rem;
+  color: #183968;
+  font-weight: 600;
+}
+
+.patient-field label small {
+  font-size: .8rem;
+  font-weight: 400;
+}
+
+/*
+ * Habillage commun des contrôles. box-sizing: border-box inclut bordure et padding dans width:
+ * 100 %, évitant un dépassement.
+ */
+.patient-field input, .patient-field textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #c8daf1;
+  border-radius: 9px;
+  background: #fff;
+  padding: .8rem .85rem;
+  color: #081d4a;
+  font: inherit;
+  font-size: .95rem;
+  box-sizing: border-box;
+}
+
+/*
+ * Hauteur initiale du motif et redimensionnement vertical seulement, afin de préserver la largeur
+ * de la grille.
+ */
+.patient-field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/*
+ * Aides des champs en taille secondaire avec un interligne lisible ; leur association accessible
+ * dépend des identifiants HTML.
+ */
+.patient-field small {
+  color: #516689;
+  font-size: .77rem;
+  line-height: 1.5;
+}
+
+/*
+ * En-tête du récapitulatif : Flexbox sépare le titre et le lien de retour tout en alignant leur
+ * texte.
+ */
+.review-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.review-heading h2 {
+  margin: 0;
+}
+
+/*
+ * Le lien de retour garde une taille secondaire et un soulignement éloigné du texte lors de
+ * l'interaction.
+ */
+.review-heading a {
+  color: #0056df;
+  font-size: .8rem;
+  text-underline-offset: 3px;
+}
+
+/*
+ * La liste de descriptions devient une grille de deux colonnes : structure sémantique dans le
+ * HTML, présentation dans le CSS.
+ */
+.review-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem 1.5rem;
+}
+
+/*
+ * Les paires libellé/valeur peuvent se réduire ; is-full étend le motif sur toute la largeur
+ * quand il est plus long.
+ */
+.review-list > div {
+  min-width: 0;
+}
+
+.review-list .is-full {
+  grid-column: 1 / -1;
+}
+
+/*
+ * Les libellés restent discrets pour que les valeurs soient la première information perçue.
+ */
+.review-list dt {
+  color: #516689;
+  font-size: .8rem;
+  margin-bottom: .3rem;
+}
+
+/*
+ * Les valeurs annulent la marge native des définitions. overflow-wrap permet notamment de couper
+ * une longue adresse e-mail.
+ */
+.review-list dd {
+  color: #081d4a;
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+/*
+ * Aspect du bouton de confirmation indisponible. Le CSS le distingue, mais seule la propriété
+ * disabled du HTML bloque l'action.
+ */
+.booking-actions button:disabled {
+  background: #dfe7f4;
+  color: #53647d;
+  border: 1px solid #c5d2e4;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/*
+ * Lien distinct du bouton de confirmation : il donne accès à l'aperçu de l'écran final sans
+ * déclencher de réservation.
+ */
+.preview-link {
+  text-align: center;
+  margin: 1.1rem 0 0;
+  font-size: .85rem;
+}
+
+.preview-link a {
+  color: #0056df;
+  text-underline-offset: 4px;
+}
+
+/*
+ * L'aperçu final n'a pas de colonne latérale : une largeur maximale et des marges automatiques le
+ * centrent.
+ */
+.confirmation-preview {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/*
+ * Titre et message de l'aperçu centrés ; l'espace inférieur les distingue des deux
+ * récapitulatifs.
+ */
+.confirmation-heading {
+  text-align: center;
+  padding: .5rem 0 1.6rem;
+}
+
+/*
+ * Grid centre l'icône dans une pastille ronde. Ces styles sont décoratifs et ne représentent pas
+ * une validation métier.
+ */
+.confirmation-icon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  background: #e5f0ff;
+  border: 1px solid #c7dcff;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+}
+
+.confirmation-icon img {
+  width: 36px;
+  height: 36px;
+}
+
+/*
+ * Titre fluide avec clamp ; ses bornes évitent une taille trop petite sur mobile ou trop grande
+ * sur ordinateur.
+ */
+.confirmation-heading h1 {
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  line-height: 1.2;
+  color: #081d4a;
+  margin: .6rem 0 .8rem;
+}
+
+/*
+ * Limite la largeur du message et centre le paragraphe pour une lecture aisée sous le titre.
+ */
+.confirmation-heading p {
+  color: #516689;
+  font-size: .95rem;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 580px;
+}
+
+.confirmation-heading .eyebrow {
+  color: #0056df;
+}
+
+/*
+ * Les deux sorties de l'aperçu sont centrées et peuvent revenir à la ligne sans provoquer de
+ * débordement.
+ */
+.confirmation-preview .booking-actions {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/*
+ * Pied de page en Flexbox : le contenu se répartit sur la largeur et peut se replier quand
+ * l'espace manque.
+ */
+.booking-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1.4rem;
+  padding-bottom: 1.4rem;
+}
+
+/*
+ * Texte du pied de page compact ; le lien qui suit hérite de sa couleur pour rester lisible sur
+ * le fond commun.
+ */
+.booking-footer-inner p {
+  margin: 0;
+  font-size: .85rem;
+  line-height: 1.6;
+}
+
+.booking-footer-inner a {
+  color: inherit;
+  text-underline-offset: 4px;
+}
+
+/*
+ * Anneau de focus local pour les contrôles natifs. :focus-visible aide à repérer l'élément actif
+ * lors de la navigation clavier.
+ */
+.booking-page input:focus-visible, .booking-page textarea:focus-visible, .booking-page summary:focus-visible {
+  outline: 3px solid #0056df;
+  outline-offset: 3px;
+}
+
+/*
+ * Premier seuil responsive : garder les deux colonnes en réduisant le résumé à 250 px et les
+ * espacements intérieurs. Les règles à l'intérieur ne s'appliquent que lorsque la fenêtre mesure
+ * au plus 1000 px.
+ */
+@media (max-width: 1000px) {
+  /*
+   * Le résumé se resserre ; la zone principale conserve tout l'espace restant avec une piste
+   * flexible.
+   */
+  .booking-layout {
+    grid-template-columns: minmax(0, 1fr) 250px;
+    gap: 1rem;
+  }
+  /*
+   * Réduction du padding des panneaux pour conserver de la place au contenu sur les largeurs
+   * intermédiaires.
+   */
+  .booking-panel {
+    padding: 1.2rem;
+  }
+  /*
+   * Même réduction à l'intérieur du résumé latéral, sans changer sa structure HTML.
+   */
+  .booking-summary {
+    padding: 1.1rem;
+  }
+  /*
+   * Le numéro passe au-dessus du libellé afin que les cinq étapes tiennent dans leur grille.
+   */
+  .booking-stepper a {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: .8rem;
+  }
+}
+
+/*
+ * Deuxième seuil : empiler le contenu et le résumé. Les ajustements précédents restent actifs et
+ * sont complétés ou remplacés ici.
+ */
+@media (max-width: 760px) {
+  /*
+   * Réduit l'espace avant le parcours pour rapprocher les informations utiles du haut de l'écran.
+   */
+  .booking-page {
+    padding-top: 1.3rem;
+  }
+  /*
+   * Une seule colonne : le résumé suit naturellement le contenu dans l'ordre du document.
+   */
+  .booking-layout {
+    grid-template-columns: 1fr;
+  }
+  /*
+   * Légère séparation quand le résumé quitte la colonne latérale.
+   */
+  .booking-summary {
+    margin-top: .5rem;
+  }
+  /*
+   * À l'intérieur du résumé désormais large, les paires d'informations se répartissent sur deux
+   * colonnes.
+   */
+  .booking-summary dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1rem;
+  }
+  /*
+   * Resserre les espaces entre étapes et sous le groupe pour préserver la place disponible.
+   */
+  .booking-stepper {
+    gap: .3rem;
+    margin-bottom: 1.8rem;
+  }
+  /*
+   * Numéro et libellé deviennent centrés, avec une taille ajustée à la largeur des cinq colonnes.
+   */
+  .booking-stepper a {
+    align-items: center;
+    text-align: center;
+    font-size: .68rem;
+  }
+  /*
+   * Les pastilles rétrécissent légèrement tout en conservant leur forme circulaire.
+   */
+  .step-number {
+    width: 29px;
+    height: 29px;
+  }
+}
+
+/*
+ * Seuil des écrans étroits : simplifier les grilles, compacter le calendrier et laisser les
+ * actions revenir à la ligne. Ces règles suivent les précédentes dans la cascade et prennent le
+ * relais pour les mêmes sélecteurs.
+ */
+@media (max-width: 420px) {
+  /*
+   * Les cartes de service passent à une par ligne pour éviter les intitulés excessivement serrés.
+   */
+  .service-choices {
+    grid-template-columns: 1fr;
+  }
+  /*
+   * La hauteur suit le contenu au lieu d'imposer la hauteur minimale de la disposition en deux
+   * colonnes.
+   */
+  .service-choice {
+    min-height: auto;
+  }
+  /*
+   * Dans la carte, une petite grille place l'icône à gauche et les textes à droite.
+   */
+  .service-choice > span {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    column-gap: .6rem;
+  }
+  /*
+   * L'icône occupe les deux lignes de texte ; sa taille est adaptée à cette disposition compacte.
+   */
+  .service-choice img {
+    grid-row: 1 / 3;
+    width: 25px;
+    height: 25px;
+    margin: .2rem 0 0;
+  }
+  /*
+   * La description reste dans la seconde colonne, sous le nom du service et non sous l'icône.
+   */
+  .service-choice small {
+    grid-column: 2;
+  }
+  /*
+   * Le portrait et le texte restent côte à côte avec moins d'espace et un alignement sur leur
+   * bord supérieur.
+   */
+  .recommended-doctor {
+    gap: .85rem;
+    align-items: flex-start;
+  }
+  /*
+   * Le portrait conserve son carré entier à 110 px ; height: auto empêche toute déformation.
+   */
+  .recommended-doctor .portrait {
+    width: 110px;
+    height: auto;
+    flex-basis: 110px;
+  }
+  /*
+   * Le nom du médecin réduit sa taille pour laisser une place suffisante au portrait.
+   */
+  .recommended-doctor h2 {
+    font-size: 1.15rem;
+  }
+  /*
+   * Une seule colonne de saisie : l'ordre des champs reste celui du HTML.
+   */
+  .patient-fields {
+    grid-template-columns: 1fr;
+  }
+  /*
+   * Les paires libellé/valeur s'empilent, facilitant la lecture des récapitulatifs étroits.
+   */
+  .review-list {
+    grid-template-columns: 1fr;
+  }
+  /*
+   * Réduit l'espace entre les sept colonnes du calendrier sans supprimer aucune date.
+   */
+  .booking-calendar {
+    border-spacing: .15rem;
+  }
+  /*
+   * Les cases deviennent plus compactes afin de conserver la semaine complète dans l'écran.
+   */
+  .calendar-day {
+    min-height: 36px;
+  }
+  /*
+   * Trois horaires par ligne remplacent les quatre colonnes utilisées aux largeurs supérieures.
+   */
+  .time-choices {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  /*
+   * Autorise le retour à la ligne des boutons plutôt que d'élargir la page.
+   */
+  .booking-actions {
+    gap: .7rem;
+    flex-wrap: wrap;
+  }
+  /*
+   * Les actions se partagent la place restante et gardent leur texte centré sur chaque ligne.
+   */
+  .booking-actions .button {
+    flex-grow: 1;
+    text-align: center;
+    justify-content: center;
+    font-size: .85rem;
+  }
+  /*
+   * La confirmation indisponible prend une ligne complète pour ne pas comprimer son libellé.
+   */
+  .booking-actions button:disabled {
+    flex-basis: 100%;
+  }
+}

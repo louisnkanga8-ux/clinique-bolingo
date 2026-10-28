@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!--
+  Présentation de la clinique : histoire, mission, engagements, chiffres et valeurs, suivis
+  d’un accès à Contact. Le document est autonome : HTML pour le contenu, CSS pour la
+  présentation, sans script ni moteur de modèles.
+-->
+<html lang="fr">
+  <!--
+    Métadonnées non affichées dans la page : encodage des accents, viewport mobile,
+    description et titre de l’onglet.
+  -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Découvrez l’histoire, la mission et les valeurs de la clinique Bolingo à Kinshasa.">
+    <title>À propos — Bolingo</title>
+    <!--
+      Favicon SVG local : aucune bibliothèque externe n’est nécessaire pour l’icône de
+      l’onglet.
+    -->
+    <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+    <!--
+      Ordre de la cascade : global.css pose les bases ; components.css fournit les éléments
+      communs ; les feuilles suivantes précisent cette page. Le paramètre ?v=... demande la
+      version récente au navigateur.
+    -->
+    <link rel="stylesheet" href="css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="css/pages.css?v=20261028-images">
+  </head>
+  <body>
+    <!--
+      Lien d’évitement : au clavier, il permet de rejoindre directement main#contenu sans
+      parcourir tout le menu.
+    -->
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!--
+      En-tête partagé : marque, menu principal et accès au parcours de rendez-vous. Comme il
+      n’y a pas de gabarit côté serveur, maintenir ces liens dans les cinq pages publiques
+      et les six pages du parcours. Dans le parcours, les chemins remontent avec ../ et le
+      bouton de réservation n’est pas repris.
+    -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!--
+          La marque revient à l’accueil. L’icône a alt vide car le nom est déjà écrit ;
+          aria-label précise la destination.
+        -->
+        <a class="brand" href="index.html" aria-label="Bolingo — Accueil">
+          <img src="assets/icons/logo.svg" width="46" height="46" alt="">
+          <span class="brand-copy">
+            <strong>Bolingo</strong>
+            <small>Clinique Médicale</small>
+          </span>
+        </a>
+        <!--
+          Navigation sémantique : aria-current="page" désigne uniquement la rubrique en
+          cours. Les chemins sont relatifs au fichier présent : les cinq pages publiques se
+          trouvent dans le même dossier.
+        -->
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="index.html">Accueil</a>
+          <a href="medecins.html">Médecins</a>
+          <a href="services.html">Services</a>
+          <a href="apropos.html" aria-current="page">À propos</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <!--
+          Ce lien ouvre rendez-vous/index.html : il navigue vers le parcours sans créer ni
+          enregistrer de rendez-vous.
+        -->
+        <a class="button button-primary header-cta" href="rendez-vous/index.html">
+          <img src="assets/icons/calendar.svg" width="20" height="20" alt="">Prendre rendez-vous</a>
+      </div>
+    </header>
+    <!--
+      Contenu principal unique. Les titres h1, puis h2 et h3 structurent la lecture ;
+      aria-labelledby relie les sections à leurs titres visibles, lorsqu’il est utilisé.
+    -->
+    <main id="contenu">
+      <!--
+        Présentation avec titre principal et façade. aria-labelledby reprend le h1 pour
+        nommer cette section.
+      -->
+      <section class="about-hero" aria-labelledby="apropos-titre">
+        <div class="container about-hero-grid">
+          <div class="about-intro">
+            <p class="eyebrow">À propos de Bolingo</p>
+            <h1 id="apropos-titre">Une clinique <span>proche de vous</span>
+            </h1>
+            <p>Bolingo est une clinique médicale moderne qui met la santé et le bien-être de ses patients au cœur de ses priorités. Nous combinons expertise médicale, équipements modernes et accueil humain pour vous offrir des soins de qualité.</p>
+            <!--
+              Lien interne : #mission fait défiler vers le paragraphe portant cet id plus bas
+              dans le même fichier.
+            -->
+            <a class="button button-secondary" href="#mission">Notre mission<img src="assets/icons/arrow-right.svg" width="19" height="19" alt="">
+            </a>
+          </div>
+          <!--
+            Façade en image entière : srcset/sizes adaptent la résolution sans recadrage.
+            width/height réservent son ratio ; alt décrit le lieu, eager charge dès l’entrée
+            sur la page et async découple le décodage.
+          -->
+          <div class="about-building">
+            <img class="clinic-photo" src="assets/images/visuels/facade-bolingo.webp"
+              srcset="assets/images/visuels/facade-bolingo-640.webp 640w, assets/images/visuels/facade-bolingo-1024.webp 1024w, assets/images/visuels/facade-bolingo.webp 1672w"
+              sizes="(max-width: 760px) calc(100vw - 40px), 590px" width="1672" height="941"
+              alt="Façade et entrée de la clinique Bolingo entourée de palmiers" loading="eager" decoding="async">
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <!--
+          Trois engagements forment une rangée de cartes. Les pictogrammes ont alt vide car
+          chaque idée est déjà exprimée par un titre.
+        -->
+        <section class="commitments" aria-label="Nos engagements">
+          <!--
+            Carte d’engagement : icône, titre h2 et phrase explicative ; une structure
+            commune aux trois cartes.
+          -->
+          <article class="commitment">
+            <span class="icon-bubble">
+              <img src="assets/icons/users.svg" width="30" height="30" alt="">
+            </span>
+            <div>
+              <h2>Des professionnels qualifiés</h2>
+              <p>Une équipe de médecins expérimentés et engagés.</p>
+            </div>
+          </article>
+          <!--
+            Carte d’engagement : icône, titre h2 et phrase explicative ; une structure
+            commune aux trois cartes.
+          -->
+          <article class="commitment">
+            <span class="icon-bubble">
+              <img src="assets/icons/shield.svg" width="30" height="30" alt="">
+            </span>
+            <div>
+              <h2>Des soins de qualité</h2>
+              <p>Une prise en charge attentive à chaque étape du parcours.</p>
+            </div>
+          </article>
+          <!--
+            Carte d’engagement : icône, titre h2 et phrase explicative ; une structure
+            commune aux trois cartes.
+          -->
+          <article class="commitment">
+            <span class="icon-bubble">
+              <img src="assets/icons/heart.svg" width="30" height="30" alt="">
+            </span>
+            <div>
+              <h2>Un accueil bienveillant</h2>
+              <p>Une écoute attentive et un accompagnement personnalisé.</p>
+            </div>
+          </article>
+        </section>
+        <!--
+          Histoire et mission : la grille CSS répartit photographie et texte ; le contenu est
+          rédigé directement dans la page.
+        -->
+        <section class="about-story" aria-labelledby="histoire-titre">
+          <!--
+            Réception en cadrage intégral : srcset propose les mêmes vues à différentes
+            résolutions. loading="lazy" reporte ce visuel plus bas dans la page ; alt décrit
+            l’image si elle ne peut pas être perçue.
+          -->
+          <div class="clinic-interior">
+            <img class="clinic-photo" src="assets/images/visuels/reception-bolingo.webp"
+              srcset="assets/images/visuels/reception-bolingo-640.webp 640w, assets/images/visuels/reception-bolingo-1024.webp 1024w, assets/images/visuels/reception-bolingo.webp 1672w"
+              sizes="(max-width: 760px) calc(100vw - 40px), 590px" width="1672" height="941"
+              alt="Réception de Bolingo avec son comptoir d’accueil et ses sièges bleus" loading="lazy" decoding="async">
+          </div>
+          <div>
+            <p class="eyebrow">Notre histoire</p>
+            <h2 id="histoire-titre">Un engagement pour votre santé</h2>
+            <p>Bolingo est née de la volonté de proposer des soins accessibles et de qualité à Kinshasa. La clinique s’est développée autour d’une vision simple : placer le patient au centre de toutes ses actions.</p>
+            <!--
+              Ancre du bouton Notre mission ; garder cet id si le texte est modifié pour
+              préserver le lien interne.
+            -->
+            <p id="mission">
+              <strong>Notre mission :</strong> accompagner chaque patient avec attention, faciliter son accès aux soins et proposer un parcours médical clair, dans un environnement accueillant.</p>
+          </div>
+        </section>
+        <!--
+          Chiffres de présentation saisis manuellement pour le projet ; aucun compteur ni
+          calcul ne fonctionne en arrière-plan. Ces données pédagogiques ne sont pas reliées
+          à une base de patients, de médecins ou de services.
+        -->
+        <section class="statistics" aria-labelledby="chiffres-titre">
+          <p class="eyebrow">Quelques chiffres</p>
+          <h2 id="chiffres-titre">Notre impact en chiffres</h2>
+          <!--
+            Quatre statistiques : icône décorative, valeur mise en évidence et libellé
+            lisible.
+          -->
+          <div class="statistics-list">
+            <div class="stat">
+              <span class="icon-bubble">
+                <img src="assets/icons/user.svg" width="30" height="30" alt="">
+              </span>
+              <div>
+                <strong>5 000+</strong>
+                <span>Patients pris en charge</span>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="icon-bubble">
+                <img src="assets/icons/stethoscope.svg" width="30" height="30" alt="">
+              </span>
+              <div>
+                <strong>15+</strong>
+                <span>Médecins spécialisés</span>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="icon-bubble">
+                <img src="assets/icons/building.svg" width="30" height="30" alt="">
+              </span>
+              <div>
+                <strong>10+</strong>
+                <span>Services médicaux</span>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="icon-bubble">
+                <img src="assets/icons/calendar.svg" width="30" height="30" alt="">
+              </span>
+              <div>
+                <strong>3+</strong>
+                <span>Années d’expérience</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--
+          Valeurs de la clinique : titre de section h2, puis une grille de quatre articles
+          avec titres h3.
+        -->
+        <section class="values" aria-labelledby="valeurs-titre">
+          <p class="eyebrow">Nos valeurs</p>
+          <h2 id="valeurs-titre">Ce qui nous guide au quotidien</h2>
+          <!--
+            La classe value partage les espacements, bordures et adaptations mobiles entre
+            les articles.
+          -->
+          <div class="values-grid">
+            <!--
+              Une valeur : l’icône illustre le titre sans répéter son annonce, puis le
+              paragraphe précise l’engagement.
+            -->
+            <article class="value">
+              <span class="icon-bubble">
+                <img src="assets/icons/heart.svg" width="30" height="30" alt="">
+              </span>
+              <h3>Le patient d’abord</h3>
+              <p>Votre santé et votre bien-être sont notre priorité.</p>
+            </article>
+            <!--
+              Une valeur : l’icône illustre le titre sans répéter son annonce, puis le
+              paragraphe précise l’engagement.
+            -->
+            <article class="value">
+              <span class="icon-bubble">
+                <img src="assets/icons/shield.svg" width="30" height="30" alt="">
+              </span>
+              <h3>Professionnalisme</h3>
+              <p>Des soins fondés sur l’expertise et l’éthique médicale.</p>
+            </article>
+            <!--
+              Une valeur : l’icône illustre le titre sans répéter son annonce, puis le
+              paragraphe précise l’engagement.
+            -->
+            <article class="value">
+              <span class="icon-bubble">
+                <img src="assets/icons/users.svg" width="30" height="30" alt="">
+              </span>
+              <h3>Respect</h3>
+              <p>Une écoute attentive pour chaque patient.</p>
+            </article>
+            <!--
+              Une valeur : l’icône illustre le titre sans répéter son annonce, puis le
+              paragraphe précise l’engagement.
+            -->
+            <article class="value">
+              <span class="icon-bubble">
+                <img src="assets/icons/trend.svg" width="30" height="30" alt="">
+              </span>
+              <h3>Amélioration continue</h3>
+              <p>Toujours évoluer pour mieux vous servir.</p>
+            </article>
+          </div>
+        </section>
+        <!--
+          Bandeau vers Contact, devenue une page indépendante. L’ancien id coordonnees reste
+          disponible pour les anciens liens enregistrés.
+        -->
+        <section class="contact-invitation" id="coordonnees" aria-labelledby="contact-titre">
+          <span class="icon-bubble">
+            <img src="assets/icons/phone.svg" width="32" height="32" alt="">
+          </span>
+          <div class="contact-invitation-copy">
+            <h2 id="contact-titre">Une question ou besoin d’informations ?</h2>
+            <p>Notre équipe est à votre disposition pour vous aider.</p>
+          </div>
+          <a class="button button-primary" href="contact.html">Nous contacter<img src="assets/icons/arrow-right.svg" width="19" height="19" alt=""></a>
+        </section>
+      </div>
+    </main>
+    <!--
+      Pied de page commun : présentation courte, navigation secondaire et coordonnées. Le
+      contenu est écrit dans le HTML ; aucune donnée n’est récupérée depuis un serveur.
+    -->
+    <footer class="site-footer">
+      <div class="container">
+        <!--
+          Les trois groupes sont distribués par la grille de components.css, puis empilés
+          selon la largeur disponible.
+        -->
+        <div class="footer-grid">
+          <div class="footer-intro">
+            <a class="brand" href="index.html">
+              <img src="assets/icons/logo-white.svg" width="44" height="44" alt="">
+              <span class="brand-copy">
+                <strong>Bolingo</strong>
+                <small>Clinique Médicale</small>
+              </span>
+            </a>
+            <p>Votre santé est notre priorité. Un environnement moderne et bienveillant, pensé autour du patient.</p>
+          </div>
+          <div>
+            <h2>Liens utiles</h2>
+            <!--
+              Le nom accessible distingue cette navigation de celle de l’en-tête. Contact
+              mène à une page dédiée.
+            -->
+            <nav class="footer-links" aria-label="Navigation de pied de page">
+              <a href="index.html">Accueil</a>
+              <a href="apropos.html">À propos</a>
+              <a href="medecins.html">Médecins</a>
+              <a href="contact.html">Contact</a>
+              <a href="services.html">Services</a>
+            </nav>
+          </div>
+          <div>
+            <h2>Contact</h2>
+            <!--
+              address regroupe les coordonnées de la clinique ; les petites icônes
+              décoratives sont ignorées grâce à alt="".
+            -->
+            <address class="footer-contact">
+              <span>
+                <img src="assets/icons/phone.svg" width="16" height="16" alt="">+243 812 345 678</span>
+              <span>
+                <img src="assets/icons/mail.svg" width="16" height="16" alt="">info@bolingo.cd</span>
+              <span>
+                <img src="assets/icons/pin.svg" width="16" height="16" alt="">123 Avenue de la Santé, Kinshasa, RDC</span>
+            </address>
+          </div>
+        </div>
+        <!--
+          Dernière ligne du pied de page : mentions de la clinique et signature visuelle.
+        -->
+        <div class="footer-bottom">
+          <span>© 2026 Bolingo · Clinique Médicale.</span>
+          <span>Votre santé, notre priorité.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

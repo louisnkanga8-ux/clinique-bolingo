@@ -1,0 +1,7 @@
+<!--
+  Ophtalmologie : dessin vectoriel local, net quelle que soit la taille d’affichage.
+  viewBox définit le repère des coordonnées ; path, circle ou les autres formes dessinent l’icône.
+  fill règle le remplissage, stroke le contour. Les tailles visibles sont définies en HTML/CSS.
+  L’alternative textuelle est portée par l’élément img de la page qui utilise ce fichier.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0063ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>

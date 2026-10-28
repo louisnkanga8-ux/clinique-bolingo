@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!--
+  Catalogue public : six services médicaux sous forme de cartes et de descriptions
+  dépliables. Le document est autonome : HTML pour le contenu, CSS pour la présentation, sans
+  script ni moteur de modèles.
+-->
+<html lang="fr">
+  <!--
+    Métadonnées non affichées dans la page : encodage des accents, viewport mobile,
+    description et titre de l’onglet.
+  -->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Découvrez les six services de la clinique Bolingo : médecine générale, cardiologie, pédiatrie, ophtalmologie, orthopédie et laboratoire.">
+    <!--
+      Favicon SVG local : aucune bibliothèque externe n’est nécessaire pour l’icône de
+      l’onglet.
+    -->
+    <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+    <title>Nos services — Bolingo</title>
+    <!--
+      Ordre de la cascade : global.css pose les bases ; components.css fournit les éléments
+      communs ; les feuilles suivantes précisent cette page. Le paramètre ?v=... demande la
+      version récente au navigateur.
+    -->
+    <link rel="stylesheet" href="css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="css/pages.css?v=20261028-images">
+    <link rel="stylesheet" href="css/catalogue.css?v=20261028-images">
+  </head>
+  <body>
+    <!--
+      Lien d’évitement : au clavier, il permet de rejoindre directement main#contenu sans
+      parcourir tout le menu.
+    -->
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!--
+      En-tête partagé : marque, menu principal et accès au parcours de rendez-vous. Comme il
+      n’y a pas de gabarit côté serveur, maintenir ces liens dans les cinq pages publiques
+      et les six pages du parcours. Dans le parcours, les chemins remontent avec ../ et le
+      bouton de réservation n’est pas repris.
+    -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!--
+          La marque revient à l’accueil. L’icône a alt vide car le nom est déjà écrit ;
+          aria-label précise la destination.
+        -->
+        <a class="brand" href="index.html" aria-label="Bolingo — Accueil">
+          <img src="assets/icons/logo.svg" alt="" width="44" height="44">
+          <span class="brand-copy">
+            <strong>Bolingo</strong>
+            <small>Clinique Médicale</small>
+          </span>
+        </a>
+        <!--
+          Navigation sémantique : aria-current="page" désigne uniquement la rubrique en
+          cours. Les chemins sont relatifs au fichier présent : les cinq pages publiques se
+          trouvent dans le même dossier.
+        -->
+        <nav class="main-nav" aria-label="Navigation principale">
+          <a href="index.html">Accueil</a>
+          <a href="medecins.html">Médecins</a>
+          <a href="services.html" aria-current="page">Services</a>
+          <a href="apropos.html">À propos</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <!--
+          Ce lien ouvre rendez-vous/index.html : il navigue vers le parcours sans créer ni
+          enregistrer de rendez-vous.
+        -->
+        <a class="button button-primary header-cta" href="rendez-vous/index.html">
+          <img class="icon" src="assets/icons/calendar.svg" alt="" width="19" height="19">Prendre rendez-vous</a>
+      </div>
+    </header>
+    <!--
+      Contenu principal unique. Les titres h1, puis h2 et h3 structurent la lecture ;
+      aria-labelledby relie les sections à leurs titres visibles, lorsqu’il est utilisé.
+    -->
+    <main id="contenu" class="catalogue-main services-main">
+      <div class="container">
+        <!--
+          Introduction du catalogue : le titre principal et le paragraphe annoncent les six
+          spécialités présentées juste après.
+        -->
+        <div class="page-heading catalogue-heading services-heading">
+          <p class="eyebrow">Nos services</p>
+          <h1>Des soins pour <span>toute la famille</span>
+          </h1>
+          <p class="services-intro">Un accompagnement médical adapté à vos besoins, à chaque étape de votre vie.</p>
+        </div>
+        <!--
+          Grille des services : trois colonnes sur grand écran, puis deux et une grâce à
+          catalogue.css. Chaque id sert de destination aux raccourcis de l’accueil ; les
+          contenus sont statiques et autonomes.
+        -->
+        <section class="services-grid" aria-label="Nos six services médicaux">
+          <!--
+            Carte d’un service : image, icône, titre, description courte et explication
+            dépliable.
+          -->
+          <article class="service-card" id="medecine-generale">
+            <!--
+              Photographie individuelle affichée entière avec object-fit: contain.
+              srcset/sizes choisissent une résolution adaptée ; width/height déclarent les
+              dimensions réelles. alt décrit la scène, lazy/async diffèrent le chargement et
+              le décodage.
+            -->
+            <img class="service-image"
+              src="assets/images/visuels/salle-consultation.webp"
+              srcset="assets/images/visuels/salle-consultation-640.webp 640w, assets/images/visuels/salle-consultation-1024.webp 1024w, assets/images/visuels/salle-consultation.webp 1672w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 380px"
+              width="1672" height="941" alt="Salle de consultation lumineuse avec bureau médical et table d’examen" loading="lazy" decoding="async">
+            <div class="service-card-body">
+              <!--
+                Pastille décorative : sa position absolue en CSS la place à cheval sur
+                l’image et le texte de la carte.
+              -->
+              <span class="service-icon">
+                <img src="assets/icons/stethoscope.svg" alt="" width="36" height="36">
+              </span>
+              <h2>Médecine générale</h2>
+              <p>Bilan de santé, diagnostic et prise en charge des problèmes courants.</p>
+              <!--
+                details/summary fournit l’ouverture native sans script. Le texte masqué
+                visuellement précise le service dans le nom accessible.
+              -->
+              <details class="service-details">
+                <summary>En savoir plus<span class="catalogue-sr-only"> sur la médecine générale</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>Le médecin généraliste est le premier interlocuteur pour un suivi régulier et l’orientation vers une consultation spécialisée.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Carte d’un service : image, icône, titre, description courte et explication
+            dépliable.
+          -->
+          <article class="service-card" id="cardiologie">
+            <!--
+              Visuel encore extrait de la maquette par un fond CSS. Ce div a role="img" et
+              aria-label car il ne possède pas d’attribut alt.
+            -->
+            <div class="service-photo service-cardiologie" role="img" aria-label="Illustration d’un médecin présentant une maquette de cœur">
+            </div>
+            <div class="service-card-body">
+              <!--
+                Pastille décorative : sa position absolue en CSS la place à cheval sur
+                l’image et le texte de la carte.
+              -->
+              <span class="service-icon">
+                <img src="assets/icons/heart.svg" alt="" width="36" height="36">
+              </span>
+              <h2>Cardiologie</h2>
+              <p>Suivi et traitement des maladies cardiaques et de la circulation sanguine.</p>
+              <!--
+                details/summary fournit l’ouverture native sans script. Le texte masqué
+                visuellement précise le service dans le nom accessible.
+              -->
+              <details class="service-details">
+                <summary>En savoir plus<span class="catalogue-sr-only"> sur la cardiologie</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>La consultation permet de faire le point sur la santé cardiovasculaire et d’organiser les examens ou le suivi nécessaires.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Carte d’un service : image, icône, titre, description courte et explication
+            dépliable.
+          -->
+          <article class="service-card" id="pediatrie">
+            <img class="service-image"
+              src="assets/images/visuels/pediatrie.webp"
+              srcset="assets/images/visuels/pediatrie-640.webp 640w, assets/images/visuels/pediatrie-1024.webp 1024w, assets/images/visuels/pediatrie.webp 1536w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 380px"
+              width="1536" height="1024" alt="Pédiatre auscultant un enfant au stéthoscope en présence de sa mère" loading="lazy" decoding="async">
+            <div class="service-card-body">
+              <!--
+                Pastille décorative : sa position absolue en CSS la place à cheval sur
+                l’image et le texte de la carte.
+              -->
+              <span class="service-icon">
+                <img src="assets/icons/baby.svg" alt="" width="36" height="36">
+              </span>
+              <h2>Pédiatrie</h2>
+              <p>Soins médicaux adaptés aux enfants, de la naissance à l’adolescence.</p>
+              <!--
+                details/summary fournit l’ouverture native sans script. Le texte masqué
+                visuellement précise le service dans le nom accessible.
+              -->
+              <details class="service-details">
+                <summary>En savoir plus<span class="catalogue-sr-only"> sur la pédiatrie</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>Le suivi pédiatrique accompagne la croissance et le développement de l’enfant, en prenant le temps d’échanger avec sa famille.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Carte d’un service : image, icône, titre, description courte et explication
+            dépliable.
+          -->
+          <article class="service-card" id="ophtalmologie">
+            <!--
+              Visuel encore extrait de la maquette par un fond CSS. Ce div a role="img" et
+              aria-label car il ne possède pas d’attribut alt.
+            -->
+            <div class="service-photo service-ophtalmologie" role="img" aria-label="Illustration d’un examen de la vue">
+            </div>
+            <div class="service-card-body">
+              <!--
+                Pastille décorative : sa position absolue en CSS la place à cheval sur
+                l’image et le texte de la carte.
+              -->
+              <span class="service-icon">
+                <img src="assets/icons/eye.svg" alt="" width="36" height="36">
+              </span>
+              <h2>Ophtalmologie</h2>
+              <p>Diagnostic et traitement des troubles de la vision.</p>
+              <!--
+                details/summary fournit l’ouverture native sans script. Le texte masqué
+                visuellement précise le service dans le nom accessible.
+              -->
+              <details class="service-details">
+                <summary>En savoir plus<span class="catalogue-sr-only"> sur l’ophtalmologie</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>L’examen ophtalmologique évalue la vision et la santé des yeux afin de proposer une correction ou un suivi adapté.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Carte d’un service : image, icône, titre, description courte et explication
+            dépliable.
+          -->
+          <article class="service-card" id="orthopedie">
+            <!--
+              Visuel encore extrait de la maquette par un fond CSS. Ce div a role="img" et
+              aria-label car il ne possède pas d’attribut alt.
+            -->
+            <div class="service-photo service-orthopedie" role="img" aria-label="Illustration d’un examen du genou">
+            </div>
+            <div class="service-card-body">
+              <!--
+                Pastille décorative : sa position absolue en CSS la place à cheval sur
+                l’image et le texte de la carte.
+              -->
+              <span class="service-icon">
+                <img src="assets/icons/bone.svg" alt="" width="36" height="36">
+              </span>
+              <h2>Orthopédie</h2>
+              <p>Prise en charge des os, des articulations et des traumatismes.</p>
+              <!--
+                details/summary fournit l’ouverture native sans script. Le texte masqué
+                visuellement précise le service dans le nom accessible.
+              -->
+              <details class="service-details">
+                <summary>En savoir plus<span class="catalogue-sr-only"> sur l’orthopédie</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>La consultation s’intéresse à la douleur et à la mobilité pour définir un accompagnement selon l’examen et les besoins du patient.</p>
+              </details>
+            </div>
+          </article>
+          <!--
+            Carte d’un service : image, icône, titre, description courte et explication
+            dépliable.
+          -->
+          <article class="service-card" id="laboratoire">
+            <img class="service-image"
+              src="assets/images/visuels/laboratoire-bolingo.webp"
+              srcset="assets/images/visuels/laboratoire-bolingo-640.webp 640w, assets/images/visuels/laboratoire-bolingo-1024.webp 1024w, assets/images/visuels/laboratoire-bolingo.webp 1672w"
+              sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 380px"
+              width="1672" height="941" alt="Technicienne au microscope et équipe réalisant des analyses dans le laboratoire Bolingo" loading="lazy" decoding="async">
+            <div class="service-card-body">
+              <!--
+                Pastille décorative : sa position absolue en CSS la place à cheval sur
+                l’image et le texte de la carte.
+              -->
+              <span class="service-icon">
+                <img src="assets/icons/flask.svg" alt="" width="36" height="36">
+              </span>
+              <h2>Analyses et laboratoire</h2>
+              <p>Bilans et examens médicaux pour accompagner votre suivi.</p>
+              <!--
+                details/summary fournit l’ouverture native sans script. Le texte masqué
+                visuellement précise le service dans le nom accessible.
+              -->
+              <details class="service-details">
+                <summary>En savoir plus<span class="catalogue-sr-only"> sur les analyses et le laboratoire</span>
+                  <img class="icon" src="assets/icons/arrow-right.svg" alt="" width="18" height="18">
+                </summary>
+                <p>Les analyses complètent l’évaluation médicale ; les éventuelles consignes de préparation sont précisées selon les examens prescrits.</p>
+              </details>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+    <!--
+      Pied de page commun : présentation courte, navigation secondaire et coordonnées. Le
+      contenu est écrit dans le HTML ; aucune donnée n’est récupérée depuis un serveur.
+    -->
+    <footer class="site-footer">
+      <div class="container">
+        <!--
+          Les trois groupes sont distribués par la grille de components.css, puis empilés
+          selon la largeur disponible.
+        -->
+        <div class="footer-grid">
+          <div class="footer-intro">
+            <a class="brand" href="index.html">
+              <img src="assets/icons/logo-white.svg" width="44" height="44" alt="">
+              <span class="brand-copy">
+                <strong>Bolingo</strong>
+                <small>Clinique Médicale</small>
+              </span>
+            </a>
+            <p>Votre santé est notre priorité. Un environnement moderne et bienveillant, pensé autour du patient.</p>
+          </div>
+          <div>
+            <h2>Liens utiles</h2>
+            <!--
+              Le nom accessible distingue cette navigation de celle de l’en-tête. Contact
+              mène à une page dédiée.
+            -->
+            <nav class="footer-links" aria-label="Navigation de pied de page">
+              <a href="index.html">Accueil</a>
+              <a href="apropos.html">À propos</a>
+              <a href="medecins.html">Médecins</a>
+              <a href="contact.html">Contact</a>
+              <a href="services.html">Services</a>
+            </nav>
+          </div>
+          <div>
+            <h2>Contact</h2>
+            <!--
+              address regroupe les coordonnées de la clinique ; les petites icônes
+              décoratives sont ignorées grâce à alt="".
+            -->
+            <address class="footer-contact">
+              <span>
+                <img src="assets/icons/phone.svg" width="16" height="16" alt="">+243 812 345 678</span>
+              <span>
+                <img src="assets/icons/mail.svg" width="16" height="16" alt="">info@bolingo.cd</span>
+              <span>
+                <img src="assets/icons/pin.svg" width="16" height="16" alt="">123 Avenue de la Santé, Kinshasa, RDC</span>
+            </address>
+          </div>
+        </div>
+        <!--
+          Dernière ligne du pied de page : mentions de la clinique et signature visuelle.
+        -->
+        <div class="footer-bottom">
+          <span>© 2026 Bolingo · Clinique Médicale</span>
+          <span>Votre santé, notre priorité.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
