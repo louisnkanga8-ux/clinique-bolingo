@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
-  Étape 4 : montrer les champs du patient. Les valeurs restent locales à cette page et ne sont pas
-  transmises. Fichier autonome de la phase sans JavaScript ni backend ; les comportements métier
+  Étape 2 : présenter le médecin généraliste et le choix de son profil, sans recommandation
+  automatique. Fichier autonome de la phase sans JavaScript ni backend ; les comportements métier
   restent à implémenter.
 -->
 <html lang="fr">
@@ -13,17 +13,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Préparez votre consultation à la clinique Bolingo : service médical, médecin, date et informations du patient.">
-    <title>Informations du patient · Bolingo</title>
-    <link rel="icon" href="../assets/icons/logo.svg" type="image/svg+xml">
+    <title>Choisir un médecin · Bolingo</title>
+    <link rel="icon" href="../../assets/icons/logo.svg" type="image/svg+xml">
     <!--
       Ordre de la cascade : fondations globales, composants communs, pages publiques, puis règles
       propres au parcours. Le suffixe ?v=20261028-images renouvelle le cache ; ../ remonte du
       dossier rendez-vous vers la racine du site.
     -->
-    <link rel="stylesheet" href="../css/global.css?v=20261028-images">
-    <link rel="stylesheet" href="../css/components.css?v=20261028-images">
-    <link rel="stylesheet" href="../css/pages.css?v=20261028-images">
-    <link rel="stylesheet" href="../css/reservation.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/pages.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/reservation.css?v=20261028-images">
   </head>
   <body>
     <!--
@@ -42,7 +42,7 @@
           fourni par le lien.
         -->
         <a class="brand" href="../index.html" aria-label="Bolingo, accueil">
-          <img src="../assets/icons/logo.svg" alt="" width="44" height="44">
+          <img src="../../assets/icons/logo.svg" alt="" width="44" height="44">
           <span class="brand-copy">
             <strong>Bolingo</strong>
             <small>Clinique Médicale</small>
@@ -84,20 +84,20 @@
                 <span>Service</span>
               </a>
             </li>
-            <li class="step-complete">
-              <a href="medecin.html">
+            <li>
+              <a href="medecin.html" aria-current="step">
                 <span class="step-number">2</span>
                 <span>Médecin</span>
               </a>
             </li>
-            <li class="step-complete">
+            <li>
               <a href="date-heure.html">
                 <span class="step-number">3</span>
                 <span>Date et heure</span>
               </a>
             </li>
             <li>
-              <a href="informations.html" aria-current="step">
+              <a href="informations.html">
                 <span class="step-number">4</span>
                 <span>Patient</span>
               </a>
@@ -115,9 +115,9 @@
           principal unique du document.
         -->
         <div class="booking-heading">
-          <p class="eyebrow">PRENDRE RENDEZ-VOUS · ÉTAPE 4 SUR 5</p>
-          <h1>Vos informations personnelles</h1>
-          <p>Renseignez les informations nécessaires à votre consultation.</p>
+          <p class="eyebrow">PRENDRE RENDEZ-VOUS · ÉTAPE 2 SUR 5</p>
+          <h1>Un médecin pour vous accompagner</h1>
+          <p>Un professionnel pour votre consultation de médecine générale.</p>
         </div>
         <!--
           Disposition commune : la colonne principale accueille l'étape ; l'aside affiche le
@@ -130,88 +130,62 @@
           -->
           <div class="booking-main">
             <!--
-              Panneau d'identification du patient, nommé par son h2. Tous les champs utiles
-              restent regroupés dans cette seule étape.
+              Fiche du médecin compatible avec le service présenté. La recommandation réelle sera
+              une future règle métier.
             -->
-            <section class="booking-panel" aria-labelledby="patient-details-title">
-              <h2 id="patient-details-title">Informations du patient</h2>
+            <section class="booking-panel" aria-labelledby="doctor-title">
               <!--
-                Le texte décrit les champs marqués d'un astérisque ; son id permet de le rattacher
-                au groupe via aria-describedby.
+                Petit repère de la fiche : l'icône accompagne un texte déjà explicite, donc elle
+                est décorative pour les lecteurs d'écran.
               -->
-              <p class="booking-helper" id="patient-help">Les champs marqués d’un astérisque (*) sont obligatoires.</p>
+              <p class="recommendation-label">
+                <img src="../../assets/icons/check.svg" alt="" width="24" height="24" class="">Votre médecin</p>
               <!--
-                Ce bloc est volontairement un div, pas un form : aucune soumission HTTP ni
-                collecte n'est câblée. Les valeurs préremplies servent à la présentation. Les
-                modifications ne sont ni stockées par le site ni reprises au récapitulatif.
+                Le CSS aligne le portrait et les informations professionnelles avec Flexbox, sans
+                modifier leur ordre de lecture.
               -->
-              <div class="patient-form" role="group" aria-labelledby="patient-details-title" aria-describedby="patient-help">
+              <div class="recommended-doctor">
                 <!--
-                  La grille dispose les champs sur deux colonnes ; is-full étend un champ sur
-                  toute la largeur, puis le CSS passe à une colonne.
+                  Portrait carré complet : srcset propose plusieurs résolutions et sizes annonce
+                  la largeur affichée. width et height réservent la place ; alt identifie la
+                  personne ; lazy et async limitent le travail de chargement initial.
                 -->
-                <div class="patient-fields">
-                  <div class="patient-field is-full">
-                    <!--
-                      Le for du label correspond à l'id du champ. required expose son caractère
-                      obligatoire ; l'astérisque décoratif évite une annonce redondante.
-                    -->
-                    <label for="nom">Nom complet <span aria-hidden="true">*</span>
-                    </label>
-                    <!--
-                      name prépare le nom technique futur ; autocomplete suggère le type de donnée
-                      au navigateur et value définit la valeur initiale.
-                    -->
-                    <input id="nom" name="nom" type="text" autocomplete="name" value="Alex Ilunga" required>
-                  </div>
-                  <div class="patient-field">
-                    <!--
-                      type="date" laisse au navigateur le choix du calendrier natif. La valeur du
-                      champ utilise le format ISO année-mois-jour.
-                    -->
-                    <label for="naissance">Date de naissance <span aria-hidden="true">*</span>
-                    </label>
-                    <input id="naissance" name="naissance" type="date" autocomplete="bday" value="1995-06-14" required>
-                  </div>
-                  <div class="patient-field">
-                    <!--
-                      type="tel" facilite le clavier téléphonique sur mobile ; il ne vérifie pas à
-                      lui seul le format international du numéro.
-                    -->
-                    <label for="telephone">Numéro de téléphone <span aria-hidden="true">*</span>
-                    </label>
-                    <input id="telephone" name="telephone" type="tel" autocomplete="tel" value="+243 000 000 000" required>
-                  </div>
-                  <div class="patient-field is-full">
-                    <!--
-                      L'e-mail est facultatif, donc sans required. type="email" fournit la
-                      sémantique native ; aucun message n'est envoyé.
-                    -->
-                    <label for="email">Adresse e-mail <small>(facultatif)</small>
-                    </label>
-                    <input id="email" name="email" type="email" autocomplete="email" value="alex.ilunga@example.com">
-                  </div>
-                  <div class="patient-field is-full">
-                    <!--
-                      Le textarea reçoit un texte multiligne. maxlength limite la saisie à 500
-                      caractères ; aria-describedby ajoute l'aide située juste après.
-                    -->
-                    <label for="motif">Motif de consultation <span aria-hidden="true">*</span>
-                    </label>
-                    <textarea id="motif" name="motif" rows="3" maxlength="500" aria-describedby="motif-help" required>Consultation générale.</textarea>
-                    <small id="motif-help">Décrivez brièvement le motif de votre consultation.</small>
-                  </div>
+                <img class="portrait portrait-jean"
+                  src="../../assets/images/medecins/portrait-01-bolingo.webp"
+                  srcset="../../assets/images/medecins/portrait-01-bolingo-400.webp 400w, ../../assets/images/medecins/portrait-01-bolingo-800.webp 800w, ../../assets/images/medecins/portrait-01-bolingo.webp 1254w"
+                  sizes="150px" width="1254" height="1254"
+                  alt="Portrait du Dr Jean Mputu" loading="lazy" decoding="async">
+                <div>
+                  <h2 id="doctor-title">Dr Jean Mputu</h2>
+                  <p class="doctor-specialty">Médecine générale</p>
+                  <p class="doctor-detail">8 ans d’expérience</p>
+                  <p class="doctor-detail">Consultations de médecine générale</p>
                 </div>
               </div>
+              <!--
+                Le label englobe le radio et son texte, ce qui agrandit la zone cliquable. checked
+                fournit l'état initial de ce choix unique.
+              -->
+              <label class="doctor-select">
+                <input type="radio" name="medecin" value="jean-mputu" checked>
+                <span>Choisir ce médecin</span>
+              </label>
             </section>
             <!--
-              Continuer est un lien, pas un bouton submit : il ne déclenche pas la validation
-              native required et ne transporte aucune saisie. La validation et la conservation des
-              informations devront être ajoutées dans une phase fonctionnelle autorisée.
+              Emplacement prévu pour une alternative de même spécialité. Aucun autre professionnel
+              incompatible n'est proposé.
+            -->
+            <section class="doctor-unavailable" aria-labelledby="alternate-title">
+              <h2 id="alternate-title">Choisir un autre médecin</h2>
+              <p>Aucun autre médecin de cette spécialité n’est proposé pour le moment.</p>
+            </section>
+            <!--
+              Retour et Continuer relient les fichiers voisins. Aucun identifiant de médecin n'est
+              envoyé à la page suivante ni à un serveur.
             -->
             <div class="booking-actions">
-              <a class="button button-secondary" href="date-heure.html">Retour</a>
-              <a class="button button-primary" href="verification.html">Continuer <img src="../assets/icons/arrow-right.svg" alt="" width="24" height="24" class="">
+              <a class="button button-secondary" href="index.html">Retour</a>
+              <a class="button button-primary" href="date-heure.html">Continuer <img src="../../assets/icons/arrow-right.svg" alt="" width="24" height="24" class="">
               </a>
             </div>
           </div>

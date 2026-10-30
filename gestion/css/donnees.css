@@ -1,0 +1,113 @@
+/* Présentation des exemples fictifs et des actions à raccorder.
+   Les valeurs sont écrites dans le HTML : aucune lecture d’Excel à l’ouverture. */
+.data-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.source-note {
+  margin: 14px 0 20px;
+  color: #506385;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.cell-note {
+  display: block;
+  font-size: 10px;
+  color: #657694;
+  margin-top: 4px;
+}
+.badge-purple {
+  color: #6940af;
+  background: #eee7fc;
+}
+.record-detail input[readonly] {
+  background: #f5f7fc;
+}
+.source-months {
+  margin: 18px 0;
+}
+.source-months .month-chart {
+  overflow-x: auto;
+  justify-content: space-between;
+  padding-bottom: 12px;
+}
+.source-months .month-column {
+  min-width: 52px;
+}
+.source-months .month-column > span:last-child {
+  font-size: 10px;
+}
+.report-bars > li {
+  grid-template-columns: minmax(100px, 1.3fr) minmax(50px, 1fr) 44px 58px;
+}
+.report-bars {
+  gap: 16px;
+}
+.source-status-donut strong {
+  font-size: 24px;
+}
+.report-status-content {
+  flex-wrap: wrap;
+}
+.report-legend {
+  min-width: 235px;
+}
+.report-capacity-grid {
+  margin-top: 18px;
+}
+.filters .filter-note {
+  flex-basis: 100%;
+}
+.filters label.field {
+  margin: 0;
+}
+@media (max-width: 800px) {
+  .data-toolbar .btn {
+    flex: 1 1 180px;
+  }
+  .source-note {
+    font-size: 11px;
+  }
+  .report-bars > li {
+    grid-template-columns: minmax(85px, 1.4fr) minmax(30px, 1fr) 38px 52px;
+    gap: 8px;
+  }
+  .report-bars > li,
+  .report-specialty-name {
+    font-size: 11px;
+  }
+  .report-legend {
+    min-width: 0;
+    width: 100%;
+  }
+  .record-detail .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media print {
+  /* Impression de la maquette : masquer les actions. */
+  .data-toolbar,
+  .screen-only {
+    display: none !important;
+  }
+  .patient-register .table-wrap {
+    overflow: visible;
+    max-height: none;
+  }
+  .patient-register thead {
+    display: table-header-group;
+  }
+  .patient-register .data-table th,
+  .patient-register tr {
+    break-inside: avoid;
+  }
+  .source-months .month-chart {
+    overflow: visible;
+  }
+  .management-heading::after {
+    content: "BOLINGO — Clinique Médicale";
+  }
+}

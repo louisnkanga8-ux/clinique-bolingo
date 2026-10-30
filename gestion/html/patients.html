@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Patients | BOLINGO</title>
+    <link
+      rel="icon"
+      href="../../public/assets/icons/logo.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="../css/gestion.css" />
+    <link rel="stylesheet" href="../css/navigation.css" />
+    <link rel="stylesheet" href="../css/donnees.css" />
+  </head>
+  <body class="management">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!-- Navigation répétée dans chaque page : HTML seul ne fournit pas d’inclusion. -->
+    <aside class="sidebar" aria-label="Navigation de gestion">
+      <a class="management-brand" href="index.html"
+        ><img
+          src="../../public/assets/icons/logo-white.svg"
+          width="56"
+          height="56"
+          alt=""
+        /><span
+          ><strong>BOLINGO</strong><small>Clinique Médicale</small></span
+        ></a
+      >
+      <nav aria-label="Rubriques">
+        <a href="index.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z" /></svg
+          ><span>Tableau de bord</span></a
+        >
+        <a href="rendez-vous.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M7 3v4m10-4v4M3 10h18m-14 4h3m4 0h3m-10 4h3" /></svg
+          ><span>Rendez-vous</span></a
+        >
+        <a href="patients.html" aria-current="page"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 21v-3a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5v3M17 4a4 4 0 0 1 0 8m2 3a4 4 0 0 1 2 4v2"
+            />
+            <circle cx="9" cy="6" r="4" /></svg
+          ><span>Patients</span></a
+        >
+        <a href="medecins.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="6" r="4" />
+            <path
+              d="m9 14 3 4 3-4M5 14a5 5 0 0 0-2 4v3h18v-3a5 5 0 0 0-2-4m-2 2v3"
+            /></svg
+          ><span>Médecins</span></a
+        >
+        <a href="specialites.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+            />
+            <circle cx="18" cy="10" r="3" /></svg
+          ><span>Spécialités</span></a
+        >
+        <a href="salles.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 21V3h14v18M4 21h17M8 21V6h7v15m-3-8v2" /></svg
+          ><span>Salles</span></a
+        >
+        <a href="rapports.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 3v18h18M7 17v-4m5 4V8m5 9V5" /></svg
+          ><span>Rapports</span></a
+        >
+        <a href="parametres.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="m9 3-1 3-3 1 1 3-2 2 2 2-1 3 3 1 1 3h6l1-3 3-1-1-3 2-2-2-2 1-3-3-1-1-3Z"
+            />
+            <circle cx="12" cy="12" r="3" /></svg
+          ><span>Paramètres</span></a
+        >
+      </nav>
+      <div class="sidebar-help">
+        <svg
+          class="ui-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M8 8a4 4 0 0 1 8 0c0 3-4 3-4 6m0 3h.01" />
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+        <div>
+          <strong>Besoin d’aide ?</strong>
+          <p>Retrouvez les coordonnées de la clinique.</p>
+        </div>
+        <a href="../../public/html/contact.html">Contactez-nous</a>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <!-- Menu natif : summary s’ouvre et se ferme au clic ou au clavier. -->
+        <details class="mobile-menu">
+          <summary aria-label="Menu de navigation">
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 5h18M3 12h18M3 19h18" /></svg
+            ><span class="sr-only">Menu de navigation</span>
+          </summary>
+          <nav aria-label="Rubriques sur mobile">
+            <a href="index.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z" /></svg
+              ><span>Tableau de bord</span></a
+            >
+            <a href="rendez-vous.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="16" rx="2" />
+                <path d="M7 3v4m10-4v4M3 10h18m-14 4h3m4 0h3m-10 4h3" /></svg
+              ><span>Rendez-vous</span></a
+            >
+            <a href="patients.html" aria-current="page"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 21v-3a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5v3M17 4a4 4 0 0 1 0 8m2 3a4 4 0 0 1 2 4v2"
+                />
+                <circle cx="9" cy="6" r="4" /></svg
+              ><span>Patients</span></a
+            >
+            <a href="medecins.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="6" r="4" />
+                <path
+                  d="m9 14 3 4 3-4M5 14a5 5 0 0 0-2 4v3h18v-3a5 5 0 0 0-2-4m-2 2v3"
+                /></svg
+              ><span>Médecins</span></a
+            >
+            <a href="specialites.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+                />
+                <circle cx="18" cy="10" r="3" /></svg
+              ><span>Spécialités</span></a
+            >
+            <a href="salles.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 21V3h14v18M4 21h17M8 21V6h7v15m-3-8v2" /></svg
+              ><span>Salles</span></a
+            >
+            <a href="rapports.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 3v18h18M7 17v-4m5 4V8m5 9V5" /></svg
+              ><span>Rapports</span></a
+            >
+            <a href="parametres.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="m9 3-1 3-3 1 1 3-2 2 2 2-1 3 3 1 1 3h6l1-3 3-1-1-3 2-2-2-2 1-3-3-1-1-3Z"
+                />
+                <circle cx="12" cy="12" r="3" /></svg
+              ><span>Paramètres</span></a
+            >
+          </nav>
+        </details>
+        <div class="global-search">
+          <svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="10.5" cy="10.5" r="7" />
+            <path d="m16 16 5 5" /></svg
+          ><label class="sr-only" for="recherche-globale"
+            >Rechercher dans la gestion</label
+          ><input
+            type="search"
+            id="recherche-globale"
+            name="recherche"
+            placeholder="Rechercher un patient, un rendez-vous…"
+            disabled
+          />
+        </div>
+        <div class="topbar-end">
+          <a
+            class="icon-btn notification-btn"
+            href="rendez-vous.html#en-attente"
+            aria-label="Consulter les rendez-vous en attente"
+            ><svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M18 8a6 6 0 0 0-12 0c0 8-3 8-3 10h18c0-2-3-2-3-10M10 21h4"
+              /></svg
+            ><span class="notification-dot"></span
+          ></a>
+          <details class="profile-menu">
+            <summary>
+              <span class="avatar">JM</span
+              ><span class="profile-copy"
+                ><strong>Équipe BOLINGO</strong
+                ><small>Administrateur</small></span
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div class="profile-popover">
+              <a href="connexion.html">Écran de connexion</a
+              ><a href="../../public/html/index.html">Ouvrir le site public</a>
+            </div>
+          </details>
+        </div>
+      </header>
+
+      <main id="contenu" tabindex="-1">
+        <div class="management-heading">
+          <div>
+            <p class="section-label">PATIENTS</p>
+            <h1>Gestion des patients</h1>
+            <p class="heading-description">
+              Consultez et gérez les informations des patients.
+            </p>
+          </div>
+          <p class="breadcrumb">
+            <a href="index.html">Accueil</a
+            ><span aria-hidden="true">›</span>Patients
+          </p>
+        </div>
+        <div id="page-content">
+          <div class="data-toolbar">
+            <button type="button" class="btn btn-outline" disabled>
+              Télécharger en PDF
+            </button>
+
+            <a class="btn btn-outline" href="#ajouter">Ajouter un patient</a>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span class="stat-icon tone-blue"
+                ><img
+                  class="ui-icon"
+                  src="../../public/assets/icons/users.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+              /></span>
+              <div>
+                <strong>3</strong>
+                <p>Patients inscrits</p>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon tone-pink"
+                ><img
+                  class="ui-icon"
+                  src="../../public/assets/icons/user.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+              /></span>
+              <div>
+                <strong>2</strong>
+                <p>Femmes</p>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon tone-blue"
+                ><img
+                  class="ui-icon"
+                  src="../../public/assets/icons/user.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+              /></span>
+              <div>
+                <strong>1</strong>
+                <p>Hommes</p>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon tone-purple"
+                ><img
+                  class="ui-icon"
+                  src="../../public/assets/icons/pin.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+              /></span>
+              <div>
+                <strong>1</strong>
+                <p>Provinces</p>
+              </div>
+            </article>
+          </div>
+          <section class="panel filters" aria-label="Filtres des patients">
+            <label class="field" for="filtre-patient-recherche"
+              >Rechercher un patient<input
+                id="filtre-patient-recherche"
+                name="recherche"
+                type="text"
+                value=""
+                disabled
+                placeholder="Nom, postnom, prénom ou identifiant" /></label
+            ><label class="field" for="filtre-patient-Sexe"
+              >Sexe<select id="filtre-patient-Sexe" name="Sexe" disabled>
+                <option value="" selected>Tous</option>
+                <option value="M">Masculin</option>
+                <option value="F">Féminin</option>
+              </select></label
+            ><label class="field" for="filtre-patient-Province"
+              >Province<select
+                id="filtre-patient-Province"
+                name="Province"
+                disabled
+              >
+                <option value="" selected>Toutes</option>
+                <option value="Kinshasa">Kinshasa</option>
+              </select></label
+            >
+          </section>
+          <div class="split-layout">
+            <section class="panel catalogue-table">
+              <div
+                class="table-wrap"
+                tabindex="0"
+                role="region"
+                aria-label="Liste des patients"
+              >
+                <table class="data-table">
+                  <caption class="sr-only">
+                    Liste des patients
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Patient</th>
+                      <th scope="col">Téléphone</th>
+                      <th scope="col">Sexe</th>
+                      <th scope="col">Ville</th>
+                      <th scope="col">Commune</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <small>P001</small
+                        ><a class="row-title" href="#patient-P001"
+                          ><span class="avatar" aria-hidden="true">EA</span
+                          ><span>Mbuyi Kalala Christelle</span></a
+                        >
+                      </td>
+                      <td>+243 000 000 001</td>
+                      <td>F</td>
+                      <td>Kinshasa</td>
+                      <td>Gombe</td>
+                      <td>
+                        <a
+                          class="btn btn-outline btn-sm"
+                          href="#patient-P001"
+                          aria-label="Consulter Mbuyi Kalala Christelle"
+                          >Fiche</a
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <small>P002</small
+                        ><a class="row-title" href="#patient-P002"
+                          ><span class="avatar" aria-hidden="true">EB</span
+                          ><span>Mbuyi Mukendi Junior</span></a
+                        >
+                      </td>
+                      <td>+243 000 000 002</td>
+                      <td>M</td>
+                      <td>Kinshasa</td>
+                      <td>Limete</td>
+                      <td>
+                        <a
+                          class="btn btn-outline btn-sm"
+                          href="#patient-P002"
+                          aria-label="Consulter Mbuyi Mukendi Junior"
+                          >Fiche</a
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <small>P003</small
+                        ><a class="row-title" href="#patient-P003"
+                          ><span class="avatar" aria-hidden="true">EC</span
+                          ><span>Mbuyi Nsenga Grace</span></a
+                        >
+                      </td>
+                      <td>+243 000 000 003</td>
+                      <td>F</td>
+                      <td>Kinshasa</td>
+                      <td>Lemba</td>
+                      <td>
+                        <a
+                          class="btn btn-outline btn-sm"
+                          href="#patient-P003"
+                          aria-label="Consulter Mbuyi Nsenga Grace"
+                          >Fiche</a
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-footer"><span>3 éléments</span></div>
+            </section>
+            <aside class="record-details" aria-label="Fiches des patients">
+              <section
+                class="panel record-detail default-detail"
+                id="patient-P001"
+                aria-labelledby="titre-P001"
+              >
+                <div class="detail-person">
+                  <span class="avatar" aria-hidden="true">EA</span>
+                  <div>
+                    <h2 id="titre-P001">Mbuyi Kalala Christelle</h2>
+                    <p>P001</p>
+                  </div>
+                </div>
+                <dl class="detail-list">
+                  <div>
+                    <dt>Identifiant</dt>
+                    <dd>P001</dd>
+                  </div>
+                  <div>
+                    <dt>Nom</dt>
+                    <dd>Mbuyi</dd>
+                  </div>
+                  <div>
+                    <dt>Postnom</dt>
+                    <dd>Kalala</dd>
+                  </div>
+                  <div>
+                    <dt>Prénom</dt>
+                    <dd>Christelle</dd>
+                  </div>
+                  <div>
+                    <dt>Sexe</dt>
+                    <dd>F</dd>
+                  </div>
+                  <div>
+                    <dt>Province</dt>
+                    <dd>Kinshasa</dd>
+                  </div>
+                  <div>
+                    <dt>Ville</dt>
+                    <dd>Kinshasa</dd>
+                  </div>
+                  <div>
+                    <dt>Commune</dt>
+                    <dd>Gombe</dd>
+                  </div>
+                  <div>
+                    <dt>Téléphone</dt>
+                    <dd>+243 000 000 001</dd>
+                  </div>
+                </dl>
+                <details class="native-disclosure">
+                  <summary>Modifier les informations</summary>
+                  <fieldset class="static-fields">
+                    <legend>Informations du patient</legend>
+                    <p class="form-help">
+                      Les champs marqués * sont obligatoires.
+                    </p>
+                    <div class="form-grid">
+                      <label class="field" for="modifier-P001-ID_Patient"
+                        >Identifiant patient<input
+                          id="modifier-P001-ID_Patient"
+                          name="ID_Patient"
+                          type="text"
+                          value="P001"
+                          readonly
+                          placeholder="Attribué lors de l’enregistrement" /></label
+                      ><label class="field" for="modifier-P001-Nom"
+                        >Nom *<input
+                          id="modifier-P001-Nom"
+                          name="Nom"
+                          type="text"
+                          value="Mbuyi"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P001-Postnom"
+                        >Postnom *<input
+                          id="modifier-P001-Postnom"
+                          name="Postnom"
+                          type="text"
+                          value="Kalala"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P001-Prenom"
+                        >Prénom *<input
+                          id="modifier-P001-Prenom"
+                          name="Prenom"
+                          type="text"
+                          value="Christelle"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P001-Sexe"
+                        >Sexe *<select
+                          id="modifier-P001-Sexe"
+                          name="Sexe"
+                          required
+                        >
+                          <option value="">Choisir</option>
+                          <option value="M">Masculin (M)</option>
+                          <option value="F" selected>Féminin (F)</option>
+                        </select></label
+                      ><label class="field" for="modifier-P001-Province"
+                        >Province *<input
+                          id="modifier-P001-Province"
+                          name="Province"
+                          type="text"
+                          value="Kinshasa"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P001-Ville"
+                        >Ville *<input
+                          id="modifier-P001-Ville"
+                          name="Ville"
+                          type="text"
+                          value="Kinshasa"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P001-Commune"
+                        >Commune *<input
+                          id="modifier-P001-Commune"
+                          name="Commune"
+                          type="text"
+                          value="Gombe"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P001-Telephone"
+                        >Téléphone *<input
+                          id="modifier-P001-Telephone"
+                          name="Telephone"
+                          type="tel"
+                          value="+243 000 000 001"
+                          required
+                          maxlength="30"
+                          autocomplete="off"
+                      /></label>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" disabled>
+                      Enregistrer
+                    </button>
+                  </fieldset>
+                </details>
+              </section>
+              <section
+                class="panel record-detail"
+                id="patient-P002"
+                aria-labelledby="titre-P002"
+              >
+                <div class="detail-person">
+                  <span class="avatar" aria-hidden="true">EB</span>
+                  <div>
+                    <h2 id="titre-P002">Mbuyi Mukendi Junior</h2>
+                    <p>P002</p>
+                  </div>
+                </div>
+                <dl class="detail-list">
+                  <div>
+                    <dt>Identifiant</dt>
+                    <dd>P002</dd>
+                  </div>
+                  <div>
+                    <dt>Nom</dt>
+                    <dd>Mbuyi</dd>
+                  </div>
+                  <div>
+                    <dt>Postnom</dt>
+                    <dd>Mukendi</dd>
+                  </div>
+                  <div>
+                    <dt>Prénom</dt>
+                    <dd>Junior</dd>
+                  </div>
+                  <div>
+                    <dt>Sexe</dt>
+                    <dd>M</dd>
+                  </div>
+                  <div>
+                    <dt>Province</dt>
+                    <dd>Kinshasa</dd>
+                  </div>
+                  <div>
+                    <dt>Ville</dt>
+                    <dd>Kinshasa</dd>
+                  </div>
+                  <div>
+                    <dt>Commune</dt>
+                    <dd>Limete</dd>
+                  </div>
+                  <div>
+                    <dt>Téléphone</dt>
+                    <dd>+243 000 000 002</dd>
+                  </div>
+                </dl>
+                <details class="native-disclosure">
+                  <summary>Modifier les informations</summary>
+                  <fieldset class="static-fields">
+                    <legend>Informations du patient</legend>
+                    <p class="form-help">
+                      Les champs marqués * sont obligatoires.
+                    </p>
+                    <div class="form-grid">
+                      <label class="field" for="modifier-P002-ID_Patient"
+                        >Identifiant patient<input
+                          id="modifier-P002-ID_Patient"
+                          name="ID_Patient"
+                          type="text"
+                          value="P002"
+                          readonly
+                          placeholder="Attribué lors de l’enregistrement" /></label
+                      ><label class="field" for="modifier-P002-Nom"
+                        >Nom *<input
+                          id="modifier-P002-Nom"
+                          name="Nom"
+                          type="text"
+                          value="Mbuyi"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P002-Postnom"
+                        >Postnom *<input
+                          id="modifier-P002-Postnom"
+                          name="Postnom"
+                          type="text"
+                          value="Mukendi"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P002-Prenom"
+                        >Prénom *<input
+                          id="modifier-P002-Prenom"
+                          name="Prenom"
+                          type="text"
+                          value="Junior"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P002-Sexe"
+                        >Sexe *<select
+                          id="modifier-P002-Sexe"
+                          name="Sexe"
+                          required
+                        >
+                          <option value="">Choisir</option>
+                          <option value="M" selected>Masculin (M)</option>
+                          <option value="F">Féminin (F)</option>
+                        </select></label
+                      ><label class="field" for="modifier-P002-Province"
+                        >Province *<input
+                          id="modifier-P002-Province"
+                          name="Province"
+                          type="text"
+                          value="Kinshasa"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P002-Ville"
+                        >Ville *<input
+                          id="modifier-P002-Ville"
+                          name="Ville"
+                          type="text"
+                          value="Kinshasa"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P002-Commune"
+                        >Commune *<input
+                          id="modifier-P002-Commune"
+                          name="Commune"
+                          type="text"
+                          value="Limete"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P002-Telephone"
+                        >Téléphone *<input
+                          id="modifier-P002-Telephone"
+                          name="Telephone"
+                          type="tel"
+                          value="+243 000 000 002"
+                          required
+                          maxlength="30"
+                          autocomplete="off"
+                      /></label>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" disabled>
+                      Enregistrer
+                    </button>
+                  </fieldset>
+                </details>
+              </section>
+              <section
+                class="panel record-detail"
+                id="patient-P003"
+                aria-labelledby="titre-P003"
+              >
+                <div class="detail-person">
+                  <span class="avatar" aria-hidden="true">EC</span>
+                  <div>
+                    <h2 id="titre-P003">Mbuyi Nsenga Grace</h2>
+                    <p>P003</p>
+                  </div>
+                </div>
+                <dl class="detail-list">
+                  <div>
+                    <dt>Identifiant</dt>
+                    <dd>P003</dd>
+                  </div>
+                  <div>
+                    <dt>Nom</dt>
+                    <dd>Mbuyi</dd>
+                  </div>
+                  <div>
+                    <dt>Postnom</dt>
+                    <dd>Nsenga</dd>
+                  </div>
+                  <div>
+                    <dt>Prénom</dt>
+                    <dd>Grace</dd>
+                  </div>
+                  <div>
+                    <dt>Sexe</dt>
+                    <dd>F</dd>
+                  </div>
+                  <div>
+                    <dt>Province</dt>
+                    <dd>Kinshasa</dd>
+                  </div>
+                  <div>
+                    <dt>Ville</dt>
+                    <dd>Kinshasa</dd>
+                  </div>
+                  <div>
+                    <dt>Commune</dt>
+                    <dd>Lemba</dd>
+                  </div>
+                  <div>
+                    <dt>Téléphone</dt>
+                    <dd>+243 000 000 003</dd>
+                  </div>
+                </dl>
+                <details class="native-disclosure">
+                  <summary>Modifier les informations</summary>
+                  <fieldset class="static-fields">
+                    <legend>Informations du patient</legend>
+                    <p class="form-help">
+                      Les champs marqués * sont obligatoires.
+                    </p>
+                    <div class="form-grid">
+                      <label class="field" for="modifier-P003-ID_Patient"
+                        >Identifiant patient<input
+                          id="modifier-P003-ID_Patient"
+                          name="ID_Patient"
+                          type="text"
+                          value="P003"
+                          readonly
+                          placeholder="Attribué lors de l’enregistrement" /></label
+                      ><label class="field" for="modifier-P003-Nom"
+                        >Nom *<input
+                          id="modifier-P003-Nom"
+                          name="Nom"
+                          type="text"
+                          value="Mbuyi"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P003-Postnom"
+                        >Postnom *<input
+                          id="modifier-P003-Postnom"
+                          name="Postnom"
+                          type="text"
+                          value="Nsenga"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P003-Prenom"
+                        >Prénom *<input
+                          id="modifier-P003-Prenom"
+                          name="Prenom"
+                          type="text"
+                          value="Grace"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P003-Sexe"
+                        >Sexe *<select
+                          id="modifier-P003-Sexe"
+                          name="Sexe"
+                          required
+                        >
+                          <option value="">Choisir</option>
+                          <option value="M">Masculin (M)</option>
+                          <option value="F" selected>Féminin (F)</option>
+                        </select></label
+                      ><label class="field" for="modifier-P003-Province"
+                        >Province *<input
+                          id="modifier-P003-Province"
+                          name="Province"
+                          type="text"
+                          value="Kinshasa"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P003-Ville"
+                        >Ville *<input
+                          id="modifier-P003-Ville"
+                          name="Ville"
+                          type="text"
+                          value="Kinshasa"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P003-Commune"
+                        >Commune *<input
+                          id="modifier-P003-Commune"
+                          name="Commune"
+                          type="text"
+                          value="Lemba"
+                          required
+                          maxlength="100" /></label
+                      ><label class="field" for="modifier-P003-Telephone"
+                        >Téléphone *<input
+                          id="modifier-P003-Telephone"
+                          name="Telephone"
+                          type="tel"
+                          value="+243 000 000 003"
+                          required
+                          maxlength="30"
+                          autocomplete="off"
+                      /></label>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" disabled>
+                      Enregistrer
+                    </button>
+                  </fieldset>
+                </details>
+              </section>
+            </aside>
+          </div>
+          <details class="native-disclosure" id="ajouter" open>
+            <summary>Ajouter un patient</summary>
+            <fieldset class="static-fields">
+              <legend>Informations du patient</legend>
+              <p class="form-help">Les champs marqués * sont obligatoires.</p>
+              <div class="form-grid">
+                <label class="field" for="nouveau-patient-ID_Patient"
+                  >Identifiant patient<input
+                    id="nouveau-patient-ID_Patient"
+                    name="ID_Patient"
+                    type="text"
+                    value=""
+                    readonly
+                    placeholder="Attribué lors de l’enregistrement" /></label
+                ><label class="field" for="nouveau-patient-Nom"
+                  >Nom *<input
+                    id="nouveau-patient-Nom"
+                    name="Nom"
+                    type="text"
+                    value=""
+                    required
+                    maxlength="100" /></label
+                ><label class="field" for="nouveau-patient-Postnom"
+                  >Postnom *<input
+                    id="nouveau-patient-Postnom"
+                    name="Postnom"
+                    type="text"
+                    value=""
+                    required
+                    maxlength="100" /></label
+                ><label class="field" for="nouveau-patient-Prenom"
+                  >Prénom *<input
+                    id="nouveau-patient-Prenom"
+                    name="Prenom"
+                    type="text"
+                    value=""
+                    required
+                    maxlength="100" /></label
+                ><label class="field" for="nouveau-patient-Sexe"
+                  >Sexe *<select id="nouveau-patient-Sexe" name="Sexe" required>
+                    <option value="" selected>Choisir</option>
+                    <option value="M">Masculin (M)</option>
+                    <option value="F">Féminin (F)</option>
+                  </select></label
+                ><label class="field" for="nouveau-patient-Province"
+                  >Province *<input
+                    id="nouveau-patient-Province"
+                    name="Province"
+                    type="text"
+                    value=""
+                    required
+                    maxlength="100" /></label
+                ><label class="field" for="nouveau-patient-Ville"
+                  >Ville *<input
+                    id="nouveau-patient-Ville"
+                    name="Ville"
+                    type="text"
+                    value=""
+                    required
+                    maxlength="100" /></label
+                ><label class="field" for="nouveau-patient-Commune"
+                  >Commune *<input
+                    id="nouveau-patient-Commune"
+                    name="Commune"
+                    type="text"
+                    value=""
+                    required
+                    maxlength="100" /></label
+                ><label class="field" for="nouveau-patient-Telephone"
+                  >Téléphone *<input
+                    id="nouveau-patient-Telephone"
+                    name="Telephone"
+                    type="tel"
+                    value=""
+                    required
+                    maxlength="30"
+                    autocomplete="off"
+                /></label>
+              </div>
+
+              <button type="button" class="btn btn-primary" disabled>
+                Enregistrer
+              </button>
+            </fieldset>
+          </details>
+        </div>
+      </main>
+      <footer class="management-footer">
+        <span>BOLINGO · Espace de gestion</span><span>Kinshasa, RDC</span>
+      </footer>
+    </div>
+  </body>
+</html>

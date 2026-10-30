@@ -10,13 +10,13 @@ __pycache__/
 
 # Archives de travail : les WebP nécessaires au site restent versionnés.
 # Les PNG d’origine et intermédiaires sont conservés sur le poste de travail.
-/assets/images/**/originaux/
-/assets/images/reference-*.png
-/assets/images/medecins/*-bolingo.png
-/assets/images/visuels/*-bolingo.png
+/public/assets/images/**/originaux/
+/public/assets/images/reference-*.png
+/public/assets/images/medecins/*-bolingo.png
+/public/assets/images/visuels/*-bolingo.png
 
 # Anciennes captures remplacées par des photos individuelles.
 # Attention : reference-services.webp et reference-contact-bolingo.webp sont encore utilisés.
-/assets/images/reference-accueil*.webp
-/assets/images/reference-apropos*.webp
-/assets/images/reference-medecins.webp
+/public/assets/images/reference-accueil*.webp
+/public/assets/images/reference-apropos*.webp
+/public/assets/images/reference-medecins.webp

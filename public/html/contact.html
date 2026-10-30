@@ -18,15 +18,15 @@
       Favicon SVG local : aucune bibliothèque externe n’est nécessaire pour l’icône de
       l’onglet.
     -->
-    <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+    <link rel="icon" href="../assets/icons/logo.svg" type="image/svg+xml">
     <!--
       Ordre de la cascade : global.css pose les bases ; components.css fournit les éléments
       communs ; les feuilles suivantes précisent cette page. Le paramètre ?v=... demande la
       version récente au navigateur.
     -->
-    <link rel="stylesheet" href="css/global.css?v=20261028-images">
-    <link rel="stylesheet" href="css/components.css?v=20261028-images">
-    <link rel="stylesheet" href="css/contact.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/contact.css?v=20261028-images">
   </head>
   <body>
     <!--
@@ -47,7 +47,7 @@
           aria-label précise la destination.
         -->
         <a class="brand" href="index.html" aria-label="Bolingo — Accueil">
-          <img src="assets/icons/logo.svg" width="46" height="46" alt="">
+          <img src="../assets/icons/logo.svg" width="46" height="46" alt="">
           <span class="brand-copy">
             <strong>Bolingo</strong>
             <small>Clinique Médicale</small>
@@ -70,7 +70,7 @@
           enregistrer de rendez-vous.
         -->
         <a class="button button-primary header-cta" href="rendez-vous/index.html">
-          <img src="assets/icons/calendar.svg" width="20" height="20" alt="">Prendre rendez-vous</a>
+          <img src="../assets/icons/calendar.svg" width="20" height="20" alt="">Prendre rendez-vous</a>
       </div>
     </header>
     <!--
@@ -95,8 +95,8 @@
             l’arrivée ; async évite un décodage bloquant.
           -->
           <div class="contact-hero-photo">
-            <img class="clinic-photo" src="assets/images/visuels/reception-bolingo.webp"
-              srcset="assets/images/visuels/reception-bolingo-640.webp 640w, assets/images/visuels/reception-bolingo-1024.webp 1024w, assets/images/visuels/reception-bolingo.webp 1672w"
+            <img class="clinic-photo" src="../assets/images/visuels/reception-bolingo.webp"
+              srcset="../assets/images/visuels/reception-bolingo-640.webp 640w, ../assets/images/visuels/reception-bolingo-1024.webp 1024w, ../assets/images/visuels/reception-bolingo.webp 1672w"
               sizes="(max-width: 760px) calc(100vw - 40px), 590px" width="1672" height="941"
               alt="La réception lumineuse de la clinique Bolingo" loading="eager" decoding="async">
           </div>
@@ -113,7 +113,7 @@
             contact.
           -->
           <article class="contact-card">
-            <span class="icon-bubble"><img src="assets/icons/phone.svg" width="32" height="32" alt=""></span>
+            <span class="icon-bubble"><img src="../assets/icons/phone.svg" width="32" height="32" alt=""></span>
             <div>
               <h2>Téléphone</h2>
               <!--
@@ -129,7 +129,7 @@
             contact.
           -->
           <article class="contact-card">
-            <span class="icon-bubble"><img src="assets/icons/mail.svg" width="32" height="32" alt=""></span>
+            <span class="icon-bubble"><img src="../assets/icons/mail.svg" width="32" height="32" alt=""></span>
             <div>
               <h2>E-mail</h2>
               <!--
@@ -145,7 +145,7 @@
             contact.
           -->
           <article class="contact-card">
-            <span class="icon-bubble"><img src="assets/icons/pin.svg" width="32" height="32" alt=""></span>
+            <span class="icon-bubble"><img src="../assets/icons/pin.svg" width="32" height="32" alt=""></span>
             <div>
               <h2>Adresse</h2>
               <!--
@@ -240,7 +240,7 @@
                 enregistrement côté serveur n’est produit.
               -->
               <button class="button button-primary contact-submit" type="submit">
-                <img src="assets/icons/send.svg" width="21" height="21" alt="">Préparer le message
+                <img src="../assets/icons/send.svg" width="21" height="21" alt="">Préparer le message
               </button>
               <!--
                 L’aide est reliée au formulaire par aria-describedby pour expliquer le rôle
@@ -262,7 +262,7 @@
             -->
             <div class="contact-map" role="img" aria-label="Plan de localisation de la clinique Bolingo dans la commune de la Gombe, à Kinshasa">
               <svg viewBox="744 532 440 242" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-                <image href="assets/images/reference-contact-bolingo.webp" width="1312" height="1199"/>
+                <image href="../assets/images/reference-contact-bolingo.webp" width="1312" height="1199"/>
               </svg>
             </div>
             <!--
@@ -270,13 +270,13 @@
               target="_blank" ouvre un onglet ; rel="noopener noreferrer" isole cet onglet et
               sr-only annonce le changement de contexte.
             -->
-            <a class="text-link map-link" href="https://www.openstreetmap.org/search?query=Gombe%2C%20Kinshasa%2C%20RDC" target="_blank" rel="noopener noreferrer">Voir le quartier sur la carte<span class="sr-only"> (nouvel onglet)</span><img src="assets/icons/arrow-right.svg" width="18" height="18" alt=""></a>
+            <a class="text-link map-link" href="https://www.openstreetmap.org/search?query=Gombe%2C%20Kinshasa%2C%20RDC" target="_blank" rel="noopener noreferrer">Voir le quartier sur la carte<span class="sr-only"> (nouvel onglet)</span><img src="../assets/icons/arrow-right.svg" width="18" height="18" alt=""></a>
             <!--
               Tableau d’horaires : caption donne le titre, th scope="row" associe chaque jour
               à son horaire. Les données sont saisies manuellement.
             -->
             <div class="contact-hours">
-              <img class="hours-icon" src="assets/icons/clock.svg" width="34" height="34" alt="">
+              <img class="hours-icon" src="../assets/icons/clock.svg" width="34" height="34" alt="">
               <table>
                 <caption>Nos horaires d’ouverture</caption>
                 <tbody>
@@ -303,7 +303,7 @@
         <div class="footer-grid">
           <div class="footer-intro">
             <a class="brand" href="index.html">
-              <img src="assets/icons/logo-white.svg" width="44" height="44" alt="">
+              <img src="../assets/icons/logo-white.svg" width="44" height="44" alt="">
               <span class="brand-copy">
                 <strong>Bolingo</strong>
                 <small>Clinique Médicale</small>
@@ -333,11 +333,11 @@
             -->
             <address class="footer-contact">
               <span>
-                <img src="assets/icons/phone.svg" width="16" height="16" alt="">+243 812 345 678</span>
+                <img src="../assets/icons/phone.svg" width="16" height="16" alt="">+243 812 345 678</span>
               <span>
-                <img src="assets/icons/mail.svg" width="16" height="16" alt="">info@bolingo.cd</span>
+                <img src="../assets/icons/mail.svg" width="16" height="16" alt="">info@bolingo.cd</span>
               <span>
-                <img src="assets/icons/pin.svg" width="16" height="16" alt="">123 Avenue de la Santé, Kinshasa, RDC</span>
+                <img src="../assets/icons/pin.svg" width="16" height="16" alt="">123 Avenue de la Santé, Kinshasa, RDC</span>
             </address>
           </div>
         </div>

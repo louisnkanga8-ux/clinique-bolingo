@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Rendez-vous | BOLINGO</title>
+    <link
+      rel="icon"
+      href="../../public/assets/icons/logo.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="../css/gestion.css" />
+    <link rel="stylesheet" href="../css/navigation.css" />
+    <link rel="stylesheet" href="../css/donnees.css" />
+  </head>
+  <body class="management">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!-- Navigation répétée dans chaque page : HTML seul ne fournit pas d’inclusion. -->
+    <aside class="sidebar" aria-label="Navigation de gestion">
+      <a class="management-brand" href="index.html"
+        ><img
+          src="../../public/assets/icons/logo-white.svg"
+          width="56"
+          height="56"
+          alt=""
+        /><span
+          ><strong>BOLINGO</strong><small>Clinique Médicale</small></span
+        ></a
+      >
+      <nav aria-label="Rubriques">
+        <a href="index.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z" /></svg
+          ><span>Tableau de bord</span></a
+        >
+        <a href="rendez-vous.html" aria-current="page"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M7 3v4m10-4v4M3 10h18m-14 4h3m4 0h3m-10 4h3" /></svg
+          ><span>Rendez-vous</span></a
+        >
+        <a href="patients.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 21v-3a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5v3M17 4a4 4 0 0 1 0 8m2 3a4 4 0 0 1 2 4v2"
+            />
+            <circle cx="9" cy="6" r="4" /></svg
+          ><span>Patients</span></a
+        >
+        <a href="medecins.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="6" r="4" />
+            <path
+              d="m9 14 3 4 3-4M5 14a5 5 0 0 0-2 4v3h18v-3a5 5 0 0 0-2-4m-2 2v3"
+            /></svg
+          ><span>Médecins</span></a
+        >
+        <a href="specialites.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+            />
+            <circle cx="18" cy="10" r="3" /></svg
+          ><span>Spécialités</span></a
+        >
+        <a href="salles.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 21V3h14v18M4 21h17M8 21V6h7v15m-3-8v2" /></svg
+          ><span>Salles</span></a
+        >
+        <a href="rapports.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 3v18h18M7 17v-4m5 4V8m5 9V5" /></svg
+          ><span>Rapports</span></a
+        >
+        <a href="parametres.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="m9 3-1 3-3 1 1 3-2 2 2 2-1 3 3 1 1 3h6l1-3 3-1-1-3 2-2-2-2 1-3-3-1-1-3Z"
+            />
+            <circle cx="12" cy="12" r="3" /></svg
+          ><span>Paramètres</span></a
+        >
+      </nav>
+      <div class="sidebar-help">
+        <svg
+          class="ui-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M8 8a4 4 0 0 1 8 0c0 3-4 3-4 6m0 3h.01" />
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+        <div>
+          <strong>Besoin d’aide ?</strong>
+          <p>Retrouvez les coordonnées de la clinique.</p>
+        </div>
+        <a href="../../public/html/contact.html">Contactez-nous</a>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <!-- Menu natif : summary s’ouvre et se ferme au clic ou au clavier. -->
+        <details class="mobile-menu">
+          <summary aria-label="Menu de navigation">
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 5h18M3 12h18M3 19h18" /></svg
+            ><span class="sr-only">Menu de navigation</span>
+          </summary>
+          <nav aria-label="Rubriques sur mobile">
+            <a href="index.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z" /></svg
+              ><span>Tableau de bord</span></a
+            >
+            <a href="rendez-vous.html" aria-current="page"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="16" rx="2" />
+                <path d="M7 3v4m10-4v4M3 10h18m-14 4h3m4 0h3m-10 4h3" /></svg
+              ><span>Rendez-vous</span></a
+            >
+            <a href="patients.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 21v-3a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5v3M17 4a4 4 0 0 1 0 8m2 3a4 4 0 0 1 2 4v2"
+                />
+                <circle cx="9" cy="6" r="4" /></svg
+              ><span>Patients</span></a
+            >
+            <a href="medecins.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="6" r="4" />
+                <path
+                  d="m9 14 3 4 3-4M5 14a5 5 0 0 0-2 4v3h18v-3a5 5 0 0 0-2-4m-2 2v3"
+                /></svg
+              ><span>Médecins</span></a
+            >
+            <a href="specialites.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+                />
+                <circle cx="18" cy="10" r="3" /></svg
+              ><span>Spécialités</span></a
+            >
+            <a href="salles.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 21V3h14v18M4 21h17M8 21V6h7v15m-3-8v2" /></svg
+              ><span>Salles</span></a
+            >
+            <a href="rapports.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 3v18h18M7 17v-4m5 4V8m5 9V5" /></svg
+              ><span>Rapports</span></a
+            >
+            <a href="parametres.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="m9 3-1 3-3 1 1 3-2 2 2 2-1 3 3 1 1 3h6l1-3 3-1-1-3 2-2-2-2 1-3-3-1-1-3Z"
+                />
+                <circle cx="12" cy="12" r="3" /></svg
+              ><span>Paramètres</span></a
+            >
+          </nav>
+        </details>
+        <div class="global-search">
+          <svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="10.5" cy="10.5" r="7" />
+            <path d="m16 16 5 5" /></svg
+          ><label class="sr-only" for="recherche-globale"
+            >Rechercher dans la gestion</label
+          ><input
+            type="search"
+            id="recherche-globale"
+            name="recherche"
+            placeholder="Rechercher un patient, un rendez-vous…"
+            disabled
+          />
+        </div>
+        <div class="topbar-end">
+          <a
+            class="icon-btn notification-btn"
+            href="rendez-vous.html#en-attente"
+            aria-label="Consulter les rendez-vous en attente"
+            ><svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M18 8a6 6 0 0 0-12 0c0 8-3 8-3 10h18c0-2-3-2-3-10M10 21h4"
+              /></svg
+            ><span class="notification-dot"></span
+          ></a>
+          <details class="profile-menu">
+            <summary>
+              <span class="avatar">JM</span
+              ><span class="profile-copy"
+                ><strong>Équipe BOLINGO</strong
+                ><small>Administrateur</small></span
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div class="profile-popover">
+              <a href="connexion.html">Écran de connexion</a
+              ><a href="../../public/html/index.html">Ouvrir le site public</a>
+            </div>
+          </details>
+        </div>
+      </header>
+
+      <main id="contenu" tabindex="-1">
+        <div class="management-heading">
+          <div>
+            <p class="section-label">RENDEZ-VOUS</p>
+            <h1>Gestion des rendez-vous</h1>
+            <p class="heading-description">
+              Consultez et gérez les rendez-vous de la clinique.
+            </p>
+          </div>
+          <p class="breadcrumb">
+            <a href="index.html">Accueil</a
+            ><span aria-hidden="true">›</span>Rendez-vous
+          </p>
+        </div>
+        <div id="page-content">
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span class="stat-icon tone-blue"
+                ><img
+                  class="ui-icon"
+                  src="../../public/assets/icons/calendar.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+              /></span>
+              <div>
+                <strong>3</strong>
+                <p>Rendez-vous le 29 octobre</p>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon tone-orange"
+                ><img
+                  class="ui-icon"
+                  src="../../public/assets/icons/clock.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+              /></span>
+              <div>
+                <strong>1</strong>
+                <p>En attente de confirmation</p>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon tone-blue"
+                ><img
+                  class="ui-icon"
+                  src="../../public/assets/icons/calendar.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+              /></span>
+              <div>
+                <strong>1</strong>
+                <p>Confirmés</p>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon tone-green"
+                ><img
+                  class="ui-icon"
+                  src="../../public/assets/icons/check.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+              /></span>
+              <div>
+                <strong>0</strong>
+                <p>Terminés</p>
+              </div>
+            </article>
+          </div>
+
+          <details class="native-disclosure" id="ajouter">
+            <summary>Ajouter un rendez-vous</summary>
+            <fieldset class="static-fields">
+              <legend>Informations du rendez-vous</legend>
+              <div class="form-grid">
+                <label class="field" for="nouveau-rdv-ID_RDV"
+                  >Identifiant du rendez-vous<input
+                    id="nouveau-rdv-ID_RDV"
+                    name="ID_RDV"
+                    type="text"
+                    value=""
+                    readonly
+                    placeholder="Attribué lors de l’enregistrement" /></label
+                ><label class="field" for="nouveau-rdv-Patient"
+                  >Patient *<select
+                    id="nouveau-rdv-Patient"
+                    name="Patient"
+                    required
+                  >
+                    <option value="" selected>Choisir</option>
+                    <option value="P001">P001 — Mbuyi Kalala Christelle</option>
+                    <option value="P002">P002 — Mbuyi Mukendi Junior</option>
+                    <option value="P003">P003 — Mbuyi Nsenga Grace</option>
+                  </select></label
+                ><label class="field" for="nouveau-rdv-Medecin"
+                  >Médecin *<select
+                    id="nouveau-rdv-Medecin"
+                    name="Medecin"
+                    required
+                  >
+                    <option value="" selected>Choisir</option>
+                    <option value="M001">
+                      M001 — Mbuyi Kalala Nadia — Cardiologie
+                    </option>
+                    <option value="M002">
+                      M002 — Mbuyi Mukendi Alain — Pediatrie
+                    </option>
+                    <option value="M003">
+                      M003 — Mbuyi Nsenga Jean — Radiologie
+                    </option>
+                  </select></label
+                ><label class="field" for="nouveau-rdv-Salle"
+                  >Salle *<select id="nouveau-rdv-Salle" name="Salle" required>
+                    <option value="" selected>Choisir</option>
+                    <option value="S001">S001 — Salle 1</option>
+                    <option value="S002">S002 — Salle 2</option>
+                  </select></label
+                ><label class="field" for="nouveau-rdv-Date"
+                  >Date *<input
+                    id="nouveau-rdv-Date"
+                    name="Date"
+                    type="date"
+                    value=""
+                    required /></label
+                ><label class="field" for="nouveau-rdv-Statut"
+                  >Statut *<select
+                    id="nouveau-rdv-Statut"
+                    name="Statut"
+                    required
+                  >
+                    <option value="Confirmé">Confirmé</option>
+                    <option value="En attente" selected>En attente</option>
+                    <option value="Terminé">Terminé</option>
+                    <option value="Annulé">Annulé</option>
+                    <option value="Reporté">Reporté</option>
+                  </select></label
+                ><label class="field" for="nouveau-rdv-Heure_Debut"
+                  >Heure de début *<input
+                    id="nouveau-rdv-Heure_Debut"
+                    name="Heure_Debut"
+                    type="time"
+                    value=""
+                    required /></label
+                ><label class="field" for="nouveau-rdv-Tranche_Horaire"
+                  >Tranche horaire *<select
+                    id="nouveau-rdv-Tranche_Horaire"
+                    name="Tranche_Horaire"
+                    required
+                  >
+                    <option value="" selected>Choisir</option>
+                    <option value="1/2 Heure">1/2 Heure (30 min)</option>
+                    <option value="3/4 Heure">3/4 Heure (45 min)</option>
+                    <option value="1 Heure">1 Heure (60 min)</option>
+                    <option value="1,5 Heure">1,5 Heure (90 min)</option>
+                    <option value="2 heures">2 heures (120 min)</option>
+                  </select></label
+                ><label class="field" for="nouveau-rdv-Heure_Fin"
+                  >Heure de fin<input
+                    id="nouveau-rdv-Heure_Fin"
+                    name="Heure_Fin"
+                    type="time"
+                    value=""
+                    readonly /></label
+                ><label class="field" for="nouveau-rdv-Duree_Minutes"
+                  >Durée en minutes<input
+                    id="nouveau-rdv-Duree_Minutes"
+                    name="Duree_Minutes"
+                    type="number"
+                    value=""
+                    readonly
+                /></label>
+              </div>
+
+              <button type="button" class="btn btn-primary" disabled>
+                Enregistrer le rendez-vous
+              </button>
+            </fieldset>
+          </details>
+          <section class="panel filters" aria-label="Filtres des rendez-vous">
+            <label class="field" for="filtre-rdv-Date"
+              >Date affichée<input
+                id="filtre-rdv-Date"
+                name="Date"
+                type="date"
+                value="2026-10-29"
+                disabled /></label
+            ><label class="field" for="filtre-rdv-Statut"
+              >Statut<select id="filtre-rdv-Statut" name="Statut" disabled>
+                <option value="" selected>Tous</option>
+                <option value="Confirmé">Confirmé</option>
+                <option value="En attente">En attente</option>
+                <option value="Terminé">Terminé</option>
+                <option value="Annulé">Annulé</option>
+                <option value="Reporté">Reporté</option>
+              </select></label
+            ><label class="field" for="filtre-rdv-Patient"
+              >Rechercher un patient<input
+                id="filtre-rdv-Patient"
+                name="Patient"
+                type="text"
+                value=""
+                disabled
+                placeholder="Identifiant, nom ou téléphone"
+            /></label>
+          </section>
+          <section class="panel" id="liste-rendez-vous">
+            <div class="panel-heading">
+              <h2>Rendez-vous du jour</h2>
+              <span>29 octobre 2026</span>
+            </div>
+            <div
+              class="table-wrap"
+              tabindex="0"
+              role="region"
+              aria-label="Rendez-vous du jour"
+            >
+              <table class="data-table">
+                <caption class="sr-only">
+                  Rendez-vous du jour
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Horaire</th>
+                    <th scope="col">Patient</th>
+                    <th scope="col">Spécialité</th>
+                    <th scope="col">Médecin</th>
+                    <th scope="col">Salle</th>
+                    <th scope="col">Statut</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong>09:00</strong>–09:30<small class="cell-note"
+                        >R001 · 30 min</small
+                      >
+                    </td>
+                    <td>
+                      <a href="patients.html#patient-P001"
+                        >Mbuyi Kalala Christelle</a
+                      ><small class="cell-note">P001</small>
+                    </td>
+                    <td>Cardiologie</td>
+                    <td>
+                      Dr Mbuyi Kalala Nadia<small class="cell-note">M001</small>
+                    </td>
+                    <td>Salle 1<small class="cell-note">S001</small></td>
+                    <td><span class="badge badge-blue">Confirmé</span></td>
+                    <td>
+                      <a
+                        class="btn btn-outline btn-sm"
+                        href="rendez-vous.html#rdv-R001"
+                        aria-label="Consulter R001"
+                        >Fiche</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>10:00</strong>–11:00<small class="cell-note"
+                        >R002 · 60 min</small
+                      >
+                    </td>
+                    <td>
+                      <a href="patients.html#patient-P002"
+                        >Mbuyi Mukendi Junior</a
+                      ><small class="cell-note">P002</small>
+                    </td>
+                    <td>Pediatrie</td>
+                    <td>
+                      Dr Mbuyi Mukendi Alain<small class="cell-note"
+                        >M002</small
+                      >
+                    </td>
+                    <td>Salle 2<small class="cell-note">S002</small></td>
+                    <td><span class="badge badge-orange">En attente</span></td>
+                    <td>
+                      <a
+                        class="btn btn-outline btn-sm"
+                        href="rendez-vous.html#rdv-R002"
+                        aria-label="Consulter R002"
+                        >Fiche</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>11:00</strong>–11:45<small class="cell-note"
+                        >R003 · 45 min</small
+                      >
+                    </td>
+                    <td>
+                      <a href="patients.html#patient-P003">Mbuyi Nsenga Grace</a
+                      ><small class="cell-note">P003</small>
+                    </td>
+                    <td>Radiologie</td>
+                    <td>
+                      Dr Mbuyi Nsenga Jean<small class="cell-note">M003</small>
+                    </td>
+                    <td>Salle 1<small class="cell-note">S001</small></td>
+                    <td><span class="badge badge-red">Annulé</span></td>
+                    <td>
+                      <a
+                        class="btn btn-outline btn-sm"
+                        href="rendez-vous.html#rdv-R003"
+                        aria-label="Consulter R003"
+                        >Fiche</a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section class="panel" id="en-attente">
+            <h2 class="section-title">En attente de confirmation</h2>
+            <div class="pending-links">
+              <a href="#rdv-R002" class="btn btn-outline">R002 · 10:00</a>
+            </div>
+          </section>
+          <div class="record-details">
+            <section
+              class="panel record-detail default-detail"
+              id="rdv-R001"
+              aria-labelledby="titre-R001"
+            >
+              <div class="panel-heading">
+                <h2 id="titre-R001">Rendez-vous R001</h2>
+                <a href="#liste-rendez-vous">Retour à la liste</a>
+              </div>
+              <div class="detail-person">
+                <span class="avatar" aria-hidden="true">EA</span>
+                <div>
+                  <h3>Mbuyi Kalala Christelle</h3>
+                  <p>2026-10-29 · 09:00–09:30</p>
+                </div>
+                <span class="badge badge-blue">Confirmé</span>
+              </div>
+              <dl class="detail-list">
+                <div>
+                  <dt>Référence</dt>
+                  <dd>R001</dd>
+                </div>
+                <div>
+                  <dt>Patient</dt>
+                  <dd>P001</dd>
+                </div>
+                <div>
+                  <dt>Médecin</dt>
+                  <dd>M001</dd>
+                </div>
+                <div>
+                  <dt>Salle</dt>
+                  <dd>S001</dd>
+                </div>
+                <div>
+                  <dt>Date</dt>
+                  <dd>2026-10-29</dd>
+                </div>
+                <div>
+                  <dt>Statut</dt>
+                  <dd>Confirmé</dd>
+                </div>
+                <div>
+                  <dt>Heure de début</dt>
+                  <dd>09:00</dd>
+                </div>
+                <div>
+                  <dt>Tranche horaire</dt>
+                  <dd>1/2 Heure</dd>
+                </div>
+                <div>
+                  <dt>Heure de fin</dt>
+                  <dd>09:30</dd>
+                </div>
+                <div>
+                  <dt>Durée (minutes)</dt>
+                  <dd>30</dd>
+                </div>
+              </dl>
+              <details class="native-disclosure">
+                <summary>Reporter le rendez-vous</summary>
+                <fieldset class="static-fields">
+                  <legend>Report du rendez-vous</legend>
+                  <div class="form-grid">
+                    <label class="field" for="R001-ID_RDV"
+                      >Identifiant<input
+                        id="R001-ID_RDV"
+                        name="ID_RDV"
+                        type="text"
+                        value="R001"
+                        readonly /></label
+                    ><label class="field" for="R001-Date"
+                      >Nouvelle date *<input
+                        id="R001-Date"
+                        name="Date"
+                        type="date"
+                        value="2026-10-29"
+                        required /></label
+                    ><label class="field" for="R001-Heure_Debut"
+                      >Nouvelle heure *<input
+                        id="R001-Heure_Debut"
+                        name="Heure_Debut"
+                        type="time"
+                        value="09:00"
+                        required /></label
+                    ><label class="field" for="R001-Tranche_Horaire"
+                      >Durée *<select
+                        id="R001-Tranche_Horaire"
+                        name="Tranche_Horaire"
+                        required
+                      >
+                        <option value="1/2 Heure" selected>
+                          1/2 Heure (30 min)
+                        </option>
+                        <option value="3/4 Heure">3/4 Heure (45 min)</option>
+                        <option value="1 Heure">1 Heure (60 min)</option>
+                        <option value="1,5 Heure">1,5 Heure (90 min)</option>
+                        <option value="2 heures">2 heures (120 min)</option>
+                      </select></label
+                    >
+                  </div>
+
+                  <button type="button" class="btn btn-primary" disabled>
+                    Enregistrer le report
+                  </button>
+                </fieldset>
+              </details>
+              <details class="native-disclosure">
+                <summary>Annuler le rendez-vous</summary>
+                <p>
+                  Le rendez-vous restera dans l’historique avec le statut
+                  Annulé.
+                </p>
+
+                <button type="button" class="btn btn-primary" disabled>
+                  Annuler le rendez-vous
+                </button>
+              </details>
+            </section>
+            <section
+              class="panel record-detail"
+              id="rdv-R002"
+              aria-labelledby="titre-R002"
+            >
+              <div class="panel-heading">
+                <h2 id="titre-R002">Rendez-vous R002</h2>
+                <a href="#liste-rendez-vous">Retour à la liste</a>
+              </div>
+              <div class="detail-person">
+                <span class="avatar" aria-hidden="true">EB</span>
+                <div>
+                  <h3>Mbuyi Mukendi Junior</h3>
+                  <p>2026-10-29 · 10:00–11:00</p>
+                </div>
+                <span class="badge badge-orange">En attente</span>
+              </div>
+              <dl class="detail-list">
+                <div>
+                  <dt>Référence</dt>
+                  <dd>R002</dd>
+                </div>
+                <div>
+                  <dt>Patient</dt>
+                  <dd>P002</dd>
+                </div>
+                <div>
+                  <dt>Médecin</dt>
+                  <dd>M002</dd>
+                </div>
+                <div>
+                  <dt>Salle</dt>
+                  <dd>S002</dd>
+                </div>
+                <div>
+                  <dt>Date</dt>
+                  <dd>2026-10-29</dd>
+                </div>
+                <div>
+                  <dt>Statut</dt>
+                  <dd>En attente</dd>
+                </div>
+                <div>
+                  <dt>Heure de début</dt>
+                  <dd>10:00</dd>
+                </div>
+                <div>
+                  <dt>Tranche horaire</dt>
+                  <dd>1 Heure</dd>
+                </div>
+                <div>
+                  <dt>Heure de fin</dt>
+                  <dd>11:00</dd>
+                </div>
+                <div>
+                  <dt>Durée (minutes)</dt>
+                  <dd>60</dd>
+                </div>
+              </dl>
+              <details class="native-disclosure">
+                <summary>Reporter le rendez-vous</summary>
+                <fieldset class="static-fields">
+                  <legend>Report du rendez-vous</legend>
+                  <div class="form-grid">
+                    <label class="field" for="R002-ID_RDV"
+                      >Identifiant<input
+                        id="R002-ID_RDV"
+                        name="ID_RDV"
+                        type="text"
+                        value="R002"
+                        readonly /></label
+                    ><label class="field" for="R002-Date"
+                      >Nouvelle date *<input
+                        id="R002-Date"
+                        name="Date"
+                        type="date"
+                        value="2026-10-29"
+                        required /></label
+                    ><label class="field" for="R002-Heure_Debut"
+                      >Nouvelle heure *<input
+                        id="R002-Heure_Debut"
+                        name="Heure_Debut"
+                        type="time"
+                        value="10:00"
+                        required /></label
+                    ><label class="field" for="R002-Tranche_Horaire"
+                      >Durée *<select
+                        id="R002-Tranche_Horaire"
+                        name="Tranche_Horaire"
+                        required
+                      >
+                        <option value="1/2 Heure">1/2 Heure (30 min)</option>
+                        <option value="3/4 Heure">3/4 Heure (45 min)</option>
+                        <option value="1 Heure" selected>
+                          1 Heure (60 min)
+                        </option>
+                        <option value="1,5 Heure">1,5 Heure (90 min)</option>
+                        <option value="2 heures">2 heures (120 min)</option>
+                      </select></label
+                    >
+                  </div>
+
+                  <button type="button" class="btn btn-primary" disabled>
+                    Enregistrer le report
+                  </button>
+                </fieldset>
+              </details>
+              <details class="native-disclosure">
+                <summary>Confirmer le rendez-vous</summary>
+                <p>
+                  La confirmation devra contrôler les disponibilités du médecin
+                  et de la salle.
+                </p>
+
+                <button type="button" class="btn btn-primary" disabled>
+                  Confirmer
+                </button>
+              </details>
+              <details class="native-disclosure">
+                <summary>Annuler le rendez-vous</summary>
+                <p>
+                  Le rendez-vous restera dans l’historique avec le statut
+                  Annulé.
+                </p>
+
+                <button type="button" class="btn btn-primary" disabled>
+                  Annuler le rendez-vous
+                </button>
+              </details>
+            </section>
+            <section
+              class="panel record-detail"
+              id="rdv-R003"
+              aria-labelledby="titre-R003"
+            >
+              <div class="panel-heading">
+                <h2 id="titre-R003">Rendez-vous R003</h2>
+                <a href="#liste-rendez-vous">Retour à la liste</a>
+              </div>
+              <div class="detail-person">
+                <span class="avatar" aria-hidden="true">EC</span>
+                <div>
+                  <h3>Mbuyi Nsenga Grace</h3>
+                  <p>2026-10-29 · 11:00–11:45</p>
+                </div>
+                <span class="badge badge-red">Annulé</span>
+              </div>
+              <dl class="detail-list">
+                <div>
+                  <dt>Référence</dt>
+                  <dd>R003</dd>
+                </div>
+                <div>
+                  <dt>Patient</dt>
+                  <dd>P003</dd>
+                </div>
+                <div>
+                  <dt>Médecin</dt>
+                  <dd>M003</dd>
+                </div>
+                <div>
+                  <dt>Salle</dt>
+                  <dd>S001</dd>
+                </div>
+                <div>
+                  <dt>Date</dt>
+                  <dd>2026-10-29</dd>
+                </div>
+                <div>
+                  <dt>Statut</dt>
+                  <dd>Annulé</dd>
+                </div>
+                <div>
+                  <dt>Heure de début</dt>
+                  <dd>11:00</dd>
+                </div>
+                <div>
+                  <dt>Tranche horaire</dt>
+                  <dd>3/4 Heure</dd>
+                </div>
+                <div>
+                  <dt>Heure de fin</dt>
+                  <dd>11:45</dd>
+                </div>
+                <div>
+                  <dt>Durée (minutes)</dt>
+                  <dd>45</dd>
+                </div>
+              </dl>
+            </section>
+          </div>
+        </div>
+      </main>
+      <footer class="management-footer">
+        <span>BOLINGO · Espace de gestion</span><span>Kinshasa, RDC</span>
+      </footer>
+    </div>
+  </body>
+</html>

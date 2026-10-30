@@ -1,0 +1,37 @@
+/* Statistiques entièrement fictives pour la maquette. Aucun calcul à l’ouverture. */
+.source-status-0 {
+  background: #0875ff;
+}
+.source-status-1 {
+  background: #ff930f;
+}
+.source-status-2 {
+  background: #00a984;
+}
+.source-status-3 {
+  background: #f33d59;
+}
+.source-status-4 {
+  background: #8662d9;
+}
+.source-status-donut {
+  background: conic-gradient(
+    #0875ff 0% 33.3333%,
+    #ff930f 33.3333% 66.6667%,
+    #00a984 66.6667% 66.6667%,
+    #f33d59 66.6667% 100%,
+    #8662d9 100% 100%
+  );
+}
+.report-bar-track > .source-specialty-0 {
+  width: 33.333%;
+}
+.report-bar-track > .source-specialty-1 {
+  width: 33.333%;
+}
+.report-bar-track > .source-specialty-2 {
+  width: 33.333%;
+}
+.month-bar-space > .source-month-0 {
+  height: 100%;
+}

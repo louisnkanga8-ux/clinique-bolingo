@@ -18,15 +18,15 @@
       Favicon SVG local : aucune bibliothèque externe n’est nécessaire pour l’icône de
       l’onglet.
     -->
-    <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+    <link rel="icon" href="../assets/icons/logo.svg" type="image/svg+xml">
     <!--
       Ordre de la cascade : global.css pose les bases ; components.css fournit les éléments
       communs ; les feuilles suivantes précisent cette page. Le paramètre ?v=... demande la
       version récente au navigateur.
     -->
-    <link rel="stylesheet" href="css/global.css?v=20261028-images">
-    <link rel="stylesheet" href="css/components.css?v=20261028-images">
-    <link rel="stylesheet" href="css/pages.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="../css/pages.css?v=20261028-images">
   </head>
   <body>
     <!--
@@ -47,7 +47,7 @@
           aria-label précise la destination.
         -->
         <a class="brand" href="index.html" aria-label="Bolingo — Accueil">
-          <img src="assets/icons/logo.svg" width="46" height="46" alt="">
+          <img src="../assets/icons/logo.svg" width="46" height="46" alt="">
           <span class="brand-copy">
             <strong>Bolingo</strong>
             <small>Clinique Médicale</small>
@@ -70,7 +70,7 @@
           enregistrer de rendez-vous.
         -->
         <a class="button button-primary header-cta" href="rendez-vous/index.html">
-          <img src="assets/icons/calendar.svg" width="20" height="20" alt="">Prendre rendez-vous</a>
+          <img src="../assets/icons/calendar.svg" width="20" height="20" alt="">Prendre rendez-vous</a>
       </div>
     </header>
     <!--
@@ -95,7 +95,7 @@
             -->
             <div class="hero-actions">
               <a class="button button-primary" href="rendez-vous/index.html">
-                <img src="assets/icons/calendar.svg" width="20" height="20" alt="">Prendre rendez-vous<img src="assets/icons/arrow-right.svg" width="18" height="18" alt="">
+                <img src="../assets/icons/calendar.svg" width="20" height="20" alt="">Prendre rendez-vous<img src="../assets/icons/arrow-right.svg" width="18" height="18" alt="">
               </a>
               <a class="button button-secondary" href="apropos.html">En savoir plus</a>
             </div>
@@ -106,21 +106,21 @@
             <div class="hero-benefits">
               <div class="hero-benefit">
                 <span class="icon-bubble">
-                  <img src="assets/icons/shield.svg" width="23" height="23" alt="">
+                  <img src="../assets/icons/shield.svg" width="23" height="23" alt="">
                 </span>
                 <div>
                   <strong>Soins de qualité</strong>Des professionnels expérimentés</div>
               </div>
               <div class="hero-benefit">
                 <span class="icon-bubble">
-                  <img src="assets/icons/users.svg" width="23" height="23" alt="">
+                  <img src="../assets/icons/users.svg" width="23" height="23" alt="">
                 </span>
                 <div>
                   <strong>Accueil chaleureux</strong>Une équipe à votre écoute</div>
               </div>
               <div class="hero-benefit">
                 <span class="icon-bubble">
-                  <img src="assets/icons/clock.svg" width="23" height="23" alt="">
+                  <img src="../assets/icons/clock.svg" width="23" height="23" alt="">
                 </span>
                 <div>
                   <strong>Un parcours simple</strong>Votre rendez-vous en cinq étapes</div>
@@ -135,8 +135,8 @@
             decoding="async" évite un décodage bloquant.
           -->
           <div class="hero-photo">
-            <img class="clinic-photo" src="assets/images/visuels/consultation.webp"
-              srcset="assets/images/visuels/consultation-640.webp 640w, assets/images/visuels/consultation-1024.webp 1024w, assets/images/visuels/consultation.webp 1536w"
+            <img class="clinic-photo" src="../assets/images/visuels/consultation.webp"
+              srcset="../assets/images/visuels/consultation-640.webp 640w, ../assets/images/visuels/consultation-1024.webp 1024w, ../assets/images/visuels/consultation.webp 1536w"
               sizes="(max-width: 760px) calc(100vw - 40px), 590px" width="1536" height="1024"
               alt="Un médecin échange avec une patiente dans un cabinet lumineux" loading="eager" decoding="async" fetchpriority="high">
           </div>
@@ -154,7 +154,7 @@
               <h2 id="equipe-titre">Des médecins à votre service</h2>
               <p>Une équipe de professionnels qualifiés et engagés pour votre santé.</p>
             </div>
-            <a class="button button-secondary" href="medecins.html">Voir tous les médecins<img src="assets/icons/arrow-right.svg" width="19" height="19" alt="">
+            <a class="button button-secondary" href="medecins.html">Voir tous les médecins<img src="../assets/icons/arrow-right.svg" width="19" height="19" alt="">
             </a>
           </div>
           <!--
@@ -170,15 +170,15 @@
             -->
             <article class="home-doctor">
               <img class="portrait portrait-jean"
-                src="assets/images/medecins/portrait-01-bolingo.webp"
-                srcset="assets/images/medecins/portrait-01-bolingo-400.webp 400w, assets/images/medecins/portrait-01-bolingo-800.webp 800w, assets/images/medecins/portrait-01-bolingo.webp 1254w"
+                src="../assets/images/medecins/portrait-01-bolingo.webp"
+                srcset="../assets/images/medecins/portrait-01-bolingo-400.webp 400w, ../assets/images/medecins/portrait-01-bolingo-800.webp 800w, ../assets/images/medecins/portrait-01-bolingo.webp 1254w"
                 sizes="(max-width: 760px) 50vw, 280px" width="1254" height="1254"
                 alt="Portrait du Dr Jean Mputu" loading="lazy" decoding="async">
               <div class="home-doctor-content">
                 <h3>Dr Jean Mputu</h3>
                 <p>Médecine générale</p>
                 <a class="text-link" href="medecins.html#jean-mputu">Voir le profil<span class="sr-only"> du Dr Jean Mputu</span>
-                  <img src="assets/icons/arrow-right.svg" width="18" height="18" alt="">
+                  <img src="../assets/icons/arrow-right.svg" width="18" height="18" alt="">
                 </a>
               </div>
             </article>
@@ -188,15 +188,15 @@
             -->
             <article class="home-doctor">
               <img class="portrait portrait-nadia"
-                src="assets/images/medecins/portrait-02-bolingo.webp"
-                srcset="assets/images/medecins/portrait-02-bolingo-400.webp 400w, assets/images/medecins/portrait-02-bolingo-800.webp 800w, assets/images/medecins/portrait-02-bolingo.webp 1254w"
+                src="../assets/images/medecins/portrait-02-bolingo.webp"
+                srcset="../assets/images/medecins/portrait-02-bolingo-400.webp 400w, ../assets/images/medecins/portrait-02-bolingo-800.webp 800w, ../assets/images/medecins/portrait-02-bolingo.webp 1254w"
                 sizes="(max-width: 760px) 50vw, 280px" width="1254" height="1254"
                 alt="Portrait du Dr Nadia Kiala" loading="lazy" decoding="async">
               <div class="home-doctor-content">
                 <h3>Dr Nadia Kiala</h3>
                 <p>Cardiologie</p>
                 <a class="text-link" href="medecins.html#nadia-kiala">Voir le profil<span class="sr-only"> du Dr Nadia Kiala</span>
-                  <img src="assets/icons/arrow-right.svg" width="18" height="18" alt="">
+                  <img src="../assets/icons/arrow-right.svg" width="18" height="18" alt="">
                 </a>
               </div>
             </article>
@@ -206,15 +206,15 @@
             -->
             <article class="home-doctor">
               <img class="portrait portrait-alain"
-                src="assets/images/medecins/portrait-05-bolingo.webp"
-                srcset="assets/images/medecins/portrait-05-bolingo-400.webp 400w, assets/images/medecins/portrait-05-bolingo-800.webp 800w, assets/images/medecins/portrait-05-bolingo.webp 1254w"
+                src="../assets/images/medecins/portrait-05-bolingo.webp"
+                srcset="../assets/images/medecins/portrait-05-bolingo-400.webp 400w, ../assets/images/medecins/portrait-05-bolingo-800.webp 800w, ../assets/images/medecins/portrait-05-bolingo.webp 1254w"
                 sizes="(max-width: 760px) 50vw, 280px" width="1254" height="1254"
                 alt="Portrait du Dr Alain Tshiama" loading="lazy" decoding="async">
               <div class="home-doctor-content">
                 <h3>Dr Alain Tshiama</h3>
                 <p>Orthopédie</p>
                 <a class="text-link" href="medecins.html#alain-tshiama">Voir le profil<span class="sr-only"> du Dr Alain Tshiama</span>
-                  <img src="assets/icons/arrow-right.svg" width="18" height="18" alt="">
+                  <img src="../assets/icons/arrow-right.svg" width="18" height="18" alt="">
                 </a>
               </div>
             </article>
@@ -224,15 +224,15 @@
             -->
             <article class="home-doctor">
               <img class="portrait portrait-emily"
-                src="assets/images/medecins/portrait-04-bolingo.webp"
-                srcset="assets/images/medecins/portrait-04-bolingo-400.webp 400w, assets/images/medecins/portrait-04-bolingo-800.webp 800w, assets/images/medecins/portrait-04-bolingo.webp 1254w"
+                src="../assets/images/medecins/portrait-04-bolingo.webp"
+                srcset="../assets/images/medecins/portrait-04-bolingo-400.webp 400w, ../assets/images/medecins/portrait-04-bolingo-800.webp 800w, ../assets/images/medecins/portrait-04-bolingo.webp 1254w"
                 sizes="(max-width: 760px) 50vw, 280px" width="1254" height="1254"
                 alt="Portrait du Dr Emily Roberts" loading="lazy" decoding="async">
               <div class="home-doctor-content">
                 <h3>Dr Emily Roberts</h3>
                 <p>Pédiatrie</p>
                 <a class="text-link" href="medecins.html#emily-roberts">Voir le profil<span class="sr-only"> du Dr Emily Roberts</span>
-                  <img src="assets/icons/arrow-right.svg" width="18" height="18" alt="">
+                  <img src="../assets/icons/arrow-right.svg" width="18" height="18" alt="">
                 </a>
               </div>
             </article>
@@ -261,13 +261,13 @@
             -->
             <a class="compact-service" href="services.html#medecine-generale">
               <span class="icon-bubble">
-                <img src="assets/icons/stethoscope.svg" width="30" height="30" alt="">
+                <img src="../assets/icons/stethoscope.svg" width="30" height="30" alt="">
               </span>
               <div>
                 <h3>Médecine générale</h3>
                 <p>Bilan de santé et prise en charge des problèmes courants.</p>
               </div>
-              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+              <img class="arrow" src="../assets/icons/arrow-right.svg" width="23" height="23" alt="">
             </a>
             <!--
               Carte-lien de service : son fragment #... correspond à un id du catalogue pour
@@ -275,13 +275,13 @@
             -->
             <a class="compact-service" href="services.html#cardiologie">
               <span class="icon-bubble">
-                <img src="assets/icons/heart.svg" width="30" height="30" alt="">
+                <img src="../assets/icons/heart.svg" width="30" height="30" alt="">
               </span>
               <div>
                 <h3>Cardiologie</h3>
                 <p>Soins spécialisés pour le cœur et la circulation sanguine.</p>
               </div>
-              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+              <img class="arrow" src="../assets/icons/arrow-right.svg" width="23" height="23" alt="">
             </a>
             <!--
               Carte-lien de service : son fragment #... correspond à un id du catalogue pour
@@ -289,13 +289,13 @@
             -->
             <a class="compact-service" href="services.html#pediatrie">
               <span class="icon-bubble">
-                <img src="assets/icons/baby.svg" width="30" height="30" alt="">
+                <img src="../assets/icons/baby.svg" width="30" height="30" alt="">
               </span>
               <div>
                 <h3>Pédiatrie</h3>
                 <p>Suivi médical et soins adaptés aux enfants.</p>
               </div>
-              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+              <img class="arrow" src="../assets/icons/arrow-right.svg" width="23" height="23" alt="">
             </a>
             <!--
               Carte-lien de service : son fragment #... correspond à un id du catalogue pour
@@ -303,13 +303,13 @@
             -->
             <a class="compact-service" href="services.html#ophtalmologie">
               <span class="icon-bubble">
-                <img src="assets/icons/eye.svg" width="30" height="30" alt="">
+                <img src="../assets/icons/eye.svg" width="30" height="30" alt="">
               </span>
               <div>
                 <h3>Ophtalmologie</h3>
                 <p>Diagnostic et traitement des troubles de la vision.</p>
               </div>
-              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+              <img class="arrow" src="../assets/icons/arrow-right.svg" width="23" height="23" alt="">
             </a>
             <!--
               Carte-lien de service : son fragment #... correspond à un id du catalogue pour
@@ -317,13 +317,13 @@
             -->
             <a class="compact-service" href="services.html#orthopedie">
               <span class="icon-bubble">
-                <img src="assets/icons/bone.svg" width="30" height="30" alt="">
+                <img src="../assets/icons/bone.svg" width="30" height="30" alt="">
               </span>
               <div>
                 <h3>Orthopédie</h3>
                 <p>Prise en charge des os, articulations et traumatismes.</p>
               </div>
-              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+              <img class="arrow" src="../assets/icons/arrow-right.svg" width="23" height="23" alt="">
             </a>
             <!--
               Carte-lien de service : son fragment #... correspond à un id du catalogue pour
@@ -331,20 +331,20 @@
             -->
             <a class="compact-service" href="services.html#laboratoire">
               <span class="icon-bubble">
-                <img src="assets/icons/flask.svg" width="30" height="30" alt="">
+                <img src="../assets/icons/flask.svg" width="30" height="30" alt="">
               </span>
               <div>
                 <h3>Analyses et laboratoire</h3>
                 <p>Bilans et examens médicaux fiables et rapides.</p>
               </div>
-              <img class="arrow" src="assets/icons/arrow-right.svg" width="23" height="23" alt="">
+              <img class="arrow" src="../assets/icons/arrow-right.svg" width="23" height="23" alt="">
             </a>
           </div>
           <!--
             Lien vers le catalogue complet après les raccourcis vers ses sections.
           -->
           <div class="center-action">
-            <a class="button button-secondary" href="services.html">Voir tous nos services<img src="assets/icons/arrow-right.svg" width="19" height="19" alt="">
+            <a class="button button-secondary" href="services.html">Voir tous nos services<img src="../assets/icons/arrow-right.svg" width="19" height="19" alt="">
             </a>
           </div>
         </div>
@@ -359,8 +359,8 @@
           chargement différé concerne cette section située plus bas.
         -->
         <div class="home-about-photo">
-            <img class="clinic-photo" src="assets/images/visuels/facade-bolingo.webp"
-              srcset="assets/images/visuels/facade-bolingo-640.webp 640w, assets/images/visuels/facade-bolingo-1024.webp 1024w, assets/images/visuels/facade-bolingo.webp 1672w"
+            <img class="clinic-photo" src="../assets/images/visuels/facade-bolingo.webp"
+              srcset="../assets/images/visuels/facade-bolingo-640.webp 640w, ../assets/images/visuels/facade-bolingo-1024.webp 1024w, ../assets/images/visuels/facade-bolingo.webp 1672w"
               sizes="(max-width: 760px) calc(100vw - 40px), 590px" width="1672" height="941"
               alt="Façade et entrée de la clinique Bolingo entourée de palmiers" loading="lazy" decoding="async">
           </div>
@@ -368,7 +368,7 @@
           <p class="eyebrow">À propos de Bolingo</p>
           <h2 id="clinique-titre">Une clinique proche de vous</h2>
           <p>Bolingo place la santé et le bien-être de ses patients au cœur de ses priorités. Nous combinons expertise médicale, équipements modernes et accueil humain.</p>
-          <a class="button button-secondary" href="apropos.html">Découvrir notre clinique<img src="assets/icons/arrow-right.svg" width="19" height="19" alt="">
+          <a class="button button-secondary" href="apropos.html">Découvrir notre clinique<img src="../assets/icons/arrow-right.svg" width="19" height="19" alt="">
           </a>
         </div>
       </section>
@@ -386,7 +386,7 @@
         <div class="footer-grid">
           <div class="footer-intro">
             <a class="brand" href="index.html">
-              <img src="assets/icons/logo-white.svg" width="44" height="44" alt="">
+              <img src="../assets/icons/logo-white.svg" width="44" height="44" alt="">
               <span class="brand-copy">
                 <strong>Bolingo</strong>
                 <small>Clinique Médicale</small>
@@ -416,11 +416,11 @@
             -->
             <address class="footer-contact">
               <span>
-                <img src="assets/icons/phone.svg" width="16" height="16" alt="">+243 812 345 678</span>
+                <img src="../assets/icons/phone.svg" width="16" height="16" alt="">+243 812 345 678</span>
               <span>
-                <img src="assets/icons/mail.svg" width="16" height="16" alt="">info@bolingo.cd</span>
+                <img src="../assets/icons/mail.svg" width="16" height="16" alt="">info@bolingo.cd</span>
               <span>
-                <img src="assets/icons/pin.svg" width="16" height="16" alt="">123 Avenue de la Santé, Kinshasa, RDC</span>
+                <img src="../assets/icons/pin.svg" width="16" height="16" alt="">123 Avenue de la Santé, Kinshasa, RDC</span>
             </address>
           </div>
         </div>

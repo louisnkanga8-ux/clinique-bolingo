@@ -1,0 +1,250 @@
+/* Comportements natifs de la version statique. Aucun script n’est nécessaire.
+   details/summary gère les ouvertures ; :target affiche la fiche visée par un lien. */
+
+.mobile-menu {
+  display: none;
+}
+.mobile-menu > summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  list-style: none;
+  border: 1px solid #dce7f8;
+  border-radius: 8px;
+}
+.mobile-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.mobile-menu nav {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: min(290px, calc(100vw - 34px));
+  max-height: calc(100dvh - 90px);
+  overflow-y: auto;
+  padding: 12px;
+  border-radius: 12px;
+  background: #0b2949;
+  box-shadow: 0 14px 35px #0b294930;
+}
+.mobile-menu nav a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 13px;
+  color: white;
+  border-radius: 8px;
+}
+.mobile-menu nav a:hover {
+  background: #173b5e;
+  text-decoration: none;
+}
+.mobile-menu nav a[aria-current="page"] {
+  background: #0758ee;
+}
+.record-details {
+  min-width: 0;
+}
+.record-details > .record-detail {
+  display: none;
+}
+.record-details > .default-detail {
+  display: block;
+}
+.record-details:has(> .record-detail:target) > .record-detail:not(:target) {
+  display: none;
+}
+.record-details > .record-detail:target {
+  display: block;
+}
+.record-detail {
+  scroll-margin-top: 20px;
+}
+.record-detail:target {
+  outline: 2px solid #b4ceff;
+  outline-offset: 3px;
+}
+.record-detail .form-grid {
+  grid-template-columns: 1fr;
+}
+.record-detail .detail-list dd {
+  overflow-wrap: anywhere;
+}
+.record-detail .detail-person {
+  flex-wrap: wrap;
+}
+
+/* Les fieldset restent hors form pendant la phase frontend : la touche Entrée
+   et les boutons désactivés ne peuvent envoyer aucune donnée. */
+.static-fields,
+.native-disclosure fieldset {
+  border: 0;
+  min-width: 0;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.native-disclosure {
+  border: 1px solid #dce7f8;
+  border-radius: 10px;
+  background: white;
+  margin-top: 16px;
+  min-width: 0;
+}
+.native-disclosure > summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 600;
+  color: #0758ee;
+  border-radius: 10px;
+}
+.native-disclosure > summary:hover {
+  background: #f2f7ff;
+}
+.native-disclosure[open] {
+  padding: 0 18px 18px;
+}
+.native-disclosure[open] > summary {
+  margin: 0 -18px 14px;
+  border-bottom: 1px solid #e3ecfa;
+}
+.native-disclosure .field {
+  margin-bottom: 14px;
+}
+.native-disclosure .form-grid .field {
+  margin-bottom: 0;
+}
+.native-disclosure .form-actions {
+  flex-wrap: wrap;
+}
+.native-disclosure legend {
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+.native-disclosure p {
+  overflow-wrap: anywhere;
+}
+.btn:disabled {
+  cursor: not-allowed;
+}
+.field :disabled,
+.global-search input:disabled {
+  opacity: 1;
+  color: #637391;
+  cursor: not-allowed;
+}
+.field :disabled {
+  background: #f3f6fc;
+}
+.filter-note {
+  margin: -8px 0 20px;
+  font-size: 12px;
+  color: #526789;
+}
+.filters .filter-note {
+  margin: 0;
+}
+fieldset.filters {
+  border: 0;
+  min-width: 0;
+  padding: 0;
+}
+.pending-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+#en-attente + .record-details {
+  margin-top: 18px;
+}
+.prepared-addition {
+  margin-top: 20px;
+}
+.static-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+.static-slots li {
+  padding: 6px 10px;
+  border: 1px solid #dce7f8;
+  border-radius: 6px;
+  color: #0758ee;
+  background: #f2f7ff;
+}
+#page-content > .panel + .panel {
+  margin-top: 18px;
+}
+.record-details .panel + .panel {
+  margin-top: 0;
+}
+.static-fields .form-help {
+  margin-top: 14px;
+}
+
+@media (max-width: 1100px) {
+  .mobile-menu {
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+  }
+}
+@media (max-width: 800px) {
+  .record-detail .detail-list > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+  .native-disclosure .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .native-disclosure .full-width {
+    grid-column: auto;
+  }
+  .native-disclosure .schedule-form-row {
+    grid-template-columns: 1fr;
+  }
+  .preview-bar {
+    font-size: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .topbar .global-search {
+    display: none;
+  }
+  .topbar-end {
+    margin-left: auto;
+  }
+  .profile-copy {
+    display: flex;
+  }
+  .profile-copy strong {
+    font-size: 10px;
+  }
+  .profile-copy small {
+    font-size: 9px;
+  }
+  .native-disclosure[open] {
+    padding: 0 12px 12px;
+  }
+  .native-disclosure[open] > summary {
+    margin: 0 -12px 12px;
+  }
+}
+@media print {
+  .native-disclosure,
+  .filter-note,
+  .static-fields {
+    display: none !important;
+  }
+  .record-detail:target {
+    outline: 0;
+  }
+  .report-method {
+    display: block;
+  }
+}

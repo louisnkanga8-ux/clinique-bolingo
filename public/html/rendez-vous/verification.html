@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-  Étape 2 : présenter le médecin généraliste et le choix de son profil, sans recommandation
-  automatique. Fichier autonome de la phase sans JavaScript ni backend ; les comportements métier
-  restent à implémenter.
+  Étape 5 : afficher un récapitulatif écrit dans le HTML et une confirmation encore désactivée.
+  Fichier autonome de la phase sans JavaScript ni backend ; les comportements métier restent à
+  implémenter.
 -->
 <html lang="fr">
   <!--
@@ -13,17 +13,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Préparez votre consultation à la clinique Bolingo : service médical, médecin, date et informations du patient.">
-    <title>Choisir un médecin · Bolingo</title>
-    <link rel="icon" href="../assets/icons/logo.svg" type="image/svg+xml">
+    <title>Vérification du rendez-vous · Bolingo</title>
+    <link rel="icon" href="../../assets/icons/logo.svg" type="image/svg+xml">
     <!--
       Ordre de la cascade : fondations globales, composants communs, pages publiques, puis règles
       propres au parcours. Le suffixe ?v=20261028-images renouvelle le cache ; ../ remonte du
       dossier rendez-vous vers la racine du site.
     -->
-    <link rel="stylesheet" href="../css/global.css?v=20261028-images">
-    <link rel="stylesheet" href="../css/components.css?v=20261028-images">
-    <link rel="stylesheet" href="../css/pages.css?v=20261028-images">
-    <link rel="stylesheet" href="../css/reservation.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/pages.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/reservation.css?v=20261028-images">
   </head>
   <body>
     <!--
@@ -42,7 +42,7 @@
           fourni par le lien.
         -->
         <a class="brand" href="../index.html" aria-label="Bolingo, accueil">
-          <img src="../assets/icons/logo.svg" alt="" width="44" height="44">
+          <img src="../../assets/icons/logo.svg" alt="" width="44" height="44">
           <span class="brand-copy">
             <strong>Bolingo</strong>
             <small>Clinique Médicale</small>
@@ -84,26 +84,26 @@
                 <span>Service</span>
               </a>
             </li>
-            <li>
-              <a href="medecin.html" aria-current="step">
+            <li class="step-complete">
+              <a href="medecin.html">
                 <span class="step-number">2</span>
                 <span>Médecin</span>
               </a>
             </li>
-            <li>
+            <li class="step-complete">
               <a href="date-heure.html">
                 <span class="step-number">3</span>
                 <span>Date et heure</span>
               </a>
             </li>
-            <li>
+            <li class="step-complete">
               <a href="informations.html">
                 <span class="step-number">4</span>
                 <span>Patient</span>
               </a>
             </li>
             <li>
-              <a href="verification.html">
+              <a href="verification.html" aria-current="step">
                 <span class="step-number">5</span>
                 <span>Résumé</span>
               </a>
@@ -115,9 +115,9 @@
           principal unique du document.
         -->
         <div class="booking-heading">
-          <p class="eyebrow">PRENDRE RENDEZ-VOUS · ÉTAPE 2 SUR 5</p>
-          <h1>Un médecin pour vous accompagner</h1>
-          <p>Un professionnel pour votre consultation de médecine générale.</p>
+          <p class="eyebrow">PRENDRE RENDEZ-VOUS · ÉTAPE 5 SUR 5</p>
+          <h1>Vérifiez le récapitulatif</h1>
+          <p>Retrouvez les détails de votre consultation et vos informations personnelles.</p>
         </div>
         <!--
           Disposition commune : la colonne principale accueille l'étape ; l'aside affiche le
@@ -130,64 +130,115 @@
           -->
           <div class="booking-main">
             <!--
-              Fiche du médecin compatible avec le service présenté. La recommandation réelle sera
-              une future règle métier.
+              Premier récapitulatif : service, médecin, date, durée et salle sont des valeurs
+              fixes écrites dans le document.
             -->
-            <section class="booking-panel" aria-labelledby="doctor-title">
+            <section class="booking-panel" aria-labelledby="review-appointment-title">
               <!--
-                Petit repère de la fiche : l'icône accompagne un texte déjà explicite, donc elle
-                est décorative pour les lecteurs d'écran.
+                Le titre nomme la carte et le lien permet de revenir à l'étape correspondante ; il
+                ne recharge aucune donnée sauvegardée.
               -->
-              <p class="recommendation-label">
-                <img src="../assets/icons/check.svg" alt="" width="24" height="24" class="">Votre médecin</p>
-              <!--
-                Le CSS aligne le portrait et les informations professionnelles avec Flexbox, sans
-                modifier leur ordre de lecture.
-              -->
-              <div class="recommended-doctor">
-                <!--
-                  Portrait carré complet : srcset propose plusieurs résolutions et sizes annonce
-                  la largeur affichée. width et height réservent la place ; alt identifie la
-                  personne ; lazy et async limitent le travail de chargement initial.
-                -->
-                <img class="portrait portrait-jean"
-                  src="../assets/images/medecins/portrait-01-bolingo.webp"
-                  srcset="../assets/images/medecins/portrait-01-bolingo-400.webp 400w, ../assets/images/medecins/portrait-01-bolingo-800.webp 800w, ../assets/images/medecins/portrait-01-bolingo.webp 1254w"
-                  sizes="150px" width="1254" height="1254"
-                  alt="Portrait du Dr Jean Mputu" loading="lazy" decoding="async">
-                <div>
-                  <h2 id="doctor-title">Dr Jean Mputu</h2>
-                  <p class="doctor-specialty">Médecine générale</p>
-                  <p class="doctor-detail">8 ans d’expérience</p>
-                  <p class="doctor-detail">Consultations de médecine générale</p>
-                </div>
+              <div class="review-heading">
+                <h2 id="review-appointment-title">Votre consultation</h2>
+                <a href="date-heure.html">Revoir l’étape</a>
               </div>
               <!--
-                Le label englobe le radio et son texte, ce qui agrandit la zone cliquable. checked
-                fournit l'état initial de ce choix unique.
+                Liste de descriptions : chaque div groupe un dt (libellé) et son dd (valeur). Le
+                CSS présente ces paires en grille.
               -->
-              <label class="doctor-select">
-                <input type="radio" name="medecin" value="jean-mputu" checked>
-                <span>Choisir ce médecin</span>
-              </label>
+              <dl class="review-list">
+                <div>
+                  <dt>Service médical</dt>
+                  <dd>Médecine générale</dd>
+                </div>
+                <div>
+                  <dt>Médecin</dt>
+                  <dd>Dr Jean Mputu</dd>
+                </div>
+                <div>
+                  <dt>Date</dt>
+                  <dd>
+                    <!--
+                      datetime fournit la date machine lisible ; le texte entre les balises
+                      fournit sa présentation française au visiteur.
+                    -->
+                    <time datetime="2026-11-05">Jeudi 5 novembre 2026</time>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Heure</dt>
+                  <dd>09 h 30 · heure de Kinshasa</dd>
+                </div>
+                <div>
+                  <dt>Durée estimée</dt>
+                  <dd>30 minutes</dd>
+                </div>
+                <div>
+                  <!--
+                    Salle d'illustration inscrite en dur : l'attribution automatique et la
+                    disponibilité devront être contrôlées par la future logique métier.
+                  -->
+                  <dt>Salle</dt>
+                  <dd>A-02</dd>
+                </div>
+              </dl>
             </section>
             <!--
-              Emplacement prévu pour une alternative de même spécialité. Aucun autre professionnel
-              incompatible n'est proposé.
+              Deuxième récapitulatif : ces données ne proviennent pas des champs modifiés à
+              l'étape précédente. Maintenir leur cohérence avec le scénario.
             -->
-            <section class="doctor-unavailable" aria-labelledby="alternate-title">
-              <h2 id="alternate-title">Choisir un autre médecin</h2>
-              <p>Aucun autre médecin de cette spécialité n’est proposé pour le moment.</p>
+            <section class="booking-panel" aria-labelledby="review-patient-title">
+              <div class="review-heading">
+                <h2 id="review-patient-title">Le patient</h2>
+                <a href="informations.html">Revoir la saisie</a>
+              </div>
+              <dl class="review-list">
+                <div>
+                  <dt>Nom complet</dt>
+                  <dd>Alex Ilunga</dd>
+                </div>
+                <div>
+                  <dt>Date de naissance</dt>
+                  <dd>14 juin 1995</dd>
+                </div>
+                <div>
+                  <dt>Téléphone</dt>
+                  <dd>+243 000 000 000</dd>
+                </div>
+                <div>
+                  <dt>E-mail</dt>
+                  <dd>alex.ilunga@example.com</dd>
+                </div>
+                <div class="is-full">
+                  <dt>Motif de consultation</dt>
+                  <dd>Consultation générale.</dd>
+                </div>
+              </dl>
             </section>
             <!--
-              Retour et Continuer relient les fichiers voisins. Aucun identifiant de médecin n'est
-              envoyé à la page suivante ni à un serveur.
+              Explication visible de l'indisponibilité ; son id est référencé par le bouton pour
+              le contexte accessible.
+            -->
+            <p class="booking-helper" id="confirm-help">La prise de rendez-vous en ligne sera prochainement disponible.</p>
+            <!--
+              Retour reste navigable. Le bouton suivant est désactivé, donc il ne crée aucun
+              rendez-vous et ne déclenche aucun envoi.
             -->
             <div class="booking-actions">
-              <a class="button button-secondary" href="index.html">Retour</a>
-              <a class="button button-primary" href="date-heure.html">Continuer <img src="../assets/icons/arrow-right.svg" alt="" width="24" height="24" class="">
-              </a>
+              <a class="button button-secondary" href="informations.html">Retour</a>
+              <!--
+                type="button" exclut la soumission implicite ; disabled bloque l'action. Retirer
+                cet état exigera une vraie validation puis un enregistrement réussi.
+              -->
+              <button class="button button-primary" type="button" disabled aria-describedby="confirm-help">Confirmer le rendez-vous</button>
             </div>
+            <!--
+              Lien séparé vers l'aperçu HTML de l'écran final : cette navigation sert à examiner
+              l'interface, pas à confirmer un rendez-vous.
+            -->
+            <p class="preview-link">
+              <a href="confirmation.html">Aperçu de confirmation</a>
+            </p>
           </div>
           <!--
             Résumé latéral partagé et fixe : ces valeurs sont saisies dans le HTML, pas calculées

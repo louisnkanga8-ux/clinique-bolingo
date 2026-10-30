@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Spécialités | BOLINGO</title>
+    <link
+      rel="icon"
+      href="../../public/assets/icons/logo.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="../css/gestion.css" />
+    <link rel="stylesheet" href="../css/navigation.css" />
+    <link rel="stylesheet" href="../css/donnees.css" />
+  </head>
+  <body class="management">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <!-- Navigation répétée dans chaque page : HTML seul ne fournit pas d’inclusion. -->
+    <aside class="sidebar" aria-label="Navigation de gestion">
+      <a class="management-brand" href="index.html"
+        ><img
+          src="../../public/assets/icons/logo-white.svg"
+          width="56"
+          height="56"
+          alt=""
+        /><span
+          ><strong>BOLINGO</strong><small>Clinique Médicale</small></span
+        ></a
+      >
+      <nav aria-label="Rubriques">
+        <a href="index.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z" /></svg
+          ><span>Tableau de bord</span></a
+        >
+        <a href="rendez-vous.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M7 3v4m10-4v4M3 10h18m-14 4h3m4 0h3m-10 4h3" /></svg
+          ><span>Rendez-vous</span></a
+        >
+        <a href="patients.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 21v-3a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5v3M17 4a4 4 0 0 1 0 8m2 3a4 4 0 0 1 2 4v2"
+            />
+            <circle cx="9" cy="6" r="4" /></svg
+          ><span>Patients</span></a
+        >
+        <a href="medecins.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="6" r="4" />
+            <path
+              d="m9 14 3 4 3-4M5 14a5 5 0 0 0-2 4v3h18v-3a5 5 0 0 0-2-4m-2 2v3"
+            /></svg
+          ><span>Médecins</span></a
+        >
+        <a href="specialites.html" aria-current="page"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+            />
+            <circle cx="18" cy="10" r="3" /></svg
+          ><span>Spécialités</span></a
+        >
+        <a href="salles.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 21V3h14v18M4 21h17M8 21V6h7v15m-3-8v2" /></svg
+          ><span>Salles</span></a
+        >
+        <a href="rapports.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 3v18h18M7 17v-4m5 4V8m5 9V5" /></svg
+          ><span>Rapports</span></a
+        >
+        <a href="parametres.html"
+          ><svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="m9 3-1 3-3 1 1 3-2 2 2 2-1 3 3 1 1 3h6l1-3 3-1-1-3 2-2-2-2 1-3-3-1-1-3Z"
+            />
+            <circle cx="12" cy="12" r="3" /></svg
+          ><span>Paramètres</span></a
+        >
+      </nav>
+      <div class="sidebar-help">
+        <svg
+          class="ui-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M8 8a4 4 0 0 1 8 0c0 3-4 3-4 6m0 3h.01" />
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+        <div>
+          <strong>Besoin d’aide ?</strong>
+          <p>Retrouvez les coordonnées de la clinique.</p>
+        </div>
+        <a href="../../public/html/contact.html">Contactez-nous</a>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <!-- Menu natif : summary s’ouvre et se ferme au clic ou au clavier. -->
+        <details class="mobile-menu">
+          <summary aria-label="Menu de navigation">
+            <svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 5h18M3 12h18M3 19h18" /></svg
+            ><span class="sr-only">Menu de navigation</span>
+          </summary>
+          <nav aria-label="Rubriques sur mobile">
+            <a href="index.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m3 10 9-7 9 7v11h-6v-7H9v7H3Z" /></svg
+              ><span>Tableau de bord</span></a
+            >
+            <a href="rendez-vous.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="16" rx="2" />
+                <path d="M7 3v4m10-4v4M3 10h18m-14 4h3m4 0h3m-10 4h3" /></svg
+              ><span>Rendez-vous</span></a
+            >
+            <a href="patients.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 21v-3a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5v3M17 4a4 4 0 0 1 0 8m2 3a4 4 0 0 1 2 4v2"
+                />
+                <circle cx="9" cy="6" r="4" /></svg
+              ><span>Patients</span></a
+            >
+            <a href="medecins.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="6" r="4" />
+                <path
+                  d="m9 14 3 4 3-4M5 14a5 5 0 0 0-2 4v3h18v-3a5 5 0 0 0-2-4m-2 2v3"
+                /></svg
+              ><span>Médecins</span></a
+            >
+            <a href="specialites.html" aria-current="page"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+                />
+                <circle cx="18" cy="10" r="3" /></svg
+              ><span>Spécialités</span></a
+            >
+            <a href="salles.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 21V3h14v18M4 21h17M8 21V6h7v15m-3-8v2" /></svg
+              ><span>Salles</span></a
+            >
+            <a href="rapports.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 3v18h18M7 17v-4m5 4V8m5 9V5" /></svg
+              ><span>Rapports</span></a
+            >
+            <a href="parametres.html"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="m9 3-1 3-3 1 1 3-2 2 2 2-1 3 3 1 1 3h6l1-3 3-1-1-3 2-2-2-2 1-3-3-1-1-3Z"
+                />
+                <circle cx="12" cy="12" r="3" /></svg
+              ><span>Paramètres</span></a
+            >
+          </nav>
+        </details>
+        <div class="global-search">
+          <svg
+            class="ui-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="10.5" cy="10.5" r="7" />
+            <path d="m16 16 5 5" /></svg
+          ><label class="sr-only" for="recherche-globale"
+            >Rechercher dans la gestion</label
+          ><input
+            type="search"
+            id="recherche-globale"
+            name="recherche"
+            placeholder="Rechercher un patient, un rendez-vous…"
+            disabled
+          />
+        </div>
+        <div class="topbar-end">
+          <a
+            class="icon-btn notification-btn"
+            href="rendez-vous.html#en-attente"
+            aria-label="Consulter les rendez-vous en attente"
+            ><svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M18 8a6 6 0 0 0-12 0c0 8-3 8-3 10h18c0-2-3-2-3-10M10 21h4"
+              /></svg
+            ><span class="notification-dot"></span
+          ></a>
+          <details class="profile-menu">
+            <summary>
+              <span class="avatar">JM</span
+              ><span class="profile-copy"
+                ><strong>Équipe BOLINGO</strong
+                ><small>Administrateur</small></span
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <div class="profile-popover">
+              <a href="connexion.html">Écran de connexion</a
+              ><a href="../../public/html/index.html">Ouvrir le site public</a>
+            </div>
+          </details>
+        </div>
+      </header>
+
+      <main id="contenu" tabindex="-1">
+        <div class="management-heading">
+          <div>
+            <p class="section-label">SPÉCIALITÉS</p>
+            <h1>Gestion des spécialités</h1>
+            <p class="heading-description">
+              Consultez les spécialités médicales de la clinique.
+            </p>
+          </div>
+          <p class="breadcrumb">
+            <a href="index.html">Accueil</a
+            ><span aria-hidden="true">›</span>Spécialités
+          </p>
+        </div>
+        <div id="page-content">
+          <!-- Exemples fictifs : le futur PHP remplacera ces lignes par les résultats MySQL. -->
+          <div class="page-actions">
+            <a class="btn btn-primary" href="#ajouter"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 4v16M4 12h16" /></svg
+              >Ajouter une spécialité</a
+            >
+          </div>
+          <div class="stats-grid three-stats">
+            <article class="stat-card">
+              <span class="stat-icon tone-blue"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+                  />
+                  <circle cx="18" cy="10" r="3" /></svg
+              ></span>
+              <div>
+                <strong>3</strong>
+                <p>Spécialités distinctes</p>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon tone-blue"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="9" cy="7" r="4" />
+                  <path
+                    d="M2 21v-3a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v3M17 4a4 4 0 0 1 0 8m2 3a4 4 0 0 1 3 4v2"
+                  /></svg
+              ></span>
+              <div>
+                <strong>3</strong>
+                <p>Médecins associés</p>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-icon tone-green"
+                ><svg
+                  class="ui-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="5" width="18" height="16" rx="2" />
+                  <path d="M7 3v4m10-4v4M3 10h18m-14 4h3m4 0h3" /></svg
+              ></span>
+              <div>
+                <strong>3</strong>
+                <p>Rendez-vous associés</p>
+              </div>
+            </article>
+          </div>
+
+          <section class="panel filters" aria-label="Aperçu des filtres">
+            <label class="search-field" for="filtre-recherche"
+              ><svg
+                class="ui-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="10.5" cy="10.5" r="7" />
+                <path d="m16 16 5 5" /></svg
+              ><span class="sr-only">Rechercher une spécialité</span
+              ><input
+                id="filtre-recherche"
+                type="search"
+                placeholder="Rechercher une spécialité…"
+                disabled
+            /></label>
+          </section>
+          <div class="split-layout">
+            <section class="panel catalogue-table" id="liste-specialites">
+              <div
+                class="table-wrap"
+                tabindex="0"
+                role="region"
+                aria-label="Liste des specialites"
+              >
+                <table class="data-table">
+                  <caption class="sr-only">
+                    10 spécialités distinctes présentées sur 10
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Spécialité</th>
+                      <th scope="col">Médecins</th>
+                      <th scope="col">Rendez-vous</th>
+                      <th scope="col">Statut</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <a class="row-title" href="#specialite-1"
+                          ><span class="specialty-icon tone-blue"
+                            ><svg
+                              class="ui-icon"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+                              />
+                              <circle cx="18" cy="10" r="3" /></svg></span
+                          ><span>Cardiologie</span></a
+                        >
+                      </td>
+                      <td class="numeric">1</td>
+                      <td class="numeric">1</td>
+                      <td>
+                        <span class="badge badge-blue">Non renseigné</span>
+                      </td>
+                      <td class="action-cell">
+                        <a
+                          class="icon-btn"
+                          href="#specialite-1"
+                          aria-label="Consulter Cardiologie"
+                          ><svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <circle cx="5" cy="12" r="1" />
+                            <circle cx="12" cy="12" r="1" />
+                            <circle cx="19" cy="12" r="1" /></svg
+                        ></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a class="row-title" href="#specialite-2"
+                          ><span class="specialty-icon tone-blue"
+                            ><svg
+                              class="ui-icon"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+                              />
+                              <circle cx="18" cy="10" r="3" /></svg></span
+                          ><span>Pediatrie</span></a
+                        >
+                      </td>
+                      <td class="numeric">1</td>
+                      <td class="numeric">1</td>
+                      <td>
+                        <span class="badge badge-blue">Non renseigné</span>
+                      </td>
+                      <td class="action-cell">
+                        <a
+                          class="icon-btn"
+                          href="#specialite-2"
+                          aria-label="Consulter Pediatrie"
+                          ><svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <circle cx="5" cy="12" r="1" />
+                            <circle cx="12" cy="12" r="1" />
+                            <circle cx="19" cy="12" r="1" /></svg
+                        ></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a class="row-title" href="#specialite-3"
+                          ><span class="specialty-icon tone-blue"
+                            ><svg
+                              class="ui-icon"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.8"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+                              />
+                              <circle cx="18" cy="10" r="3" /></svg></span
+                          ><span>Radiologie</span></a
+                        >
+                      </td>
+                      <td class="numeric">1</td>
+                      <td class="numeric">1</td>
+                      <td>
+                        <span class="badge badge-blue">Non renseigné</span>
+                      </td>
+                      <td class="action-cell">
+                        <a
+                          class="icon-btn"
+                          href="#specialite-3"
+                          aria-label="Consulter Radiologie"
+                          ><svg
+                            class="ui-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <circle cx="5" cy="12" r="1" />
+                            <circle cx="12" cy="12" r="1" />
+                            <circle cx="19" cy="12" r="1" /></svg
+                        ></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-footer">
+                <span>10 spécialités distinctes présentées sur 10</span>
+              </div>
+            </section>
+            <aside class="record-details" aria-label="Fiches détaillées">
+              <section
+                class="panel record-detail default-detail"
+                id="specialite-1"
+                aria-labelledby="titre-specialite-1"
+              >
+                <div class="detail-header">
+                  <div class="detail-person">
+                    <span class="specialty-icon large tone-blue"
+                      ><svg
+                        class="ui-icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+                        />
+                        <circle cx="18" cy="10" r="3" /></svg
+                    ></span>
+                    <div>
+                      <h2 id="titre-specialite-1">Cardiologie</h2>
+                      <span class="badge badge-blue">Non renseigné</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="specialty-description">
+                  Liste issue des spécialités des médecins. Aucun statut actif
+                  n’est renseigné.
+                </p>
+                <dl class="detail-list">
+                  <div>
+                    <dt><span>Spécialité</span></dt>
+                    <dd>Cardiologie</dd>
+                  </div>
+                  <div>
+                    <dt><span>Médecins associés</span></dt>
+                    <dd>1</dd>
+                  </div>
+                  <div>
+                    <dt><span>Rendez-vous associés</span></dt>
+                    <dd>1</dd>
+                  </div>
+                </dl>
+                <details class="native-disclosure">
+                  <summary>Médecins associés (1)</summary>
+                  <div class="disclosure-content">
+                    <ul class="associated-doctors">
+                      <li>
+                        <a class="row-title" href="medecins.html#medecin-M001"
+                          ><span class="avatar" aria-hidden="true">AE</span
+                          ><span
+                            >Nadia Mbuyi Kalala<br /><small>M001</small></span
+                          ></a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </details>
+                <details class="native-disclosure">
+                  <summary>Modifier la spécialité</summary>
+                  <div class="disclosure-content">
+                    <fieldset class="static-fields">
+                      <legend>Nom de la spécialité</legend>
+                      <div class="form-grid">
+                        <div class="field">
+                          <label for="modifier-specialite-1-Specialite"
+                            >Spécialité</label
+                          ><input
+                            id="modifier-specialite-1-Specialite"
+                            name="Specialite"
+                            type="text"
+                            value="Cardiologie"
+                            maxlength="250"
+                          />
+                        </div>
+                      </div>
+
+                      <button type="button" class="btn btn-primary" disabled>
+                        Enregistrer
+                      </button>
+                    </fieldset>
+                  </div>
+                </details>
+              </section>
+              <section
+                class="panel record-detail"
+                id="specialite-2"
+                aria-labelledby="titre-specialite-2"
+              >
+                <div class="detail-header">
+                  <div class="detail-person">
+                    <span class="specialty-icon large tone-blue"
+                      ><svg
+                        class="ui-icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+                        />
+                        <circle cx="18" cy="10" r="3" /></svg
+                    ></span>
+                    <div>
+                      <h2 id="titre-specialite-2">Pediatrie</h2>
+                      <span class="badge badge-blue">Non renseigné</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="specialty-description">
+                  Liste issue des spécialités des médecins. Aucun statut actif
+                  n’est renseigné.
+                </p>
+                <dl class="detail-list">
+                  <div>
+                    <dt><span>Spécialité</span></dt>
+                    <dd>Pediatrie</dd>
+                  </div>
+                  <div>
+                    <dt><span>Médecins associés</span></dt>
+                    <dd>1</dd>
+                  </div>
+                  <div>
+                    <dt><span>Rendez-vous associés</span></dt>
+                    <dd>1</dd>
+                  </div>
+                </dl>
+                <details class="native-disclosure">
+                  <summary>Médecins associés (1)</summary>
+                  <div class="disclosure-content">
+                    <ul class="associated-doctors">
+                      <li>
+                        <a class="row-title" href="medecins.html#medecin-M002"
+                          ><span class="avatar" aria-hidden="true">BE</span
+                          ><span
+                            >Alain Mbuyi Mukendi<br /><small>M002</small></span
+                          ></a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </details>
+                <details class="native-disclosure">
+                  <summary>Modifier la spécialité</summary>
+                  <div class="disclosure-content">
+                    <fieldset class="static-fields">
+                      <legend>Nom de la spécialité</legend>
+                      <div class="form-grid">
+                        <div class="field">
+                          <label for="modifier-specialite-2-Specialite"
+                            >Spécialité</label
+                          ><input
+                            id="modifier-specialite-2-Specialite"
+                            name="Specialite"
+                            type="text"
+                            value="Pediatrie"
+                            maxlength="250"
+                          />
+                        </div>
+                      </div>
+
+                      <button type="button" class="btn btn-primary" disabled>
+                        Enregistrer
+                      </button>
+                    </fieldset>
+                  </div>
+                </details>
+              </section>
+              <section
+                class="panel record-detail"
+                id="specialite-3"
+                aria-labelledby="titre-specialite-3"
+              >
+                <div class="detail-header">
+                  <div class="detail-person">
+                    <span class="specialty-icon large tone-blue"
+                      ><svg
+                        class="ui-icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M3 3v5a5 5 0 0 0 10 0V3M3 3h2m6 0h2M8 13v3a5 5 0 0 0 10 0v-3"
+                        />
+                        <circle cx="18" cy="10" r="3" /></svg
+                    ></span>
+                    <div>
+                      <h2 id="titre-specialite-3">Radiologie</h2>
+                      <span class="badge badge-blue">Non renseigné</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="specialty-description">
+                  Liste issue des spécialités des médecins. Aucun statut actif
+                  n’est renseigné.
+                </p>
+                <dl class="detail-list">
+                  <div>
+                    <dt><span>Spécialité</span></dt>
+                    <dd>Radiologie</dd>
+                  </div>
+                  <div>
+                    <dt><span>Médecins associés</span></dt>
+                    <dd>1</dd>
+                  </div>
+                  <div>
+                    <dt><span>Rendez-vous associés</span></dt>
+                    <dd>1</dd>
+                  </div>
+                </dl>
+                <details class="native-disclosure">
+                  <summary>Médecins associés (1)</summary>
+                  <div class="disclosure-content">
+                    <ul class="associated-doctors">
+                      <li>
+                        <a class="row-title" href="medecins.html#medecin-M003"
+                          ><span class="avatar" aria-hidden="true">CE</span
+                          ><span
+                            >Jean Mbuyi Nsenga<br /><small>M003</small></span
+                          ></a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </details>
+                <details class="native-disclosure">
+                  <summary>Modifier la spécialité</summary>
+                  <div class="disclosure-content">
+                    <fieldset class="static-fields">
+                      <legend>Nom de la spécialité</legend>
+                      <div class="form-grid">
+                        <div class="field">
+                          <label for="modifier-specialite-3-Specialite"
+                            >Spécialité</label
+                          ><input
+                            id="modifier-specialite-3-Specialite"
+                            name="Specialite"
+                            type="text"
+                            value="Radiologie"
+                            maxlength="250"
+                          />
+                        </div>
+                      </div>
+
+                      <button type="button" class="btn btn-primary" disabled>
+                        Enregistrer
+                      </button>
+                    </fieldset>
+                  </div>
+                </details>
+              </section>
+            </aside>
+          </div>
+          <section class="panel prepared-addition">
+            <details class="native-disclosure" id="ajouter" open>
+              <summary>Ajouter une spécialité</summary>
+              <div class="disclosure-content">
+                <fieldset class="static-fields">
+                  <legend>Nom de la spécialité</legend>
+                  <div class="form-grid">
+                    <div class="field">
+                      <label for="ajout-specialite-Specialite">Spécialité</label
+                      ><input
+                        id="ajout-specialite-Specialite"
+                        name="Specialite"
+                        type="text"
+                        value=""
+                        maxlength="250"
+                      />
+                    </div>
+                  </div>
+
+                  <button type="button" class="btn btn-primary" disabled>
+                    Enregistrer
+                  </button>
+                </fieldset>
+              </div>
+            </details>
+          </section>
+        </div>
+      </main>
+      <footer class="management-footer">
+        <span>BOLINGO · Espace de gestion</span><span>Kinshasa, RDC</span>
+      </footer>
+    </div>
+  </body>
+</html>

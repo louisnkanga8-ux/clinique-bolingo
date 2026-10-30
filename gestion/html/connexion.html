@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Connexion | BOLINGO</title>
+    <link
+      rel="icon"
+      href="../../public/assets/icons/logo.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="../css/gestion.css" />
+    <link rel="stylesheet" href="../css/navigation.css" />
+    <link rel="stylesheet" href="../css/donnees.css" />
+  </head>
+  <body class="login-page">
+    <main class="login-layout">
+      <section class="login-brand-panel">
+        <a class="management-brand" href="../../public/html/index.html"
+          ><img
+            src="../../public/assets/icons/logo-white.svg"
+            width="56"
+            height="56"
+            alt=""
+          /><span
+            ><strong>BOLINGO</strong><small>Clinique Médicale</small></span
+          ></a
+        >
+        <div>
+          <span class="login-eyebrow">ESPACE DU PERSONNEL</span>
+          <h1>Au service<br />de chaque patient.</h1>
+          <p>
+            Retrouvez les rendez-vous, les équipes et les ressources de votre
+            clinique dans un même espace.
+          </p>
+        </div>
+        <small>BOLINGO · Kinshasa, RDC</small>
+      </section>
+      <section class="login-form-panel" aria-labelledby="login-title">
+        <div class="login-card">
+          <span class="login-lock"
+            ><svg
+              class="ui-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="4" y="10" width="16" height="11" rx="2" />
+              <path d="M7 10V7a5 5 0 0 1 10 0v3m-5 5v3" /></svg
+          ></span>
+          <p class="section-label">BIENVENUE</p>
+          <h2 id="login-title">Connexion à votre espace</h2>
+          <p class="muted">Saisissez vos identifiants professionnels.</p>
+          <!-- Aucun formulaire actif ni transmission d’identifiants. Le futur PHP ajoutera le form POST et la validation serveur. -->
+          <fieldset class="static-fields" disabled>
+            <legend class="sr-only">Identifiants de connexion</legend>
+            <label class="field" for="email"
+              >Adresse e-mail<input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="nom@bolingo.cd"
+                autocomplete="username"
+                required
+                maxlength="254"
+            /></label>
+            <label class="field" for="password"
+              >Mot de passe<input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Votre mot de passe"
+                autocomplete="current-password"
+                required
+                minlength="8"
+            /></label>
+            <button type="button" class="btn btn-primary login-submit" disabled>
+              Se connecter
+            </button>
+          </fieldset>
+          <p class="login-help">
+            Un problème d’accès ?
+            <a href="../../public/html/contact.html">Contacter la clinique</a>
+          </p>
+          <a class="back-public" href="index.html"
+            >Accéder au tableau de bord →</a
+          >
+          <a class="back-public" href="../../public/html/index.html"
+            >← Retour au site public</a
+          >
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

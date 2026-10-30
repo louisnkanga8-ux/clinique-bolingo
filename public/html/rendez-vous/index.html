@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-  Étape 5 : afficher un récapitulatif écrit dans le HTML et une confirmation encore désactivée.
-  Fichier autonome de la phase sans JavaScript ni backend ; les comportements métier restent à
-  implémenter.
+  Étape 1 : présenter les six services et le choix de médecine générale disponible dans ce
+  parcours statique. Fichier autonome de la phase sans JavaScript ni backend ; les comportements
+  métier restent à implémenter.
 -->
 <html lang="fr">
   <!--
@@ -13,17 +13,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Préparez votre consultation à la clinique Bolingo : service médical, médecin, date et informations du patient.">
-    <title>Vérification du rendez-vous · Bolingo</title>
-    <link rel="icon" href="../assets/icons/logo.svg" type="image/svg+xml">
+    <title>Choisir un service · Bolingo</title>
+    <link rel="icon" href="../../assets/icons/logo.svg" type="image/svg+xml">
     <!--
       Ordre de la cascade : fondations globales, composants communs, pages publiques, puis règles
       propres au parcours. Le suffixe ?v=20261028-images renouvelle le cache ; ../ remonte du
       dossier rendez-vous vers la racine du site.
     -->
-    <link rel="stylesheet" href="../css/global.css?v=20261028-images">
-    <link rel="stylesheet" href="../css/components.css?v=20261028-images">
-    <link rel="stylesheet" href="../css/pages.css?v=20261028-images">
-    <link rel="stylesheet" href="../css/reservation.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/global.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/components.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/pages.css?v=20261028-images">
+    <link rel="stylesheet" href="../../css/reservation.css?v=20261028-images">
   </head>
   <body>
     <!--
@@ -42,7 +42,7 @@
           fourni par le lien.
         -->
         <a class="brand" href="../index.html" aria-label="Bolingo, accueil">
-          <img src="../assets/icons/logo.svg" alt="" width="44" height="44">
+          <img src="../../assets/icons/logo.svg" alt="" width="44" height="44">
           <span class="brand-copy">
             <strong>Bolingo</strong>
             <small>Clinique Médicale</small>
@@ -78,32 +78,32 @@
         -->
         <nav aria-label="Étapes du rendez-vous">
           <ol class="booking-stepper">
-            <li class="step-complete">
-              <a href="index.html">
+            <li>
+              <a href="index.html" aria-current="step">
                 <span class="step-number">1</span>
                 <span>Service</span>
               </a>
             </li>
-            <li class="step-complete">
+            <li>
               <a href="medecin.html">
                 <span class="step-number">2</span>
                 <span>Médecin</span>
               </a>
             </li>
-            <li class="step-complete">
+            <li>
               <a href="date-heure.html">
                 <span class="step-number">3</span>
                 <span>Date et heure</span>
               </a>
             </li>
-            <li class="step-complete">
+            <li>
               <a href="informations.html">
                 <span class="step-number">4</span>
                 <span>Patient</span>
               </a>
             </li>
             <li>
-              <a href="verification.html" aria-current="step">
+              <a href="verification.html">
                 <span class="step-number">5</span>
                 <span>Résumé</span>
               </a>
@@ -115,9 +115,9 @@
           principal unique du document.
         -->
         <div class="booking-heading">
-          <p class="eyebrow">PRENDRE RENDEZ-VOUS · ÉTAPE 5 SUR 5</p>
-          <h1>Vérifiez le récapitulatif</h1>
-          <p>Retrouvez les détails de votre consultation et vos informations personnelles.</p>
+          <p class="eyebrow">PRENDRE RENDEZ-VOUS · ÉTAPE 1 SUR 5</p>
+          <h1>Choisissez votre service médical</h1>
+          <p>La première étape de votre parcours de soins.</p>
         </div>
         <!--
           Disposition commune : la colonne principale accueille l'étape ; l'aside affiche le
@@ -130,115 +130,91 @@
           -->
           <div class="booking-main">
             <!--
-              Premier récapitulatif : service, médecin, date, durée et salle sont des valeurs
-              fixes écrites dans le document.
+              Panneau de sélection des services. Son nom accessible reprend la légende du groupe
+              de boutons radio.
             -->
-            <section class="booking-panel" aria-labelledby="review-appointment-title">
+            <section class="booking-panel" aria-labelledby="service-legend">
               <!--
-                Le titre nomme la carte et le lien permet de revenir à l'étape correspondante ; il
-                ne recharge aucune donnée sauvegardée.
+                fieldset réunit les choix liés ; legend formule leur question commune et
+                aria-describedby relie le texte d'aide.
               -->
-              <div class="review-heading">
-                <h2 id="review-appointment-title">Votre consultation</h2>
-                <a href="date-heure.html">Revoir l’étape</a>
-              </div>
-              <!--
-                Liste de descriptions : chaque div groupe un dt (libellé) et son dd (valeur). Le
-                CSS présente ces paires en grille.
-              -->
-              <dl class="review-list">
-                <div>
-                  <dt>Service médical</dt>
-                  <dd>Médecine générale</dd>
-                </div>
-                <div>
-                  <dt>Médecin</dt>
-                  <dd>Dr Jean Mputu</dd>
-                </div>
-                <div>
-                  <dt>Date</dt>
-                  <dd>
+              <fieldset class="booking-fieldset" aria-describedby="service-help">
+                <legend id="service-legend">Quel service souhaitez-vous consulter ?</legend>
+                <!--
+                  Les cartes sont des labels : cliquer leur contenu active le radio associé. Le
+                  même name="service" impose un choix unique. checked fixe le choix initial ;
+                  :has(input:checked) dans le CSS souligne la carte sans JavaScript.
+                -->
+                <div class="service-choices">
+                  <label class="service-choice">
+                    <input type="radio" name="service" value="general" checked>
+                    <span>
+                      <img src="../../assets/icons/stethoscope.svg" alt="" width="24" height="24" class="">
+                      <strong>Médecine générale</strong>
+                      <small>Bilan de santé et soins courants.</small>
+                    </span>
+                  </label>
+                  <label class="service-choice">
                     <!--
-                      datetime fournit la date machine lisible ; le texte entre les balises
-                      fournit sa présentation française au visiteur.
+                      Les autres services restent désactivés dans cette version : l'étape suivante
+                      présente uniquement un généraliste compatible.
                     -->
-                    <time datetime="2026-11-05">Jeudi 5 novembre 2026</time>
-                  </dd>
+                    <input type="radio" name="service" value="cardio" disabled>
+                    <span>
+                      <img src="../../assets/icons/heart.svg" alt="" width="24" height="24" class="">
+                      <strong>Cardiologie</strong>
+                      <small>Consultation du cœur et de la circulation.</small>
+                    </span>
+                  </label>
+                  <label class="service-choice">
+                    <input type="radio" name="service" value="pediatrie" disabled>
+                    <span>
+                      <img src="../../assets/icons/baby.svg" alt="" width="24" height="24" class="">
+                      <strong>Pédiatrie</strong>
+                      <small>Suivi médical des enfants.</small>
+                    </span>
+                  </label>
+                  <label class="service-choice">
+                    <input type="radio" name="service" value="ophtalmo" disabled>
+                    <span>
+                      <img src="../../assets/icons/eye.svg" alt="" width="24" height="24" class="">
+                      <strong>Ophtalmologie</strong>
+                      <small>Consultation et santé de la vision.</small>
+                    </span>
+                  </label>
+                  <label class="service-choice">
+                    <input type="radio" name="service" value="ortho" disabled>
+                    <span>
+                      <img src="../../assets/icons/bone.svg" alt="" width="24" height="24" class="">
+                      <strong>Orthopédie</strong>
+                      <small>Os, articulations et mobilité.</small>
+                    </span>
+                  </label>
+                  <label class="service-choice">
+                    <input type="radio" name="service" value="labo" disabled>
+                    <span>
+                      <img src="../../assets/icons/flask.svg" alt="" width="24" height="24" class="">
+                      <strong>Analyses et laboratoire</strong>
+                      <small>Bilans et examens médicaux.</small>
+                    </span>
+                  </label>
                 </div>
-                <div>
-                  <dt>Heure</dt>
-                  <dd>09 h 30 · heure de Kinshasa</dd>
-                </div>
-                <div>
-                  <dt>Durée estimée</dt>
-                  <dd>30 minutes</dd>
-                </div>
-                <div>
-                  <!--
-                    Salle d'illustration inscrite en dur : l'attribution automatique et la
-                    disponibilité devront être contrôlées par la future logique métier.
-                  -->
-                  <dt>Salle</dt>
-                  <dd>A-02</dd>
-                </div>
-              </dl>
+              </fieldset>
+              <!--
+                Aide visible associée au groupe de choix par son identifiant ; conserver cette
+                correspondance lors d'une modification.
+              -->
+              <p class="booking-helper" id="service-help">Sélection actuellement disponible : médecine générale.</p>
             </section>
             <!--
-              Deuxième récapitulatif : ces données ne proviennent pas des champs modifiés à
-              l'étape précédente. Maintenir leur cohérence avec le scénario.
-            -->
-            <section class="booking-panel" aria-labelledby="review-patient-title">
-              <div class="review-heading">
-                <h2 id="review-patient-title">Le patient</h2>
-                <a href="informations.html">Revoir la saisie</a>
-              </div>
-              <dl class="review-list">
-                <div>
-                  <dt>Nom complet</dt>
-                  <dd>Alex Ilunga</dd>
-                </div>
-                <div>
-                  <dt>Date de naissance</dt>
-                  <dd>14 juin 1995</dd>
-                </div>
-                <div>
-                  <dt>Téléphone</dt>
-                  <dd>+243 000 000 000</dd>
-                </div>
-                <div>
-                  <dt>E-mail</dt>
-                  <dd>alex.ilunga@example.com</dd>
-                </div>
-                <div class="is-full">
-                  <dt>Motif de consultation</dt>
-                  <dd>Consultation générale.</dd>
-                </div>
-              </dl>
-            </section>
-            <!--
-              Explication visible de l'indisponibilité ; son id est référencé par le bouton pour
-              le contexte accessible.
-            -->
-            <p class="booking-helper" id="confirm-help">La prise de rendez-vous en ligne sera prochainement disponible.</p>
-            <!--
-              Retour reste navigable. Le bouton suivant est désactivé, donc il ne crée aucun
-              rendez-vous et ne déclenche aucun envoi.
+              Annuler quitte le parcours ; Continuer ouvre le fichier suivant. Ce sont des liens,
+              sans envoi ni conservation du choix.
             -->
             <div class="booking-actions">
-              <a class="button button-secondary" href="informations.html">Retour</a>
-              <!--
-                type="button" exclut la soumission implicite ; disabled bloque l'action. Retirer
-                cet état exigera une vraie validation puis un enregistrement réussi.
-              -->
-              <button class="button button-primary" type="button" disabled aria-describedby="confirm-help">Confirmer le rendez-vous</button>
+              <a class="button button-secondary" href="../index.html">Annuler</a>
+              <a class="button button-primary" href="medecin.html">Continuer <img src="../../assets/icons/arrow-right.svg" alt="" width="24" height="24" class="">
+              </a>
             </div>
-            <!--
-              Lien séparé vers l'aperçu HTML de l'écran final : cette navigation sert à examiner
-              l'interface, pas à confirmer un rendez-vous.
-            -->
-            <p class="preview-link">
-              <a href="confirmation.html">Aperçu de confirmation</a>
-            </p>
           </div>
           <!--
             Résumé latéral partagé et fixe : ces valeurs sont saisies dans le HTML, pas calculées
